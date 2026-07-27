@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Watch | The Mallory Group</title>
+
+<style>
+  :root {
+    --tmg-cream: #FDFCF0;
+    --tmg-charcoal: #2D3436;
+    --tmg-sage: #84A98C;
+    --tmg-bg: #FDFCF0;
+    --tmg-surface: #FFFFFF;
+    --tmg-text: #2D3436;
+    --tmg-text-muted: #6B7280;
+    --tmg-accent: #84A98C;
+    --tmg-accent-dark: #6B8F74;
+    --tmg-border: #E5E2D4;
+    --tmg-radius: 10px;
+    --tmg-radius-sm: 6px;
+    --tmg-shadow: 0 1px 3px rgba(45, 52, 54, 0.06);
+    --tmg-shadow-lg: 0 4px 16px rgba(45, 52, 54, 0.08);
+    --tmg-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --tmg-space-xs: 0.5rem;
+    --tmg-space-sm: 0.75rem;
+    --tmg-space-md: 1.25rem;
+    --tmg-space-lg: 2rem;
+    --tmg-space-xl: 3rem;
+    --tmg-maxw: 1200px;
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tmg.css">
+
+<style>
+  /* Page-specific only. Everything else comes from tmg.css. */
+  body { margin: 0; font-family: var(--tmg-font); background: var(--tmg-bg); color: var(--tmg-text); }
+
+  .tmg-nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--tmg-space-md);
+    padding: var(--tmg-space-sm) var(--tmg-space-lg);
+    background: var(--tmg-surface);
+    border-bottom: 1px solid var(--tmg-border);
+    box-shadow: var(--tmg-shadow);
+  }
+  .tmg-nav-left { display: flex; align-items: center; gap: var(--tmg-space-md); flex-wrap: wrap; }
+  .tmg-nav-brand { font-weight: 700; letter-spacing: -0.01em; text-decoration: none; color: var(--tmg-text); }
+  .tmg-nav-link { text-decoration: none; color: var(--tmg-text-muted); font-size: 0.9rem; font-weight: 500; }
+  .tmg-nav-link:hover { color: var(--tmg-accent-dark); }
+
+  .tmg-dropdown { position: relative; }
+  .tmg-dropdown-toggle {
+    font-family: var(--tmg-font); font-size: 0.9rem; font-weight: 500;
+    background: transparent; border: 1px solid var(--tmg-border);
+    border-radius: var(--tmg-radius-sm); padding: 0.4rem 0.75rem;
+    color: var(--tmg-text); cursor: pointer;
+  }
+  .tmg-dropdown-toggle:hover { border-color: var(--tmg-accent); }
+  .tmg-dropdown-menu {
+    display: none; position: absolute; right: 0; top: calc(100% + 6px);
+    min-width: 280px; max-height: 70vh; overflow-y: auto;
+    background: var(--tmg-surface); border: 1px solid var(--tmg-border);
+    border-radius: var(--tmg-radius); box-shadow: var(--tmg-shadow-lg);
+    padding: var(--tmg-space-xs) 0;
+  }
+  .tmg-dropdown-menu.open { display: block; }
+  .tmg-dropdown-group {
+    padding: var(--tmg-space-xs) var(--tmg-space-md) 0.25rem;
+    font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--tmg-text-muted);
+  }
+  .tmg-dropdown-menu a {
+    display: block; padding: 0.5rem var(--tmg-space-md);
+    font-size: 0.875rem; text-decoration: none; color: var(--tmg-text);
+  }
+  .tmg-dropdown-menu a:hover { background: var(--tmg-cream); color: var(--tmg-accent-dark); }
+
+  .tmg-page { padding: var(--tmg-space-xl) var(--tmg-space-lg); }
+  .tmg-container { max-width: var(--tmg-maxw); margin: 0 auto; }
+
+  .tmg-eyebrow {
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--tmg-accent-dark); margin: 0 0 var(--tmg-space-xs);
+  }
+  .tmg-page-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 var(--tmg-space-xs); }
+  .tmg-page-desc { color: var(--tmg-text-muted); margin: 0 0 var(--tmg-space-lg); max-width: 60ch; }
+
+  .tmg-bento-grid {
+    display: grid; gap: var(--tmg-space-md);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: var(--tmg-space-lg);
+  }
+  .tmg-card, .tmg-card-wide {
+    background: var(--tmg-surface); border: 1px solid var(--tmg-border);
+    border-radius: var(--tmg-radius); padding: var(--tmg-space-md);
+    box-shadow: var(--tmg-shadow);
+  }
+  .tmg-card-wide { grid-column: 1 / -1; }
+  .tmg-card-label {
+    font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--tmg-text-muted); margin: 0 0 var(--tmg-space-xs);
+  }
+  .tmg-card-value { font-size: 2rem; font-weight: 700; line-height: 1; margin: 0; }
+  .tmg-card-sub { font-size: 0.8rem; color: var(--tmg-text-muted); margin: var(--tmg-space-xs) 0 0; }
+  .tmg-card-title { font-size: 1rem; font-weight: 600; margin: 0 0 var(--tmg-space-sm); }
+
+  .tmg-field-label {
+    display: block; font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--tmg-text-muted); margin-bottom: 0.35rem;
+  }
+  .tmg-input, .tmg-select {
+    font-family: var(--tmg-font); font-size: 0.9rem; width: 100%;
+    padding: 0.5rem 0.65rem; color: var(--tmg-text);
+    background: var(--tmg-surface); border: 1px solid var(--tmg-border);
+    border-radius: var(--tmg-radius-sm);
+  }
+  .tmg-input:focus, .tmg-select:focus { outline: 2px solid var(--tmg-accent); outline-offset: -1px; }
+
+  .filter-row { display: grid; gap: var(--tmg-space-md); grid-template-columns: 2fr 1fr 1fr auto; align-items: end; }
+  @media (max-width: 760px) { .filter-row { grid-template-columns: 1fr; } }
+
+  .tmg-btn, .tmg-btn-ghost {
+    font-family: var(--tmg-font); font-size: 0.85rem; font-weight: 600;
+    padding: 0.5rem 1rem; border-radius: var(--tmg-radius-sm);
+    cursor: pointer; text-decoration: none; display: inline-block;
+    white-space: nowrap;
+  }
+  .tmg-btn { background: var(--tmg-accent); color: #fff; border: 1px solid var(--tmg-accent); }
+  .tmg-btn:hover { background: var(--tmg-accent-dark); border-color: var(--tmg-accent-dark); }
+  .tmg-btn-ghost { background: transparent; color: var(--tmg-text); border: 1px solid var(--tmg-border); }
+  .tmg-btn-ghost:hover { border-color: var(--tmg-accent); color: var(--tmg-accent-dark); }
+
+  .tmg-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .tmg-table th {
+    text-align: left; font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--tmg-text-muted); padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--tmg-border); white-space: nowrap;
+  }
+  .tmg-table td { padding: 0.7rem 0.75rem; border-bottom: 1px solid var(--tmg-border); vertical-align: top; }
+  .tmg-table tbody tr:hover { background: var(--tmg-cream); }
+  .tmg-table a { color: var(--tmg-accent-dark); font-weight: 500; }
+  .table-scroll { overflow-x: auto; }
+
+  .badge-new {
+    display: inline-block; font-size: 0.65rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    background: var(--tmg-accent); color: #fff;
+    padding: 0.15rem 0.4rem; border-radius: 3px; margin-left: 0.4rem;
+  }
+  .empty-state { text-align: center; padding: var(--tmg-space-xl); color: var(--tmg-text-muted); }
+
+  .tmg-footer {
+    border-top: 1px solid var(--tmg-border); margin-top: var(--tmg-space-xl);
+    padding: var(--tmg-space-lg); text-align: center;
+    font-size: 0.8rem; color: var(--tmg-text-muted);
+  }
+</style>
+</head>
+<body>
+
+<nav class="tmg-nav">
+  <div class="tmg-nav-left">
+    <a class="tmg-nav-brand" href="index.html">The Mallory Group</a>
+    <a class="tmg-nav-link" href="index.html">Job Watch</a>
+  </div>
+  <div class="tmg-dropdown">
+    <button class="tmg-dropdown-toggle" id="toolToggle" aria-expanded="false" aria-haspopup="true">
+      TMG Tool Suite
+    </button>
+    <div class="tmg-dropdown-menu" id="toolMenu" role="menu">
+      <div class="tmg-dropdown-group">Research and Systems</div>
+      <a href="https://content-integrity-audit.pages.dev/">Content Integrity</a>
+      <a href="https://rmallorybpc.github.io/pdf-multi-agent-analysis/">PDF Multi-Agent Analysis</a>
+      <a href="https://rmallorybpc.github.io/housing-market-intel/">Housing Market Intel</a>
+      <a href="https://rmallorybpc.github.io/real-estate-report/">Real Estate Report</a>
+
+      <div class="tmg-dropdown-group">Talent Research</div>
+      <a href="https://rmallorybpc.github.io/talent-portability-research/">Talent Portability Research</a>
+      <a href="https://rmallorybpc.github.io/external-hire-premium/">External Hire Premium</a>
+      <a href="https://rmallorybpc.github.io/nfl-coach-continuity/">NFL Coach Continuity</a>
+
+      <div class="tmg-dropdown-group">Sports Tools</div>
+      <a href="https://rmallorybpc.github.io/nhl-free-agency-research/welcome.html">NHL Free Agency Research</a>
+      <a href="https://rmallorybpc.github.io/nflanalysis/dashboard/src/findings.html?season=2022&amp;team_id=PHI">NFL Analysis</a>
+      <a href="https://rmallorybpc.github.io/nba-research-project/">NBA Supermax Research</a>
+      <a href="https://rmallorybpc.github.io/nhl-play-for-contract/">NHL Play for Contract</a>
+
+      <div class="tmg-dropdown-group">Personal</div>
+      <a href="https://rmallorybpc.github.io/recipes/">Recipe Book</a>
+    </div>
+  </div>
+</nav>
+
+<div class="tmg-page tmg-container">
+
+  <p class="tmg-eyebrow">Talent Research</p>
+  <h1 class="tmg-page-title">Job Watch</h1>
+  <p class="tmg-page-desc">
+    Roles matched from the public Greenhouse Job Board API across a hand-built
+    target company list. Updated on a schedule by GitHub Actions.
+  </p>
+
+  <div class="tmg-bento-grid" id="statCards">
+    <div class="tmg-card">
+      <p class="tmg-card-label">Roles tracked</p>
+      <p class="tmg-card-value" id="statTotal">&mdash;</p>
+      <p class="tmg-card-sub">since first run</p>
+    </div>
+    <div class="tmg-card">
+      <p class="tmg-card-label">Last 7 days</p>
+      <p class="tmg-card-value" id="statRecent">&mdash;</p>
+      <p class="tmg-card-sub">newly surfaced</p>
+    </div>
+    <div class="tmg-card">
+      <p class="tmg-card-label">Companies</p>
+      <p class="tmg-card-value" id="statCompanies">&mdash;</p>
+      <p class="tmg-card-sub">on the watch list</p>
+    </div>
+    <div class="tmg-card">
+      <p class="tmg-card-label">Last run</p>
+      <p class="tmg-card-value" id="statUpdated" style="font-size:1.1rem;">&mdash;</p>
+      <p class="tmg-card-sub" id="statUpdatedTime">&nbsp;</p>
+    </div>
+  </div>
+
+  <div class="tmg-card-wide" style="margin-bottom: var(--tmg-space-md);">
+    <p class="tmg-card-title">Filter</p>
+    <div class="filter-row">
+      <div>
+        <label class="tmg-field-label" for="searchInput">Search title or company</label>
+        <input class="tmg-input" type="text" id="searchInput" placeholder="head of people">
+      </div>
+      <div>
+        <label class="tmg-field-label" for="companySelect">Company</label>
+        <select class="tmg-select" id="companySelect">
+          <option value="">All companies</option>
+        </select>
+      </div>
+      <div>
+        <label class="tmg-field-label" for="ageSelect">First seen</label>
+        <select class="tmg-select" id="ageSelect">
+          <option value="0">Any time</option>
+          <option value="7">Last 7 days</option>
+          <option value="14">Last 14 days</option>
+          <option value="30">Last 30 days</option>
+        </select>
+      </div>
+      <div>
+        <button class="tmg-btn-ghost" id="clearBtn" type="button">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tmg-card-wide">
+    <p class="tmg-card-title" id="resultCount">Roles</p>
+    <div class="table-scroll">
+      <table class="tmg-table">
+        <thead>
+          <tr>
+            <th scope="col">Company</th>
+            <th scope="col">Title</th>
+            <th scope="col">Location</th>
+            <th scope="col">First seen</th>
+            <th scope="col">Links</th>
+          </tr>
+        </thead>
+        <tbody id="jobRows"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      No roles match the current filter.
+    </div>
+  </div>
+
+</div>
+
+<footer class="tmg-footer">
+  The Mallory Group &middot; Data from the public Greenhouse Job Board API &middot;
+  Built and deployed with GitHub Actions
+</footer>
+
+<script>
+(function () {
+  var toggle = document.getElementById('toolToggle');
+  var menu = document.getElementById('toolMenu');
+
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!menu.contains(e.target) && e.target !== toggle) {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
+(function () {
+  var allJobs = [];
+
+  var searchInput = document.getElementById('searchInput');
+  var companySelect = document.getElementById('companySelect');
+  var ageSelect = document.getElementById('ageSelect');
+  var clearBtn = document.getElementById('clearBtn');
+  var rowsBody = document.getElementById('jobRows');
+  var emptyState = document.getElementById('emptyState');
+  var resultCount = document.getElementById('resultCount');
+
+  function daysSince(dateStr) {
+    if (!dateStr) { return 9999; }
+    var then = new Date(dateStr + 'T00:00:00Z');
+    if (isNaN(then)) { return 9999; }
+    return Math.floor((Date.now() - then.getTime()) / 86400000);
+  }
+
+  function esc(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function render() {
+    var q = searchInput.value.trim().toLowerCase();
+    var company = companySelect.value;
+    var maxAge = parseInt(ageSelect.value, 10);
+
+    var filtered = allJobs.filter(function (job) {
+      if (company && job.company !== company) { return false; }
+      if (maxAge > 0 && daysSince(job.first_seen) > maxAge) { return false; }
+      if (q) {
+        var haystack = (job.title + ' ' + job.company + ' ' + job.location).toLowerCase();
+        if (haystack.indexOf(q) === -1) { return false; }
+      }
+      return true;
+    });
+
+    filtered.sort(function (a, b) {
+      return (b.first_seen || '').localeCompare(a.first_seen || '');
+    });
+
+    resultCount.textContent = filtered.length +
+      (filtered.length === 1 ? ' role' : ' roles');
+
+    if (!filtered.length) {
+      rowsBody.innerHTML = '';
+      emptyState.style.display = 'block';
+      return;
+    }
+    emptyState.style.display = 'none';
+
+    rowsBody.innerHTML = filtered.map(function (job) {
+      var isNew = daysSince(job.first_seen) <= 7;
+      var links = '<a href="' + esc(job.url) + '" target="_blank" rel="noopener">Posting</a>';
+      if (job.issue_url) {
+        links += ' &middot; <a href="' + esc(job.issue_url) + '" target="_blank" rel="noopener">Issue</a>';
+      }
+      return '<tr>' +
+        '<td>' + esc(job.company) + '</td>' +
+        '<td>' + esc(job.title) + (isNew ? '<span class="badge-new">New</span>' : '') + '</td>' +
+        '<td>' + esc(job.location) + '</td>' +
+        '<td>' + esc(job.first_seen) + '</td>' +
+        '<td>' + links + '</td>' +
+        '</tr>';
+    }).join('');
+  }
+
+  function populateCompanies() {
+    var names = allJobs.map(function (j) { return j.company; });
+    var unique = names.filter(function (n, i) { return names.indexOf(n) === i; });
+    unique.sort();
+    unique.forEach(function (name) {
+      var opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      companySelect.appendChild(opt);
+    });
+  }
+
+  function setStats(payload) {
+    document.getElementById('statTotal').textContent = allJobs.length;
+    document.getElementById('statCompanies').textContent =
+      payload.companies_watched != null ? payload.companies_watched : '—';
+
+    var recent = allJobs.filter(function (j) { return daysSince(j.first_seen) <= 7; });
+    document.getElementById('statRecent').textContent = recent.length;
+
+    if (payload.generated) {
+      var d = new Date(payload.generated);
+      document.getElementById('statUpdated').textContent =
+        d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+      document.getElementById('statUpdatedTime').textContent =
+        d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+    }
+  }
+
+  fetch('data/jobs.json', { cache: 'no-store' })
+    .then(function (r) {
+      if (!r.ok) { throw new Error('HTTP ' + r.status); }
+      return r.json();
+    })
+    .then(function (payload) {
+      var jobsObj = payload.jobs || {};
+      allJobs = Object.keys(jobsObj).map(function (k) { return jobsObj[k]; });
+      setStats(payload);
+      populateCompanies();
+      render();
+    })
+    .catch(function (err) {
+      resultCount.textContent = 'Could not load data';
+      emptyState.style.display = 'block';
+      emptyState.textContent =
+        'No data file yet. The dashboard populates after the first workflow run.';
+      console.error(err);
+    });
+
+  searchInput.addEventListener('input', render);
+  companySelect.addEventListener('change', render);
+  ageSelect.addEventListener('change', render);
+  clearBtn.addEventListener('click', function () {
+    searchInput.value = '';
+    companySelect.value = '';
+    ageSelect.value = '0';
+    render();
+  });
+})();
+</script>
+
+</body>
+</html>

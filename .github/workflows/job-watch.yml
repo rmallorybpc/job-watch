@@ -1,0 +1,95 @@
+name: Job watch
+
+on:
+  schedule:
+    # 07:00 and 15:00 Mountain, weekdays.
+    # Cron runs on UTC and does not adjust for daylight saving.
+    # These shift an hour later in winter.
+    - cron: "0 13,21 * * 1-5"
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "companies.csv"
+      - "greenhouse_watch.py"
+      - ".github/workflows/job-watch.yml"
+  workflow_dispatch:
+    inputs:
+      reset:
+        description: "Clear the jobs log and treat every match as new"
+        type: boolean
+        default: false
+
+# One run at a time. Prevents two runs racing on docs/data/jobs.json.
+concurrency:
+  group: job-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Ensure job-lead label exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create job-lead \
+            --color 84A98C \
+            --description "Role surfaced by the job watcher" \
+            || echo "Label already exists."
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run watcher
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          if [ "${{ inputs.reset }}" = "true" ]; then
+            python greenhouse_watch.py --github --reset
+          else
+            python greenhouse_watch.py --github
+          fi
+
+      - name: Commit jobs log
+        run: |
+          git config user.name "job-watch-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/jobs.json
+          if git diff --staged --quiet; then
+            echo "No data change."
+          else
+            git commit -m "chore: update job watch data [skip ci]"
+            git push
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: watch
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
