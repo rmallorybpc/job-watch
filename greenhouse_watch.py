@@ -81,8 +81,31 @@ TITLE_EXCLUDE = [
     "hrbp ii",
 ]
 
-# Location filter. Empty list disables it.
+# Location filter, exclude-based.
+# LOCATION_KEYWORDS keeps only roles whose location contains one of these.
+# Leave it empty to keep all US-tagged and remote roles.
 LOCATION_KEYWORDS = []
+
+# LOCATION_EXCLUDE drops any role whose location names one of these.
+# This removes obvious international postings while keeping US-city-tagged
+# roles that may be remote-friendly (e.g. "Indianapolis, IN").
+LOCATION_EXCLUDE = [
+    "amsterdam", "netherlands",
+    "barcelona", "madrid", "spain",
+    "toronto", "ontario", "canada", ", on",
+    "london", "united kingdom", ", uk",
+    "berlin", "germany",
+    "paris", "france",
+    "dublin", "ireland",
+    "bengaluru", "bangalore", ", india",
+    "singapore",
+    "sydney", "australia",
+    "tokyo", "japan",
+    "mexico city", "mexico",
+    "são paulo", "sao paulo", "brazil",
+    "remote - emea", "remote - apac", "remote - uk",
+    "remote emea", "remote apac",
+]
 
 REQUEST_DELAY_SECONDS = 0.4
 TIMEOUT_SECONDS = 20
@@ -182,9 +205,11 @@ def title_matches(title: str) -> bool:
 
 
 def location_matches(location: str) -> bool:
+    low = (location or "").lower()
+    if any(bad in low for bad in LOCATION_EXCLUDE):
+        return False
     if not LOCATION_KEYWORDS:
         return True
-    low = (location or "").lower()
     return any(loc in low for loc in LOCATION_KEYWORDS)
 
 
