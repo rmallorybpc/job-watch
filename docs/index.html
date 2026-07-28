@@ -89,24 +89,29 @@
     letter-spacing: 0.08em; color: var(--tmg-accent-dark); margin: 0 0 var(--tmg-space-xs);
   }
   .tmg-page-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 var(--tmg-space-xs); }
-  .tmg-page-desc { color: var(--tmg-text-muted); margin: 0 0 var(--tmg-space-lg); max-width: 60ch; }
+  .tmg-page-desc { color: var(--tmg-text-muted); margin: 0 0 var(--tmg-space-lg); max-width: none; }
 
   .tmg-bento-grid {
-    display: grid; gap: var(--tmg-space-md);
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: grid; gap: var(--tmg-space-sm);
+    grid-template-columns: repeat(5, 1fr);
     margin-bottom: var(--tmg-space-lg);
   }
+  @media (max-width: 900px) { .tmg-bento-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .tmg-bento-grid { grid-template-columns: 1fr; } }
   .tmg-card, .tmg-card-wide {
     background: var(--tmg-surface); border: 1px solid var(--tmg-border);
-    border-radius: var(--tmg-radius); padding: var(--tmg-space-md);
+    border-radius: var(--tmg-radius); padding: var(--tmg-space-sm) var(--tmg-space-md);
     box-shadow: var(--tmg-shadow);
   }
   .tmg-card-wide { grid-column: 1 / -1; }
+  a.tmg-card { text-decoration: none; color: inherit; transition: border-color 0.15s, box-shadow 0.15s; display: flex; flex-direction: column; justify-content: center; }
+  a.tmg-card:hover { border-color: var(--tmg-accent); box-shadow: var(--tmg-shadow-lg); }
+  a.tmg-card .tmg-card-value { color: var(--tmg-accent-dark); }
   .tmg-card-label {
     font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
     letter-spacing: 0.06em; color: var(--tmg-text-muted); margin: 0 0 var(--tmg-space-xs);
   }
-  .tmg-card-value { font-size: 2rem; font-weight: 700; line-height: 1; margin: 0; }
+  .tmg-card-value { font-size: 1.75rem; font-weight: 700; line-height: 1; margin: 0; }
   .tmg-card-sub { font-size: 0.8rem; color: var(--tmg-text-muted); margin: var(--tmg-space-xs) 0 0; }
   .tmg-card-title { font-size: 1rem; font-weight: 600; margin: 0 0 var(--tmg-space-sm); }
 
@@ -257,6 +262,11 @@
       <p class="tmg-card-value" id="statUpdated" style="font-size:1.1rem;">&mdash;</p>
       <p class="tmg-card-sub" id="statUpdatedTime">&nbsp;</p>
     </div>
+    <a class="tmg-card" href="https://github.com/rmallorybpc/job-watch/issues?q=is%3Aissue+is%3Aopen+label%3Ajob-lead" target="_blank" rel="noopener">
+      <p class="tmg-card-label">Review queue</p>
+      <p class="tmg-card-value">Issues &rarr;</p>
+      <p class="tmg-card-sub">open job leads on GitHub</p>
+    </a>
   </div>
 
   <div class="tmg-card-wide" style="margin-bottom: var(--tmg-space-md);">
