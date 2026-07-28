@@ -451,7 +451,8 @@
       if (job.issue_url) {
         links += ' &middot; <a href="' + esc(job.issue_url) + '" target="_blank" rel="noopener">Issue</a>';
       }
-      var source = job.source === 'rippling' ? 'Rippling' : 'Greenhouse';
+      var source = job.source === 'rippling' ? 'Rippling'
+        : (job.source === 'ashby' ? 'Ashby' : 'Greenhouse');
       var st = statusOf(job);
 
       var actions = '<div class="row-actions">';
@@ -522,7 +523,8 @@
 
   Promise.all([
     loadOne('data/jobs.json'),
-    loadOne('data/jobs_rippling.json')
+    loadOne('data/jobs_rippling.json'),
+    loadOne('data/jobs_ashby.json')
   ]).then(function (payloads) {
     var merged = {};
     var latestGenerated = '';
