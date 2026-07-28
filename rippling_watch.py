@@ -31,7 +31,9 @@ from urllib.parse import urlparse
 import requests
 
 API_BASE = "https://ats.rippling.com/api/v2/board"
+GITHUB_API = "https://api.github.com"
 PAGE_SIZE = 50
+ISSUE_LABELS = ["job-lead"]
 
 # Same filter lists as the Greenhouse watcher. Keep them in sync.
 TITLE_KEYWORDS = [
@@ -68,8 +70,26 @@ TITLE_EXCLUDE = [
     "hrbp ii",
 ]
 
-# Location filter. Empty list disables it, matching the Greenhouse setup.
+# Location filter, exclude-based. Keep in sync with greenhouse_watch.py.
 LOCATION_KEYWORDS = []
+
+LOCATION_EXCLUDE = [
+    "amsterdam", "netherlands",
+    "barcelona", "madrid", "spain",
+    "toronto", "ontario", "canada", ", on",
+    "london", "united kingdom", ", uk",
+    "berlin", "germany",
+    "paris", "france",
+    "dublin", "ireland",
+    "bengaluru", "bangalore", ", india",
+    "singapore",
+    "sydney", "australia",
+    "tokyo", "japan",
+    "mexico city", "mexico",
+    "são paulo", "sao paulo", "brazil",
+    "remote - emea", "remote - apac", "remote - uk",
+    "remote emea", "remote apac",
+]
 
 REQUEST_DELAY_SECONDS = 0.4
 TIMEOUT_SECONDS = 20
@@ -158,9 +178,11 @@ def title_matches(title: str) -> bool:
 
 
 def location_matches(location: str) -> bool:
+    low = (location or "").lower()
+    if any(bad in low for bad in LOCATION_EXCLUDE):
+        return False
     if not LOCATION_KEYWORDS:
         return True
-    low = (location or "").lower()
     return any(loc in low for loc in LOCATION_KEYWORDS)
 
 
@@ -241,11 +263,109 @@ def fetch_detail(board_id: str, job_id: str) -> str:
     return strip_html(desc)
 
 
+def build_issue_body(record: dict) -> str:
+    desc = record.get("description", "")
+    if len(desc) > 4000:
+        desc = desc[:4000] + "\n\n_(truncated, see the posting for the rest)_"
+
+    return "\n".join(
+        [
+            f"**Company:** {record['company']}",
+            f"**Location:** {record['location']}",
+            f"**Posted:** {record['posted'] or 'not stated'}",
+            f"**Source:** Rippling",
+            f"**Apply:** {record['url']}",
+            "",
+            "---",
+            "",
+            "### Review checklist",
+            "",
+            "- [ ] JDR fit score",
+            "- [ ] Competitiveness score (only if fit is 60+)",
+            "- [ ] Contact type identified",
+            "- [ ] Effort band assigned",
+            "",
+            "---",
+            "",
+            "<details>",
+            "<summary>Job description</summary>",
+            "",
+            desc or "_No description captured._",
+            "",
+            "</details>",
+        ]
+    )
+
+
+def create_issue(record: dict, repo: str, token: str) -> str:
+    """Returns the issue html_url on success, empty string on failure."""
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    payload = {
+        "title": f"{record['company']}: {record['title']}",
+        "body": build_issue_body(record),
+        "labels": ISSUE_LABELS,
+    }
+    try:
+        resp = requests.post(
+            f"{GITHUB_API}/repos/{repo}/issues",
+            headers=headers,
+            json=payload,
+            timeout=TIMEOUT_SECONDS,
+        )
+    except requests.RequestException as exc:
+        print(f"  ERROR  could not create issue: {exc}")
+        return ""
+
+    if resp.status_code == 201:
+        return resp.json().get("html_url", "")
+    print(f"  ERROR  issue creation returned HTTP {resp.status_code}: {resp.text[:200]}")
+    return ""
+
+
+def write_step_summary(new_records: list, total: int) -> None:
+    path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not path:
+        return
+
+    lines = ["## Rippling watch results", ""]
+    if not new_records:
+        lines.append(f"No new Rippling matches this run. {total} tracked overall.")
+    else:
+        lines.append(f"**{len(new_records)} new Rippling role(s).** {total} tracked overall.")
+        lines.append("")
+        lines.append("| Company | Title | Location | Link |")
+        lines.append("|---|---|---|---|")
+        for r in new_records:
+            title = r["title"].replace("|", "\\|")
+            lines.append(
+                f"| {r['company']} | {title} | {r['location']} | [Apply]({r['url']}) |"
+            )
+
+    with open(path, "a", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Rippling ATS board watcher")
     parser.add_argument("--no-content", action="store_true", help="skip descriptions")
     parser.add_argument("--reset", action="store_true", help="clear the jobs log")
+    parser.add_argument(
+        "--github",
+        action="store_true",
+        help="open a GitHub Issue per new role and write a run summary",
+    )
     args = parser.parse_args()
+
+    gh_token = os.environ.get("GITHUB_TOKEN", "")
+    gh_repo = os.environ.get("GITHUB_REPOSITORY", "")
+
+    if args.github and not (gh_token and gh_repo):
+        print("ERROR  --github requires GITHUB_TOKEN and GITHUB_REPOSITORY.")
+        sys.exit(1)
 
     if args.reset and os.path.exists(DATA_FILE):
         os.remove(DATA_FILE)
@@ -310,7 +430,17 @@ def main() -> None:
         print(f"  {len(listings)} posted, {hits} new match{'' if hits == 1 else 'es'}")
         time.sleep(REQUEST_DELAY_SECONDS)
 
+    if args.github:
+        for record in new_records:
+            issue_url = create_issue(record, gh_repo, gh_token)
+            if issue_url:
+                record["issue_url"] = issue_url
+                print(f"  issue opened: {record['company']} - {record['title']}")
+
     save_log(jobs_log, len(companies))
+
+    if args.github:
+        write_step_summary(new_records, len(jobs_log))
 
     if not new_records:
         print(f"\nNo new matches. {len(jobs_log)} role(s) tracked overall.")
