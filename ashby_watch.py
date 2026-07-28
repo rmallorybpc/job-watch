@@ -208,6 +208,13 @@ US_SIGNALS = [
 ]
 
 
+CO_SIGNALS = [
+    "colorado", "denver", "boulder", "broomfield", "golden",
+    "fort collins", "colorado springs", "aurora", "lakewood",
+    "littleton", "centennial", "arvada", "westminster", ", co",
+]
+
+
 def location_matches(location: str) -> bool:
     low = (location or "").lower()
     us_signal = any(x in low for x in US_SIGNALS)
@@ -216,6 +223,42 @@ def location_matches(location: str) -> bool:
     if not LOCATION_KEYWORDS:
         return True
     return any(loc in low for loc in LOCATION_KEYWORDS)
+
+
+def is_colorado(location: str) -> bool:
+    low = (location or "").lower()
+    return any(c in low for c in CO_SIGNALS)
+
+
+def workplace_allows(job: dict, location: str) -> bool:
+    """
+    Drop onsite roles that are not in Colorado. Remote and hybrid roles pass
+    regardless of city, since Ross can work those from Colorado.
+
+    Ashby signals remote via the boolean isRemote and via an employment/
+    workplace type string. We treat a role as onsite only when it is clearly
+    marked onsite and not remote.
+    """
+    is_remote = bool(job.get("isRemote"))
+    # workplace type may appear under a few keys depending on the board
+    wtype = ""
+    for key in ("workplaceType", "locationType", "employmentType"):
+        v = job.get(key)
+        if isinstance(v, str) and v:
+            wtype += " " + v.lower()
+    onsite = ("on-site" in wtype or "onsite" in wtype or "in office" in wtype
+              or "in-office" in wtype)
+    hybrid = "hybrid" in wtype
+
+    # Remote or hybrid: always allowed.
+    if is_remote or hybrid:
+        return True
+    # Explicitly onsite: allowed only if the location is Colorado.
+    if onsite:
+        return is_colorado(location)
+    # Type not stated: fall back to allowing it, so we do not silently drop
+    # roles that lack a workplace field. The location filter still applies.
+    return True
 
 
 def extract_location(job: dict) -> str:
@@ -390,6 +433,8 @@ def main() -> None:
 
             if not title_matches(title) or not location_matches(location):
                 continue
+            if not workplace_allows(job, location):
+                continue
 
             job_id = job.get("id") or job.get("jobId") or ""
             job_key = f"{slug}:{job_id}"
@@ -403,6 +448,16 @@ def main() -> None:
                 comp = comp_obj.get("scrapeableCompensationSalarySummary") or \
                     comp_obj.get("compensationTierSummary") or ""
 
+            workplace = ""
+            if job.get("isRemote"):
+                workplace = "Remote"
+            else:
+                for key in ("workplaceType", "locationType", "employmentType"):
+                    v = job.get(key)
+                    if isinstance(v, str) and v:
+                        workplace = v
+                        break
+
             description = ""
             if not args.no_content:
                 description = strip_html(job.get("descriptionHtml") or job.get("descriptionPlain") or "")
@@ -412,6 +467,7 @@ def main() -> None:
                 "token": slug,
                 "title": title,
                 "location": location,
+                "workplace": workplace,
                 "comp": comp,
                 "posted": (job.get("publishedAt") or job.get("updatedAt") or "")[:10],
                 "url": job.get("jobUrl") or job.get("applyUrl") or f"https://jobs.ashbyhq.com/{slug}",
