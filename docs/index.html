@@ -157,6 +157,28 @@
   }
   .empty-state { text-align: center; padding: var(--tmg-space-xl); color: var(--tmg-text-muted); }
 
+  .status-tabs { display: flex; gap: var(--tmg-space-xs); margin-bottom: var(--tmg-space-md); flex-wrap: wrap; }
+  .status-tab {
+    font-family: var(--tmg-font); font-size: 0.85rem; font-weight: 600;
+    padding: 0.4rem 0.85rem; border-radius: var(--tmg-radius-sm);
+    background: transparent; color: var(--tmg-text-muted);
+    border: 1px solid var(--tmg-border); cursor: pointer;
+  }
+  .status-tab:hover { border-color: var(--tmg-accent); color: var(--tmg-accent-dark); }
+  .status-tab.active { background: var(--tmg-accent); color: #fff; border-color: var(--tmg-accent); }
+  .tab-count {
+    display: inline-block; min-width: 1.2em; text-align: center;
+    font-size: 0.75rem; margin-left: 0.25rem; opacity: 0.85;
+  }
+  .row-actions { display: flex; gap: 0.35rem; white-space: nowrap; }
+  .mini-btn {
+    font-family: var(--tmg-font); font-size: 0.72rem; font-weight: 600;
+    padding: 0.25rem 0.5rem; border-radius: 4px; cursor: pointer;
+    border: 1px solid var(--tmg-border); background: var(--tmg-surface); color: var(--tmg-text);
+  }
+  .mini-btn:hover { border-color: var(--tmg-accent); color: var(--tmg-accent-dark); }
+  .mini-btn.applied { background: var(--tmg-accent); color: #fff; border-color: var(--tmg-accent); }
+
   .tmg-footer {
     border-top: 1px solid var(--tmg-border); margin-top: var(--tmg-space-xl);
     padding: var(--tmg-space-lg); text-align: center;
@@ -260,6 +282,11 @@
   </div>
 
   <div class="tmg-card-wide">
+    <div class="status-tabs" id="statusTabs">
+      <button class="status-tab active" data-status="active" type="button">Active <span class="tab-count" id="countActive">0</span></button>
+      <button class="status-tab" data-status="applied" type="button">Applied <span class="tab-count" id="countApplied">0</span></button>
+      <button class="status-tab" data-status="dismissed" type="button">Dismissed <span class="tab-count" id="countDismissed">0</span></button>
+    </div>
     <p class="tmg-card-title" id="resultCount">Roles</p>
     <div class="table-scroll">
       <table class="tmg-table">
@@ -268,8 +295,10 @@
             <th scope="col">Company</th>
             <th scope="col">Title</th>
             <th scope="col">Location</th>
+            <th scope="col">Source</th>
             <th scope="col">First seen</th>
             <th scope="col">Links</th>
+            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody id="jobRows"></tbody>
@@ -337,12 +366,62 @@
       .replace(/"/g, '&quot;');
   }
 
+  // --- Per-browser status tracking (localStorage) ---
+  // Status lives only in this browser on this machine. Values: applied,
+  // dismissed. Anything not stored is treated as active.
+  var STORAGE_KEY = 'jobwatch_status_v1';
+  var currentTab = 'active';
+
+  function loadStatus() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveStatus(map) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+    } catch (e) {
+      // storage disabled or full; status simply will not persist
+    }
+  }
+
+  function jobKey(job) {
+    return (job.token || '') + ':' + (job.job_id || job.url || job.title);
+  }
+
+  function statusOf(job) {
+    var map = loadStatus();
+    return map[jobKey(job)] || 'active';
+  }
+
+  function setStatus(job, status) {
+    var map = loadStatus();
+    var key = jobKey(job);
+    if (status === 'active') {
+      delete map[key];
+    } else {
+      map[key] = status;
+    }
+    saveStatus(map);
+  }
+
   function render() {
     var q = searchInput.value.trim().toLowerCase();
     var company = companySelect.value;
     var maxAge = parseInt(ageSelect.value, 10);
 
+    // update tab counts across the whole set
+    var counts = { active: 0, applied: 0, dismissed: 0 };
+    allJobs.forEach(function (job) { counts[statusOf(job)]++; });
+    document.getElementById('countActive').textContent = counts.active;
+    document.getElementById('countApplied').textContent = counts.applied;
+    document.getElementById('countDismissed').textContent = counts.dismissed;
+
     var filtered = allJobs.filter(function (job) {
+      if (statusOf(job) !== currentTab) { return false; }
       if (company && job.company !== company) { return false; }
       if (maxAge > 0 && daysSince(job.first_seen) > maxAge) { return false; }
       if (q) {
@@ -366,20 +445,44 @@
     }
     emptyState.style.display = 'none';
 
-    rowsBody.innerHTML = filtered.map(function (job) {
+    rowsBody.innerHTML = filtered.map(function (job, i) {
       var isNew = daysSince(job.first_seen) <= 7;
       var links = '<a href="' + esc(job.url) + '" target="_blank" rel="noopener">Posting</a>';
       if (job.issue_url) {
         links += ' &middot; <a href="' + esc(job.issue_url) + '" target="_blank" rel="noopener">Issue</a>';
       }
+      var source = job.source === 'rippling' ? 'Rippling' : 'Greenhouse';
+      var st = statusOf(job);
+
+      var actions = '<div class="row-actions">';
+      if (currentTab === 'active') {
+        actions += '<button class="mini-btn" data-act="applied" data-i="' + i + '">Applied</button>';
+        actions += '<button class="mini-btn" data-act="dismissed" data-i="' + i + '">Dismiss</button>';
+      } else {
+        actions += '<button class="mini-btn" data-act="active" data-i="' + i + '">Restore</button>';
+      }
+      actions += '</div>';
+
       return '<tr>' +
         '<td>' + esc(job.company) + '</td>' +
         '<td>' + esc(job.title) + (isNew ? '<span class="badge-new">New</span>' : '') + '</td>' +
         '<td>' + esc(job.location) + '</td>' +
+        '<td>' + source + '</td>' +
         '<td>' + esc(job.first_seen) + '</td>' +
         '<td>' + links + '</td>' +
+        '<td>' + actions + '</td>' +
         '</tr>';
     }).join('');
+
+    // wire the per-row buttons to the currently filtered set
+    var btns = rowsBody.querySelectorAll('.mini-btn');
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var job = filtered[parseInt(btn.getAttribute('data-i'), 10)];
+        setStatus(job, btn.getAttribute('data-act'));
+        render();
+      });
+    });
   }
 
   function populateCompanies() {
@@ -411,25 +514,44 @@
     }
   }
 
-  fetch('data/jobs.json', { cache: 'no-store' })
-    .then(function (r) {
-      if (!r.ok) { throw new Error('HTTP ' + r.status); }
-      return r.json();
-    })
-    .then(function (payload) {
+  function loadOne(path) {
+    return fetch(path, { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+  }
+
+  Promise.all([
+    loadOne('data/jobs.json'),
+    loadOne('data/jobs_rippling.json')
+  ]).then(function (payloads) {
+    var merged = {};
+    var latestGenerated = '';
+    var companyCount = 0;
+
+    payloads.forEach(function (payload) {
+      if (!payload) { return; }
       var jobsObj = payload.jobs || {};
-      allJobs = Object.keys(jobsObj).map(function (k) { return jobsObj[k]; });
-      setStats(payload);
-      populateCompanies();
-      render();
-    })
-    .catch(function (err) {
-      resultCount.textContent = 'Could not load data';
+      Object.keys(jobsObj).forEach(function (k) { merged[k] = jobsObj[k]; });
+      if (payload.generated && payload.generated > latestGenerated) {
+        latestGenerated = payload.generated;
+      }
+      companyCount += (payload.companies_watched || 0);
+    });
+
+    allJobs = Object.keys(merged).map(function (k) { return merged[k]; });
+
+    if (!allJobs.length) {
+      resultCount.textContent = 'No roles yet';
       emptyState.style.display = 'block';
       emptyState.textContent =
-        'No data file yet. The dashboard populates after the first workflow run.';
-      console.error(err);
-    });
+        'No data yet. The dashboard populates after the first workflow run.';
+      return;
+    }
+
+    setStats({ generated: latestGenerated, companies_watched: companyCount });
+    populateCompanies();
+    render();
+  });
 
   searchInput.addEventListener('input', render);
   companySelect.addEventListener('change', render);
@@ -438,6 +560,16 @@
     searchInput.value = '';
     companySelect.value = '';
     ageSelect.value = '0';
+    render();
+  });
+
+  document.getElementById('statusTabs').addEventListener('click', function (e) {
+    var btn = e.target.closest('.status-tab');
+    if (!btn) { return; }
+    currentTab = btn.getAttribute('data-status');
+    var tabs = document.querySelectorAll('.status-tab');
+    tabs.forEach(function (t) { t.classList.remove('active'); });
+    btn.classList.add('active');
     render();
   });
 })();
