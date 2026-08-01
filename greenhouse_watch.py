@@ -103,9 +103,27 @@ LOCATION_EXCLUDE = [
     "tokyo", "japan",
     "mexico city", "mexico",
     "são paulo", "sao paulo", "brazil",
+    "kuala lumpur", "malaysia",
     "remote - emea", "remote - apac", "remote - uk",
     "remote emea", "remote apac",
 ]
+
+# Colorado signal. Used by the onsite-outside-CO rule below.
+COLORADO_KEYWORDS = [
+    "colorado",
+    ", co",
+    "denver",
+    "boulder",
+    "colorado springs",
+    "fort collins",
+    "aurora, co",
+    "westminster, co",
+    "lakewood, co",
+]
+
+# Words that signal a role is not tied to one office.
+REMOTE_KEYWORDS = ["remote"]
+HYBRID_KEYWORDS = ["hybrid"]
 
 REQUEST_DELAY_SECONDS = 0.4
 TIMEOUT_SECONDS = 20
@@ -213,6 +231,32 @@ def location_matches(location: str) -> bool:
     return any(loc in low for loc in LOCATION_KEYWORDS)
 
 
+def infer_workplace_type(location: str) -> str:
+    """Rough guess at workplace type from the location string.
+
+    Greenhouse does not expose a clean remote/hybrid/onsite field the way
+    Ashby does. This looks for common phrasing instead. When neither
+    "remote" nor "hybrid" appears, it falls back to "onsite", since
+    Greenhouse locations without that language are almost always
+    physical office postings. This is a heuristic, not a real field, so
+    it can misclassify a remote role that a company labeled only with a
+    city name.
+    """
+    low = (location or "").lower()
+    if not low.strip():
+        return "unknown"
+    if any(word in low for word in REMOTE_KEYWORDS):
+        return "remote"
+    if any(word in low for word in HYBRID_KEYWORDS):
+        return "hybrid"
+    return "onsite"
+
+
+def is_colorado(location: str) -> bool:
+    low = (location or "").lower()
+    return any(kw in low for kw in COLORADO_KEYWORDS)
+
+
 def fetch_jobs(token: str, want_content: bool) -> list:
     url = f"{API_BASE}/{token}/jobs"
     params = {"content": "true"} if want_content else {}
@@ -249,6 +293,7 @@ def build_issue_body(record: dict) -> str:
         [
             f"**Company:** {record['company']}",
             f"**Location:** {record['location']}",
+            f"**Workplace type (inferred):** {record.get('workplace_type', 'unknown')}",
             f"**Posted:** {record['posted'] or 'not stated'}",
             f"**Apply:** {record['url']}",
             "",
@@ -385,6 +430,10 @@ def main() -> None:
             if not title_matches(title) or not location_matches(location):
                 continue
 
+            workplace_type = infer_workplace_type(location)
+            if workplace_type == "onsite" and not is_colorado(location):
+                continue
+
             job_key = f"{token}:{job.get('id')}"
             if job_key in jobs_log:
                 continue
@@ -395,6 +444,7 @@ def main() -> None:
                 "token": token,
                 "title": title,
                 "location": location,
+                "workplace_type": workplace_type,
                 "posted": (job.get("updated_at") or "")[:10],
                 "url": job.get("absolute_url", ""),
                 "job_id": job.get("id", ""),
