@@ -1,16 +1,60 @@
 {
   "companies_watched": 15,
-  "generated": "2026-08-01T19:13:26+00:00",
+  "generated": "2026-08-01T19:18:32+00:00",
   "jobs": {
     "astro-mechanica:b1613597-eef8-445a-a7cc-d48fd0b57ac4": {
       "comp": "$250K - $340K",
       "company": "Astro Mechanica",
       "description": "ABOUT US:Astro Mechanica is a vertically integrated aerospace company building a faster, more connected future. Our mission is to democratize high-speed flight by making supersonic travel flexible, accessible, and sustainable. We believe that rapid, on-demand, point-to-point global mobility will become the new standard for moving people and goods across the planet. To achieve this, we are integrating our advanced airframe and engine technologies\u2014which include Duality\u2122, our proprietary dual-use propulsion system\u2014with a new flight operations model to make supersonic transport as efficient and economical as commercial air travel is today. In the near term, we are developing adaptable, high-speed systems to close aircraft performance gaps for the United States government.\n\nWHO WE ARE:We\u2019re a team of passionate engineers dedicated to advancing aerospace. We\u2019re generalists with specialist depth, united by a flat structure and a shared obsession with building things that work well. We move fast, stay pragmatic, and let engineering excellence speak louder than hierarchy.\n\nWHO YOU ARE:You have done this before. Not necessarily at an aerospace company, but at a fast-scaling, high-stakes, technically complex organization where the People function had to grow in real time. You've owned the full stack of HR, you've built teams and systems from scratch, and you've made decisions under ambiguity without waiting for a playbook to materialize. \n\nYou are a strong operator and credible strategic partner. You understand what it means to recruit in a competitive technical talent market. You've hired engineers and operators who had better-resourced options but chose your company anyway.\n\nYou have a high standard for your craft- the work you produce, the processes you build, and the people you hire. You care about getting it right, not just getting it done. That will resonate here. \n\n\u00a0WHAT YOU\u2019LL DO:This is the first dedicated executive People hire at Astro Mechanica. You will own all HR functions: talent acquisition, people operations, total rewards, performance management, employee experience, compliance, and organizational design. You will inherit a foundation built by an internal lead who has done exceptional work getting the company from 0 to 1, and you will take it the rest of the way.\n\nThis is not a role for someone who needs to learn the craft of People leadership on the job. Astro Mechanica is moving too fast for that. You need to know what good looks like across all HR functions, make decisions quickly, and build systems that work today and hold up at 5x the current size.\n\nYou report to the COO and partner closely with the CEO and technical leadership. This is a seat at the leadership table. You are expected to contribute to company strategy, not just execute on HR programs.\n\nWHAT WE\u2019RE LOOKING FOR:10+ years of progressive HR/People leadership, with meaningful time as a functional owner, not just a business partner\n\nExperience at a company that scaled rapidly (ideally from under 100 to several hundred people) and kept its culture intact\n\nDemonstrated success building in-house talent acquisition functions (not just managing agencies)\n\nStrong track record recruiting and retaining technical talent in a competitive market\n\nExperience with California employment law and the specific risks it creates for fast-moving companies is helpful but not required\n\nExposure to manufacturing, aerospace, defense, or other hardware-intensive industries is a meaningful plus. You don't need to have built jet engines, but you need to be able to earn the trust of people who do\n\nPrior experience designing performance management systems that actually work in practice\n\nComfort operating in companies where not everything is defined yet and preference for building over inheriting\n\nPERKS & BENEFITS:Comprehensive medical, dental, and vision insurance, including Flexible Spending Accounts (FSA)\n\n401(k) program and transparent stock option plan\n\nSelf-managed and flexible time-off policy, including PTO, paid holidays, and sick time\n\nFlexible work environment\n\nADDITIONAL INFORMATION:At Astro Mechanica, we highly value in-office work to foster collaboration and strengthen our company culture. We consider working in the office five days a week an essential part of the employee's role.\n\nAstro Mechanica is an equal opportunity employer. We proudly recruit and hire a diverse workforce and are committed to creating an inclusive environment for all employees.",
       "first_seen": "2026-08-01",
-      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/158",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/171",
       "job_id": "b1613597-eef8-445a-a7cc-d48fd0b57ac4",
       "location": "San Francisco",
       "posted": "2026-05-22",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "comp floor ~$250,000 meets the $130,000 target",
+            "of": 10,
+            "points": 10
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "domain language: people operations",
+            "of": 30,
+            "points": 30
+          },
+          "leadership_signals": {
+            "note": "no explicit leadership or coaching language",
+            "of": 10,
+            "points": 3.0
+          },
+          "remote_eligibility": {
+            "note": "workplace type: FullTime (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "strategic language: strategic, organizational design, culture",
+            "of": 15,
+            "points": 15
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": true,
+        "red_flags": [],
+        "score": 89.5,
+        "verdict": "Apply",
+        "workplace_data_available": true
+      },
       "source": "ashby",
       "title": "Head of People",
       "token": "astro-mechanica",
@@ -22,10 +66,54 @@
       "company": "BJAK",
       "description": "About BJAK  We build superior application platforms globally with the mission of creating successful businesses while contributing positively to society by making it more efficient.  \n\nWe developed the first and leading insurance platform in Southeast Asia to digitize the insurance industry. The platform currently serves over 8 million users across the region.  \n\nWe are continuing our mission by building new, superior applications in emerging use cases as applications become increasingly integrated with AI.  \n\nOur team is densely talented, highly motivated, and focused on engineering and product excellence within a very flat organization. All members are expected to be hands-on and to contribute directly to the company\u2019s mission.\n\n\u00a0About the roleWe are looking for a hands-on Head of People to own and operate the full spectrum of human resources across BJAK\u2019s global organization.\n\nThis role covers employees across Malaysia, Thailand, Japan, Indonesia, Hong Kong, China, the UK, and the US, spanning both on-site and remote teams. You will be responsible for building, running, and scaling the HR function in a fast-moving, high-growth environment.\n\nThis is not a purely managerial, strategic or policy-driven role. You are expected to build & drive execution, particularly in hiring, performance management, leadership support, and complex people matters, while progressively building systems and a small, high-quality HR team around you. You will work closely with founders and senior leaders, acting as both a trusted leader and a practical problem-solver.\n\n\u00a0What you will be doingOwn the end-to-end HR function globally, including Talent Acquisition, HR Business Partnering, Employee Engagement, Learning & Development, Payroll, Compensation & Benefits, and HR Operations.\n\nPersonally lead and support critical hiring across technical, commercial, and corporate roles, ensuring hiring quality, speed, and consistency across regions.\n\nPartner closely with founders and senior leaders on organisation design, workforce planning, performance management, succession planning, and leadership development.\n\nBuild and operate performance management, feedback, and development frameworks that are simple, practical, and actively used by managers.\n\nDrive employee engagement initiatives that strengthen alignment, retention, and execution, while avoiding unnecessary bureaucracy.\n\nAct as a hands-on HRBP for senior leaders and managers, supporting day-to-day people decisions, performance issues, and organizational changes.\n\nOwn global payroll, compensation, benefits, and employment structures, ensuring accuracy, fairness, and compliance across all countries.\n\nManage HR compliance, employment contracts, policies, and statutory requirements across multiple jurisdictions, working with external advisors or EORs where needed.\n\nDesign and continuously improve HR processes and systems that scale with the business without slowing it down.\n\nBuild, mentor, and lead the HR team over time, with a strong bias toward high ownership and execution.\n\n\u00a0What you will needProven experience leading end-to-end HR in a fast-growing, international organization.\n\nStrong hands-on background with the ability to operate at both strategic and execution levels.\n\nExperience managing HR across multiple countries, including a mix of local entities, remote employees, and third-party employment structures.\n\nSolid expertise across talent acquisition, performance management, employee relations, compensation & benefits, payroll, and HR operations.\n\nStrong judgment and business acumen, with the ability to make pragmatic decisions in ambiguous situations.\n\nHigh ownership mindset - comfortable rolling up sleeves and solving problems directly.\n\nAbility to work closely with founders and senior leaders in a fast-paced, high-expectation environment.",
       "first_seen": "2026-08-01",
-      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/160",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/173",
       "job_id": "00d639f4-6ca6-46aa-b2ee-003d1ee6e59a",
       "location": "United States",
       "posted": "2026-06-27",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "domain language: human resources",
+            "of": 30,
+            "points": 30
+          },
+          "leadership_signals": {
+            "note": "leadership language: leadership development",
+            "of": 10,
+            "points": 10
+          },
+          "remote_eligibility": {
+            "note": "workplace type: Remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "strategic language: strategic, hrbp, business partner",
+            "of": 15,
+            "points": 15
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 91.5,
+        "verdict": "Apply",
+        "workplace_data_available": true
+      },
       "source": "ashby",
       "title": "Head of People (Global)",
       "token": "bjakcareer",
@@ -37,10 +125,54 @@
       "company": "BJAK",
       "description": "About A1There are over 5 billion users using basic applications today such email, notes, tasks that are not AI-native. Our mission is to build a proactive smart assistant for everyday users to bring intelligence to conversations, errands, organising and workflows, with minimal prompting.\n\nOur product focuses on achieving high reliability for long-running workflows, persistent context, and real-world task completion. The system must handle multi-step reasoning, interact with external tools, and remain reliable despite non-deterministic model behavior. Our objective is to help users complete tasks daily enjoyable with over ~90%* reduced time.\n\n\u00a0RolePeople systems are the foundation of how organisations hire, manage, and develop talent. We are looking for a Head of People Systems who can design and own the technology infrastructure behind recruiting, HR operations, and workforce data.\n\nThis role sits at the intersection of People Operations and Engineering. It combines systems architecture thinking with a deep understanding of how modern organisations hire, operate, and scale.\n\nYou will design and build the systems infrastructure that supports a growing, world-class team, enabling scalable hiring, efficient operations, and reliable workforce data across the company.\n\n\u00a0What You'll DoDefine the People Systems Strategy\n\nDefine the long-term systems architecture supporting recruiting, HR operations, and workforce data\n\nAssess current HR and recruiting systems and identify opportunities to improve automation, data quality, and operational efficiency\n\nDesign a scalable technology foundation for hiring, employee lifecycle management, and workforce analytics\n\nEnsure people systems support rapid company growth and data-driven decision-making\n\nBuild the People Systems Infrastructure\n\nDesign and implement systems supporting recruiting workflows, employee lifecycle management, and internal operations\n\nEvaluate, integrate, and manage HR technology platforms and internal tools\n\nBuild reliable integrations across recruiting systems, HRIS, payroll, and internal data platforms\n\nEnsure data quality, governance, privacy, and security across all People systems\n\nDrive the Systems Roadmap\n\nEstablish and maintain a clear roadmap for People systems and HR technology\n\nPrioritize improvements that increase operational efficiency and data visibility\n\nPartner closely with engineering teams to implement systems and integrations effectively\n\nPartner with Leadership\n\nWork closely with People, Recruiting, Operations, and Engineering leaders\n\nEnsure people systems support workforce planning, hiring velocity, and organisational growth\n\nImprove employee experience through well-designed systems and processes\n\nHelp leadership make better decisions through reliable workforce data\n\n\u00a0What You'll NeedStrong experience with HR systems, recruiting systems, or internal operational platforms\n\nTechnical background: degree in Computer Science, Information Systems, Engineering, or equivalent hands-on technical experience. You can speak fluently with engineers about APIs, data models, system architecture, and integration patterns\n\nStrong understanding of systems architecture, data pipelines, and integration patterns\n\nExperience building or scaling people systems in a growing organisation is a plus\n\nAbility to translate operational needs into effective systems\n\n\u00a0How We WorkThe best products today in the world were built by small, world class teams.  We are a high talent density and hands-on team. We make decisions collectively, move at rapid speed, striking a balance between shipping high quality work and learning.  Joining our team requires the ability to bring structure, exercise judgment, and execute independently. Our goal is to put in hands of our users a truly magical product\n\n\u00a0Interview processIf there appears to be a fit, we'll reach to schedule 3, but no more than 4 interviews.\n\nApplications are evaluated by our technical team members. Interviews will be conducted via virtual meetings and/or onsite.\n\nWe value transparency and efficiency, so expect a prompt decision. If you've demonstrated the exceptional skills and mindset we're looking for, the process to offer may be shorter.",
       "first_seen": "2026-08-01",
-      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/159",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/172",
       "job_id": "79e9ae9d-3fb7-4ac5-9d6e-ecea7261e556",
       "location": "United States",
       "posted": "2026-03-13",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "domain language: people operations",
+            "of": 30,
+            "points": 24.0
+          },
+          "leadership_signals": {
+            "note": "no explicit leadership or coaching language",
+            "of": 10,
+            "points": 3.0
+          },
+          "remote_eligibility": {
+            "note": "workplace type: Remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "no strong role-type signal either way",
+            "of": 15,
+            "points": 7.5
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 71.0,
+        "verdict": "Optional",
+        "workplace_data_available": true
+      },
       "source": "ashby",
       "title": "Head of People Systems",
       "token": "bjakcareer",
@@ -52,10 +184,54 @@
       "company": "FAR.AI",
       "description": "About the organizationFAR.AI is a non-profit AI research institute dedicated to ensuring advanced AI is safe and beneficial for everyone. We work at the intersection of machine learning, safety research, and policy, supporting a global community of researchers and practitioners. At FAR.AI, we believe in thoughtful, inclusive, and scalable operations that empower our team and partners to do their best work.\n\nSince our founding in July 2022, we've grown quickly to 40+ staff, producing 30+ influential academic papers, and established the leading AI Safety events for research and international cooperation. Our work is recognized globally, with publications at premier venues and features in the Financial Times, Nature News, Forbes, and MIT Technology Review.\n\nWe drive practical change through red-teaming with frontier model developers and government institutions. Most recently, we discovered major issues with Anthropic\u2019s latest model the same day it was released, and worked with OpenAI to safeguard their latest model. Additionally, we help steer and grow the AI safety field through developing research roadmaps with renowned researchers such as Yoshua Bengio. We also operate FAR.Labs, an AI safety-focused co-working space in Berkeley, housing 40 members, as well as support the community through targeted grants to technical researchers.\n\nThe RoleWe are hiring a Head of People to build the systems, team, and culture that will carry FAR.AI from 40 people to 75+ over the next 12 months, across multiple geographies and entities. You\u2019ll have the unique opportunity to build our people operations function, crafting and executing the systems, processes, and culture that will support our continued growth. This means taking ownership of the entire employee lifecycle, from talent acquisition and onboarding to employee engagement, retention, and beyond. \n\nYou\u2019ll report to the COO and work closely with our leadership team and other department leads, bringing structure to everything people-related and creating an environment where employees can do their best work. If you\u2019re an impact-driven leader who has built and scaled People functions in fast-moving organizations and are looking for your next organization to make a mark on, this is the role for you.\n\nWhy This Role / Why NowFAR.AI is entering a pivotal phase of growth, backed by over $40M in funding and expanding opportunities to shape how advanced AI systems are developed and governed. Our work spans technical research, policy, and operations, including partnerships, such as red-teaming frontier models with leading AI companies and governments. As the scope and impact of our work accelerate, we are leveling up our operational capacity.\n\n\u00a0As FAR.AI's Head of People, you will lay the foundation that enables everything we do, from talent acquisition, people operations, culture, and employee engagement. FAR.AI runs the events, programs, HR, communications, and community spaces that connect the global AI safety ecosystem. If you join our operations team, you're not supporting a company; you're building the institutional backbone of a field that didn't exist five years ago. You'll work with policymakers, Turing Award winners, and frontier lab experts, and you'll help define how the organization scales through a critical growth phase.\n\n\u00a0For people leaders who enjoy building, proactive problem solving, and rolling up their sleeves to get things done, this is a rare opportunity to drive long-term societal impact.\n\n\u00a0If this sounds like you, then we would love to hear from you!\n\nKey Responsibilities\n\nOwn and build the People function across the following areas:\n\nPeople operations and infrastructure. Own HRIS, payroll coordination, employee lifecycle (onboarding through offboarding), ATS, immigration, and the systems and policies that make day-to-day people operations smooth and consistent across geographies.\n\nTalent acquisition. Own the hiring end-to-end: pipeline strategy, sourcing, employer brand, candidate experience, interview design, and offer process. Partner with hiring managers to scope roles tightly and fill empty seats with top talent. Analyze recruitment data and market trends to inform future hiring strategies.\n\nPerformance and management systems. Build and maintain the practices that make managers effective, including quarterly performance reviews, professional development, and a no-surprises approach to underperformance.\n\nCompensation and benefits. Own compensation philosophy, leveling, benchmarking, and benefits administration across the US and other geographies, including EOR.\n\nPeople compliance. Own employment compliance across jurisdictions, including federal and state requirements in the US and other countries where FAR.AI employs staff.\n\nCulture and employee experience. Steward the practices, rituals, and feedback processes that keep FAR.AI a place where talented people do their best work. Oversee initiatives to foster a positive, inclusive, and high-performance work environment. Help us stay connected by coordinating quarterly team events, including offsites, team-building activities, and social gatherings.\n\nA People partner to the organization. Resolve people ops inquiries and issues with empathy and efficiency. Be a trusted advisor to the CEO, President, and COO on org design, compensation, leveling, succession, and sensitive personnel decisions.\n\nTeam leadership. Hire, develop, and manage the People team as it grows. Model the management standard you expect of others.\n\nMust-Have Qualifications\n\n7+ years of progressive experience in HR or People, including at least 3 years leading a People team or a major sub-function.\n\nProven results filling difficult seats with top talent in full-cycle recruiting, preferably with technical roles. Has employed innovative strategies for sourcing and building an employer brand.\n\nDemonstrated experience scaling a people function through significant headcount growth. The organization is doubling year-on-year.\n\nHands-on experience owning or substantially building at least three of: HRIS implementation, performance management systems, compensation frameworks, hiring infrastructure, or international employment via EOR.\n\nOperator mindset and comfortable building out systems, processes, and teams. Biased toward simple solutions over heavy process. Comfortable with ambiguity and can independently drive the people function.\n\nStrong judgment on sensitive personnel matters, with a default toward direct, candid, and respectful communication.\n\nNatural relationship builder with strong interpersonal skills. The ability to build trust and collaborate effectively with candidates and internal stakeholders. Crafts thoughtful and effective messages that pitches FAR.AI\u2019s mission and opportunities compellingly.\n\nNice-to-Have Qualifications\n\nExperience in fast-paced environments. You've worked in startups, nimble nonprofits, or high-growth teams before and can adapt to change quickly.\n\nTechnical acumen or familiarity with AI or related technical fields, allowing you to engage credibly with candidates and work effectively with technical staff and leadership.\n\nDirect experience employing staff internationally, including via EOR.\n\nExperience building or running a global compensation philosophy across countries.\n\nExperience building systems, processes, and culture in a hybrid or remote environment.\n\nExperience contributing to an impact-driven organization or passionate about AI safety.\n\nLogistics\n\nYou will be a full-time employee of FAR.AI, a 501(c)(3) research non-profit.\n\nLocation: Berkeley, CA (onsite/hybrid) or Remote, based in the US.\n\nHours: Full-time (40 hours/week).\n\nCompensation: $150,000-$200,000/year depending on experience. We will also pay for work-related travel and equipment expenses, and offer catered lunch and dinner at our office in Berkeley.\n\nHiring process: A phone screen, a hiring manager interview, a task test, in-depth interviews with the team, followed by reference checks.",
       "first_seen": "2026-08-01",
-      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/161",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/174",
       "job_id": "24d6d8e4-b036-4820-92e2-093b12697b5b",
       "location": "Remote (US), Berkeley Office, Hybrid (US)",
       "posted": "2026-07-17",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "domain language: people operations",
+            "of": 30,
+            "points": 30
+          },
+          "leadership_signals": {
+            "note": "no explicit leadership or coaching language",
+            "of": 10,
+            "points": 3.0
+          },
+          "remote_eligibility": {
+            "note": "workplace type: Remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "strategic language: culture",
+            "of": 15,
+            "points": 15
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 84.5,
+        "verdict": "Apply",
+        "workplace_data_available": true
+      },
       "source": "ashby",
       "title": "Head of People",
       "token": "far.ai",
@@ -67,10 +243,54 @@
       "company": "Higgsfield",
       "description": "Why work at Higgsfield AI?Higgsfield AI is the fastest-scaling generative AI company in history, hitting $500M in annual revenue run rate, 25M+ users worldwide, 6M+ generations per day, and powering 390 of Fortune 500 brands.\n\nWe're building at the absolute frontier of AI-powered video creation and next-generation creative tools. Joining Higgsfield means becoming part of a high-impact team shaping the future of AI-native experiences, at a company that isn't just moving fast, but rewriting what fast looks like.\n\nRole OverviewWe\u2019re looking for a highly operational and strategic Global Head of HR to build and scale Higgsfield\u2019s global People function during a period of hypergrowth. This role will sit at the center of leadership, recruiting, operations, legal, and organizational strategy, helping establish the systems, processes, and talent infrastructure required to scale a world-class AI company globally.\n\nYou will be responsible for both hands-on execution and long-term organizational development across recruiting, people operations, compensation, performance management, compliance, organizational design, and workforce planning.\n\nWe are looking for someone who is highly execution-oriented, systems-minded, and comfortable operating autonomously in a fast-moving, high-growth environment.\n\nThis role will require close partnership with founders and senior leadership across both the US and international teams.\n\nKey ResponsibilitiesGlobal People Operations & Organizational DesignBuild and lead Higgsfield\u2019s global HR function across recruiting, people operations, compensation, compliance, performance management, and employee experience.\n\nPartner directly with founders and leadership to shape organizational structure, workforce planning, hiring strategy, and long-term talent initiatives.\n\nDesign and implement scalable global HR systems, workflows, and operational processes to support rapid international growth.\n\nDrive organizational effectiveness initiatives, including team structure, leveling frameworks, performance management, and leadership support.\n\nBuild scalable onboarding, employee development, and retention programs designed for a high-performance environment.\n\nServe as a trusted advisor to leadership and employees on organizational effectiveness, employee relations, and scaling challenges.\n\nRecruiting & Talent StrategyOwn and evolve the company\u2019s recruiting function, ensuring Higgsfield continues to attract and close exceptional talent across engineering, AI research, product, growth, content operations, G&A, and other critical business functions.\n\nDevelop recruiting infrastructure, hiring processes, and employer branding initiatives that support hiring across highly competitive global talent markets.\n\nPartner closely with leadership to identify hiring priorities, improve recruiting efficiency, and maintain a high talent bar across all functions.\n\nBuild scalable talent acquisition strategies across multiple geographies and organizational functions.\n\nCompensation, Compliance & International OperationsDrive compensation, leveling, equity, and performance review processes aligned with company goals and market competitiveness.\n\nEstablish and maintain compliant employment frameworks across the US and international entities, partnering closely with Legal, Finance, and external advisors.\n\nOversee global HR operations including employment practices, workforce documentation, policies, reporting, and compliance processes.\n\nSupport relocation, immigration, and international workforce operations where applicable.\n\nDrive operational excellence across HR systems, reporting, documentation, and workforce planning, with a strong emphasis on automation and scalability.\n\nQualifications, Skills and KnowledgeMust-HavesProven experience leading and scaling People Operations and Recruiting functions at high-growth technology companies.\n\nExperience building HR infrastructure and operational processes from early-stage through scale.\n\nStrong knowledge of US employment practices, compensation structures, compliance, and HR operations.\n\nExperience scaling international teams across multiple countries and functions.\n\nTrack record of recruiting and retaining top-tier talent in highly competitive markets.\n\nStrong organizational design, workforce planning, and performance management experience.\n\nExceptional communication, judgment, and interpersonal skills, with the ability to operate directly with founders and executive leadership.\n\nHighly operational mindset with the ability to work at both strategic and execution-focused levels.\n\nStrong business judgment and comfort operating in fast-changing, ambiguous startup environments.\n\nExperience managing international teams and cross-functional stakeholders.\n\nNice to HaveExperience with broader business operations or operational scaling initiatives.\n\nExperience supporting relocation, visa, and international mobility processes.\n\nExperience implementing HR automation, systems integrations, and scalable reporting infrastructure.\n\nCompensation & Benefits\n\nWe offer a competitive and thoughtfully structured compensation package designed to align with impact and growth.\n\nBase Salary: The anticipated salary range for this role is $235,000 - $265,000 , depending on experience, skills, and location.\n\nIn addition to cash compensation, we offer equity and a benefits package to support you both professionally and personally.\n\nHiggsfield AI is an equal opportunity employer. We are committed to building a diverse and inclusive team and do not discriminate on the basis of race, color, religion, sex, gender identity or expression, sexual orientation, national origin, age, disability, veteran status, or any other protected characteristic.",
       "first_seen": "2026-08-01",
-      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/162",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/175",
       "job_id": "4c939d35-5d09-41d1-92ff-532e5c64d9b7",
       "location": "San Francisco Bay Area, California",
       "posted": "2026-05-12",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "complexity signals: cross-functional",
+            "of": 5,
+            "points": 5
+          },
+          "domain_alignment": {
+            "note": "domain language: people operations, organizational development",
+            "of": 30,
+            "points": 30
+          },
+          "leadership_signals": {
+            "note": "no explicit leadership or coaching language",
+            "of": 10,
+            "points": 3.0
+          },
+          "remote_eligibility": {
+            "note": "workplace type: Remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "strategic language: strategic, organizational design",
+            "of": 15,
+            "points": 15
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 88.0,
+        "verdict": "Apply",
+        "workplace_data_available": true
+      },
       "source": "ashby",
       "title": "Global Head of People ",
       "token": "higgsfieldai",
@@ -82,10 +302,54 @@
       "company": "Lumos",
       "description": "Every breach, every failed audit, every new hire stuck in onboarding purgatory traces back to the same question: who has access to what \u2014 and should they?\n\nIdentity is where modern companies break. Too much access leaks data. Too little grinds the business to a halt. Lumos is the industry's first Autonomous Identity Platform \u2014 software that doesn't just surface access risk, but acts on it. We started with a self-service AppStore and grew into the critical infrastructure connecting apps, identities, and data for GitHub, MongoDB, Mars, Pinterest, Anduril, Intercom, Roku, and Netskope. At the center is Albus, our AI agent for identity \u2014 mining roles, approving access, and catching the drift humans miss.\n\nYou'll ship work that thousands of IT and security teams touch every day. You'll own problems without playbooks, because the category is being redefined in real time \u2014 by us.\n\nWhy Lumos?\n\n\ud83d\ude80 Jump on a rocketship. Since launching out of stealth in April 2022, we've grown from 20 to ~130 Alchemists and raised over $65M from a16z, Scale, Neo, Greg Brockman (President at OpenAI), and Phil Venables (CISO at Google). \n\n\u2b50 Customers love us \u2014 and so does the industry. Named a Strong Performer in the 2026 Gartner Voice of the Customer for IGA \u2014 4.7/5, with 96% of reviewers saying they'd recommend us. Our customers cut time-to-access by 98%, slash IT tickets by 72%, and eliminate excess privilege at scale.\n\n\ud83c\udfc6 A culture worth joining. Three years running on Forbes' Top 100 Best Startup Employers in America (2024, 2025, 2026) \u2014 measured on culture, retention, growth, and job creation. That's our Alchemists, not our marketing. See what we live by here.\n\nAs the Head of People at Lumos, you have a massive opportunity to design and build the People function that scales Lumos from ~130 to 300+ Alchemists \u2014 and to be the trusted partner every Lumos leader turns to for advice on talent, performance, and team-building. You will be the architect of how Lumos develops its managers, how Lumos's people programs run at scale, and how Lumos shows up as a place world-class operators want to do the best work of their careers.\n\n\u2728 Your ResponsibilitiesBe the strategic HR partner to the executive team \u2014 org design, leadership development, succession planning, and the highest-stakes people decisions across the org\n\nDesign and deploy scalable people programs \u2014 career frameworks, performance, compensation, onboarding \u2014 that run on documented cadence, not heroics\n\nBuild and lead the People team \u2014 own hiring, structure, and team development as we scale through Series C\n\nOwn and elevate the Lumos manager experience \u2014 build and run repeatable training programs that turn every Lumos manager into a developer of people, starting the day they post their first req\n\nSteward Lumos culture as we grow \u2014 protect what makes Lumos distinctive while building the infrastructure for what comes next\n\n\ud83d\ude4c What We're Looking For8+ years in People/HR, with at least 3 in a leadership role owning a function or a major program\n\nScaled a People function through the 100 \u2192 250+ inflection at a high-growth SaaS/tech company \u2014 you've personally lived what breaks at 150 and how to fix it\n\nBuilder, not inheritor: shipped new manager development, performance, comp, and onboarding programs from scratch \u2014 you can point to the artifacts\n\nManager-centric philosophy: you deeply believe great people functions are built through great managers, and you have the receipts to prove it\n\nTrusted strategic partner to senior leaders \u2014 comfortable in high-stakes conversations with CEOs and founders; discreet, decisive, and able to bring outside-in perspective\n\nOperational rigor: you run the function on documented, repeatable rhythms \u2014 not one-off heroics\n\nNice to have: HiBob (or similar modern HRIS) experience, coaching credential or background, international / EOR experience (Deel, Remote, etc.)\n\n\u2b50\ufe0f What We ValueWe also care about whether you would be a good fit for Lumos based on the values and characteristics that define how we achieve outcomes, not just your resume.\n\nThank you for considering Lumos, we hope to hear from you! \ud83c\udf89\n\n\ud83d\udcb0 Pay Range$215,000-$280,000 Note that this range is a good faith estimate of likely pay for this role; upon hire, the pay may differ due to skill and/or level of experience.\n\n\ud83d\udcb8 Benefits and Perks:\n\n\ud83d\udcbb Remote-first culture \u2013 Work from anywhere within \u00b14 hours of Pacific Time.\n\n\ud83c\udfe5 Medical, dental & vision insurance \u2013 100% of premiums covered for employees, 60% for dependents. HSA and FSA available with employer contribution. International benefits align with local standards.\n\n\ud83e\udde0 Mental health support \u2013 Access to mental health resources and support.\n\n\ud83d\udcaa Monthly wellness stipend \u2013 A monthly stipend for gym memberships, fitness apps, and whatever helps you recharge.\n\n\ud83d\udee1\ufe0f Life & disability insurance \u2013 Life insurance, short-term disability, and long-term disability coverage available.\n\n\ud83c\udf34 Flexible PTO \u2013 Flexible time off with a minimum annual requirement, because rest is part of doing your best work.\n\n\ud83d\udc76 Parental leave \u2013 Up to 16 weeks of paid parental leave for expecting parents.\n\n\ud83d\udcda $1,000 annual learning stipend \u2013 An annual budget for courses, books, conferences, and certifications.\n\n\u2708\ufe0f Company & team offsites \u2013 Company and team bonding trips throughout the year, fully covered by Lumos.\n\n\ud83d\udcb0 401(k) with matching \u2013 Employer 401(k) matching to help you save for the future.",
       "first_seen": "2026-08-01",
-      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/163",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/176",
       "job_id": "29f0a069-345f-495f-9e9e-81bebaefdc1c",
       "location": "United States",
       "posted": "2026-05-21",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "no explicit domain language found; scored low on title match alone",
+            "of": 30,
+            "points": 9.0
+          },
+          "leadership_signals": {
+            "note": "leadership language: coaching, leadership development",
+            "of": 10,
+            "points": 10
+          },
+          "remote_eligibility": {
+            "note": "workplace type: Remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "strategic language: strategic, culture",
+            "of": 15,
+            "points": 15
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 70.5,
+        "verdict": "Optional",
+        "workplace_data_available": true
+      },
       "source": "ashby",
       "title": "Head of People",
       "token": "lumos",
@@ -97,10 +361,54 @@
       "company": "Picogrid",
       "description": "Who we are\n\nPicogrid is a leading venture-backed defense technology company founded to bridge the decades-long gap between modern technology and the critical demands of national security. Today, we're building the essential infrastructure to unify sensors, autonomy, and operators with our technology deployed in active operations around the world. Our mission is to deliver an operational advantage to secure the United States and its allies.\n\nAbout the rolePicogrid is seeking a Head of People to build and own our people function as we scale. As our first dedicated People hire, you'll establish the systems, processes, and operating cadence that support the entire employee lifecycle while partnering closely with leadership on performance management, organizational design, and workforce planning.\n\nWe're looking for a self-driven builder who enjoys solving problems, improving processes, and taking ownership. You'll lead everything from onboarding and employee relations to HR operations, compliance, and employee experience, creating the foundation that allows the company to scale without adding unnecessary complexity.\n\nResponsibilitiesOwn the end-to-end employee lifecycle, including onboarding, performance management, compensation, benefits administration, employee relations, and offboarding.\n\nOwn recruiting operations, partnering with hiring managers and recruiters to scale hiring while maintaining a high hiring bar.\n\nBuild and scale the company's people infrastructure, including policies, processes, documentation, and operating procedures.\n\nEnsure compliance with federal, state, and local employment laws while maintaining HR best practices.\n\nOwn the company's HRIS, employee records, people reporting, and HR operations, ensuring accuracy and operational excellence.\n\nOwn performance management, employee development, and manager coaching across the organization.\n\nOwn employee experience initiatives that reinforce a high-performance culture while preserving what makes Picogrid unique.\n\nRequired Qualifications7+ years of progressive experience in People Operations, Human Resources, or HR Business Partner roles, including experience in high-growth startup environments.\n\nDemonstrated success building and scaling highly effective people programs with strong retention across compensation, performance management, onboarding, employee relations, and benefits.\n\nStrong working knowledge of federal, state, and local employment laws with the judgment to navigate complex employee situations while balancing business and employee needs.\n\nExperience building scalable people processes, maintaining HR systems, and using data to improve decision-making and operational efficiency.\n\nExceptional organizational and communication skills with the ability to manage multiple priorities and execute in a fast-paced environment.\n\nComfortable operating with ambiguity, taking ownership of new initiatives, and building processes where none previously existed.\n\nPreferred QualificationsExperience as one of the first People hires or helping build the People function at an early-stage or growth-stage startup.\n\nTrack record of improving operational efficiency through thoughtful systems, automation, and process design rather than adding unnecessary complexity.\n\nExperience supporting technical organizations with aggressive hiring goals while maintaining a high hiring bar and strong employee experience.\n\nFamiliarity with defense technology, aerospace, hardware, manufacturing, or another highly technical industry is a plus.\n\nCompensation & BenefitsBase salary range: $160,000 - $200,000 per year plus performance incentive. Base salary is just one part of your total compensation package.\n\nSignificant stock options with a high potential upside as an early-stage company\n\n401(k) with employer matching\n\nFull health coverage (medical, dental, and vision insurance)\n\nRelocation assistance provided (if applicable)\n\nUnlimited PTO (two-week minimum) and 11 paid holidays per year\n\nPaid parental leave for both parents\n\nLunch provided when working in-office and a fully stocked kitchenette\n\nFree EV charging at the HQ\n\nUnique office in El Segundo, CA stocked with quality coffee, snacks, and craft beer\n\nExport Control RequirementsTo conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent resident (aka green card holder), (iii) Refugee under 8 U.S.C. \u00a7 1157, or (iv) Asylee under 8 U.S.C. \u00a7 1158, or be eligible to obtain the required authorizations from the U.S. Department of State.\n\nEqual Employment Opportunity (EEO) Policy\n\nPicogrid is committed to providing a professional work environment free from discrimination, harassment, and retaliation. We are an equal opportunity employer and make all employment decisions based on merit, qualifications, and business needs.\n\n#LI-DNP\n\nEqual Employment Opportunity (EEO) Policy\n\nPicogrid is committed to providing a professional work environment free from discrimination, harassment, and retaliation. We are an equal opportunity employer and make all employment decisions based on merit, qualifications, and business needs.",
       "first_seen": "2026-08-01",
-      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/164",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/177",
       "job_id": "7af1dce2-b19a-4329-9774-d84d504e2d46",
       "location": "El Segundo, CA",
       "posted": "2026-07-17",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "comp floor ~$160,000 meets the $130,000 target",
+            "of": 10,
+            "points": 10
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "domain language: people operations, human resources",
+            "of": 30,
+            "points": 24.0
+          },
+          "leadership_signals": {
+            "note": "leadership language: coaching",
+            "of": 10,
+            "points": 10
+          },
+          "remote_eligibility": {
+            "note": "workplace type: FullTime (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "strategic language: organizational design, culture, business partner",
+            "of": 15,
+            "points": 15
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": true,
+        "red_flags": [],
+        "score": 90.5,
+        "verdict": "Apply",
+        "workplace_data_available": true
+      },
       "source": "ashby",
       "title": "Head of People",
       "token": "picogrid",
@@ -112,10 +420,54 @@
       "company": "RevenueCat",
       "description": "RevenueCat removes the headaches of building and scaling in\u2011app subscriptions. Since graduating from YC\u2019s S18 batch we\u2019ve grown into the default monetization platform for mobile: we\u2019re in >40% of newly shipped subscription apps, we process $12B+ in annual purchase volume, and we help everyone from a solo dev in Brazil to the OpenAI mobile team understand and grow their revenue.\n\nWe\u2019re a remote\u2011first crew of 150+, spread across 25+ countries, and guided by values we actually practice: Customer Obsession, Always Be Shipping, Own It, and Balance. If you want your work to touch hundreds of millions of end\u2011users (and help the developers behind them get paid), you\u2019ll fit right in.\n\nWe have built a culture centered around ownership, high standards, and customer focus. We\u2019re obsessed with exceptional talent density, and know that it\u2019s critical to our mission.\n\nAs RevenueCat continues to grow, the company is investing heavily in the people, systems, and infrastructure to scale.\n\nThe role:\n\nRevenueCat is looking for a Head of People to lead talent and people strategy during a pivotal stage of growth. Reporting to the VP of Strategy & Operations, this leader will oversee both Recruiting and People Operations across the organization.\n\nRecruiting is the most immediate area of focus. As RevenueCat scales, the company is looking for someone who can build a world-class recruiting function while also helping evolve broader people programs, organizational design, performance management, and leadership development efforts.\n\nThis is a hands-on leadership role. RevenueCat is looking for someone who enjoys operating at both the strategic and tactical levels and who wants to help shape how a rapidly growing company attracts, develops, and retains exceptional talent.\n\nThe Head of People will lead:\n\nA growing People team spanning Recruiting and People Operations\n\nTwo recruiters today and a recruiting coordinator, with additional hiring planned in the near term\n\nTwo dedicated People Operations team members\n\nTalent and people strategy for a globally distributed organization of 150+ employees\n\nOther responsibilities will be:\n\nBuild and execute a recruiting strategy that supports significant organizational growth while maintaining talent density.\n\nImprove hiring manager effectiveness, candidate experience, and recruiting operations.\n\nPartner with executives on workforce planning, organizational design, and leadership development.\n\nContinue evolving RevenueCat's performance management and talent development programs.\n\nBuild scalable systems and processes that support a globally distributed workforce.\n\nPartner closely with Finance on compensation, headcount planning, and organizational investments.\n\nLeverage automation and AI-enabled workflows to improve recruiting and people operations.\n\nDevelop metrics and reporting that improve visibility into hiring performance and organizational health.\n\nHelp maintain and strengthen RevenueCat's culture as the company scales.\n\nAbout you:\n\nYou are a builder.\n\nYou enjoy creating systems, processes, and teams from the ground up. You know when structure is needed, when simplicity is better, and how to scale organizations without creating unnecessary complexity.\n\nYou are talent-obsessed.\n\nYou believe exceptional companies are built by exceptional people. You have strong judgment around talent and know how to build recruiting systems that consistently attract and close high-performing candidates.\n\nYou are hands-on.\n\nYou don't view leadership as delegation. You're comfortable rolling up your sleeves, solving problems directly, and operating wherever the business needs you most.\n\nYou are operationally minded.\n\nYou use data to inform decisions, build scalable systems, and identify opportunities for improvement. You enjoy turning ambiguity into clarity.\n\nYou are AI-curious.\n\nYou understand that recruiting, people operations, and organizational design are being transformed by AI. You're excited about leveraging new tools and workflows to help teams operate more effectively.\n\nYou are adaptable.\n\nYou thrive in fast-moving environments, prioritize effectively, and adjust quickly as business needs evolve.\n\nExperience:\n\n8+ years of experience across recruiting, talent acquisition, people operations, or broader people leadership roles.\n\nExperience building and scaling teams within high-growth technology companies.\n\nStrong recruiting experience, particularly within technical organizations.\n\nExperience partnering directly with executives on talent and organizational decisions.\n\nExperience managing and developing teams.\n\nStrong communication, influence, and stakeholder management skills.\n\nHighly valued:\n\nExperience in talent-dense organizations known for exceptional hiring standards.\n\nExperience within developer tools, infrastructure software, SaaS, fintech, or adjacent technology sectors.\n\nExperience in operations, business operations, or other highly cross-functional leadership environments.\n\nExperience supporting distributed or global organizations.\n\nExperience building AI-enabled recruiting or people workflows.\n\nExperience across both recruiting and people operations functions.\n\nIn your first month, you'll:\n\nMeet the People team, leadership team, and key hiring managers.\n\nGo deep on RevenueCat's culture, operating principles, and organizational structure.\n\nAssess the current recruiting function, hiring processes, and talent priorities.\n\nUnderstand existing people programs, performance management processes, and compensation philosophy.\n\nIdentify immediate opportunities for impact.\n\nDevelop a roadmap for improving recruiting effectiveness and operational efficiency.\n\nWithin your first 3 months, you'll:\n\nTake ownership of recruiting and people operations goals. Show tangible results on recruiting efficiency and execution\n\nPartner with leaders on workforce planning and organizational design initiatives.\n\nImplement improvements to hiring processes, candidate experience, and recruiting operations.\n\nEstablish clear metrics and reporting around recruiting and people outcomes.\n\nWithin your first 6 months, you'll:\n\nContinue to deliver measurable improvements in hiring quality, speed, and efficiency.\n\nStrengthen collaboration between Recruiting, People Operations, and business leaders.\n\nImprove systems and processes that support organizational growth.\n\nBecome a trusted advisor to leaders across the company on talent and people matters.\n\nHelp create a more scalable foundation for RevenueCat's next phase of growth.\n\nWithin your first 12 months, you'll:\n\nHelp scale the company while maintaining a high bar for talent density and performance.\n\nBuild a recruiting function that serves as a competitive advantage for RevenueCat.\n\nEstablish yourself as a strategic leader across the organization.\n\nStrengthen the people infrastructure needed to support continued growth.\n\nHelp shape the long-term vision for the People function as RevenueCat continues to scale.\n\nWhat we offer:Competitive equity in a fast-growing, Series C startup backed by top-tier investors, including Y Combinator\n\n10-year window to exercise vested equity options\n\nFully remote and flexible work environment\n\n4-5 weeks of suggested time off annually for mental, physical, and emotional recharge\n\n$2,000 USD for workspace setup and $1,000 USD annual stipend for continuous learning\n\nCurious about the interview process? Discover more in our blog post about how we hire and learn tips to help you succeed.",
       "first_seen": "2026-08-01",
-      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/165",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/178",
       "job_id": "b111bebc-7134-48f7-af79-6adbffae09f7",
       "location": "Americas, EMEA",
       "posted": "2026-06-23",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "comp floor ~$280,000 meets the $130,000 target",
+            "of": 10,
+            "points": 10
+          },
+          "complexity": {
+            "note": "complexity signals: cross-functional",
+            "of": 5,
+            "points": 5
+          },
+          "domain_alignment": {
+            "note": "domain language: people operations",
+            "of": 30,
+            "points": 30
+          },
+          "leadership_signals": {
+            "note": "leadership language: leadership development",
+            "of": 10,
+            "points": 10
+          },
+          "remote_eligibility": {
+            "note": "workplace type: Remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "strategic language: strategic, organizational design, culture",
+            "of": 15,
+            "points": 15
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": true,
+        "red_flags": [],
+        "score": 100,
+        "verdict": "Apply",
+        "workplace_data_available": true
+      },
       "source": "ashby",
       "title": "Head of People",
       "token": "revenuecat",
