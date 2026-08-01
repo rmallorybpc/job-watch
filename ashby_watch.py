@@ -33,6 +33,8 @@ from urllib.parse import urlparse
 
 import requests
 
+from real_fit_score import compute_real_fit, format_real_fit_section
+
 API_BASE = "https://api.ashbyhq.com/posting-api/job-board"
 GITHUB_API = "https://api.github.com"
 ISSUE_LABELS = ["job-lead"]
@@ -196,13 +198,11 @@ def title_matches(title: str) -> bool:
 US_SIGNALS = [
     "united states", "usa", " us ", ", us", "u.s.", "remote",
     "north america", "anywhere",
-    # spelled-out states that appeared or are likely in senior US postings
     "california", "colorado", "new york", "texas", "washington",
     "massachusetts", "florida", "illinois", "georgia", "michigan",
     "nevada", "north carolina", "virginia", "oregon", "arizona",
     "san francisco", "denver", "boulder", "broomfield", "seattle",
     "boston", "austin", "chicago", "miami", "new jersey", "connecticut",
-    # two-letter state codes with comma prefix
     ", ca", ", co", ", ny", ", tx", ", wa", ", ma", ", fl", ", il",
     ", ga", ", mi", ", nv", ", nc", ", va", ", or", ", az", ", nj", ", ct",
 ]
@@ -233,14 +233,13 @@ def is_colorado(location: str) -> bool:
 def workplace_allows(job: dict, location: str) -> bool:
     """
     Drop onsite roles that are not in Colorado. Remote and hybrid roles pass
-    regardless of city, since Ross can work those from Colorado.
+    regardless of city, since Tracey can work those from Colorado.
 
     Ashby signals remote via the boolean isRemote and via an employment/
     workplace type string. We treat a role as onsite only when it is clearly
     marked onsite and not remote.
     """
     is_remote = bool(job.get("isRemote"))
-    # workplace type may appear under a few keys depending on the board
     wtype = ""
     for key in ("workplaceType", "locationType", "employmentType"):
         v = job.get(key)
@@ -250,14 +249,10 @@ def workplace_allows(job: dict, location: str) -> bool:
               or "in-office" in wtype)
     hybrid = "hybrid" in wtype
 
-    # Remote or hybrid: always allowed.
     if is_remote or hybrid:
         return True
-    # Explicitly onsite: allowed only if the location is Colorado.
     if onsite:
         return is_colorado(location)
-    # Type not stated: fall back to allowing it, so we do not silently drop
-    # roles that lack a workplace field. The location filter still applies.
     return True
 
 
@@ -303,6 +298,9 @@ def build_issue_body(record: dict) -> str:
     if len(desc) > 4000:
         desc = desc[:4000] + "\n\n_(truncated, see the posting for the rest)_"
 
+    real_fit = record.get("real_fit")
+    real_fit_section = format_real_fit_section(real_fit) if real_fit else "_Real-Fit Score not computed._"
+
     return "\n".join(
         [
             f"**Company:** {record['company']}",
@@ -314,10 +312,13 @@ def build_issue_body(record: dict) -> str:
             "",
             "---",
             "",
+            real_fit_section,
+            "",
+            "---",
+            "",
             "### Review checklist",
             "",
             "- [ ] JDR fit score",
-            "- [ ] Competitiveness score (only if fit is 60+)",
             "- [ ] Contact type identified",
             "- [ ] Effort band assigned",
             "",
@@ -372,12 +373,14 @@ def write_step_summary(new_records: list, total: int) -> None:
     else:
         lines.append(f"**{len(new_records)} new Ashby role(s).** {total} tracked overall.")
         lines.append("")
-        lines.append("| Company | Title | Location | Link |")
-        lines.append("|---|---|---|---|")
+        lines.append("| Company | Title | Real-Fit | Location | Link |")
+        lines.append("|---|---|---|---|---|")
         for r in new_records:
             title = r["title"].replace("|", "\\|")
+            rf = r.get("real_fit") or {}
+            rf_label = f"{rf.get('score', '-')} ({rf.get('verdict', '-')})" if rf else "-"
             lines.append(
-                f"| {r['company']} | {title} | {r['location']} | [Apply]({r['url']}) |"
+                f"| {r['company']} | {title} | {rf_label} | {r['location']} | [Apply]({r['url']}) |"
             )
 
     with open(path, "a", encoding="utf-8") as f:
@@ -477,6 +480,7 @@ def main() -> None:
                 "issue_url": "",
                 "source": "ashby",
             }
+            record["real_fit"] = compute_real_fit(record)
             jobs_log[job_key] = record
             new_records.append(record)
 
