@@ -128,7 +128,7 @@
   }
   .tmg-input:focus, .tmg-select:focus { outline: 2px solid var(--tmg-accent); outline-offset: -1px; }
 
-  .filter-row { display: grid; gap: var(--tmg-space-md); grid-template-columns: 2fr 1fr 1fr auto; align-items: end; }
+  .filter-row { display: grid; gap: var(--tmg-space-md); grid-template-columns: 2fr 1fr 1fr 1fr auto; align-items: end; }
   @media (max-width: 760px) { .filter-row { grid-template-columns: 1fr; } }
 
   .tmg-btn, .tmg-btn-ghost {
@@ -160,6 +160,16 @@
     background: var(--tmg-accent); color: #fff;
     padding: 0.15rem 0.4rem; border-radius: 3px; margin-left: 0.4rem;
   }
+
+  .badge-fit {
+    display: inline-block; font-size: 0.75rem; font-weight: 700;
+    padding: 0.2rem 0.55rem; border-radius: 4px; white-space: nowrap;
+  }
+  .badge-fit-apply { background: var(--tmg-accent); color: #fff; }
+  .badge-fit-optional { background: #E8D9A8; color: #4A3B00; }
+  .badge-fit-skip { background: var(--tmg-border); color: var(--tmg-text-muted); }
+  .badge-fit-none { color: var(--tmg-text-muted); font-weight: 500; }
+
   .empty-state { text-align: center; padding: var(--tmg-space-xl); color: var(--tmg-text-muted); }
 
   .status-tabs { display: flex; gap: var(--tmg-space-xs); margin-bottom: var(--tmg-space-md); flex-wrap: wrap; }
@@ -283,6 +293,15 @@
         </select>
       </div>
       <div>
+        <label class="tmg-field-label" for="fitSelect">Real-Fit</label>
+        <select class="tmg-select" id="fitSelect">
+          <option value="">Any score</option>
+          <option value="Apply">Apply</option>
+          <option value="Optional">Optional</option>
+          <option value="Skip">Skip</option>
+        </select>
+      </div>
+      <div>
         <label class="tmg-field-label" for="ageSelect">First seen</label>
         <select class="tmg-select" id="ageSelect">
           <option value="0">Any time</option>
@@ -310,6 +329,7 @@
           <tr>
             <th scope="col">Company</th>
             <th scope="col">Title</th>
+            <th scope="col">Real-Fit</th>
             <th scope="col">Location</th>
             <th scope="col">Source</th>
             <th scope="col">First seen</th>
@@ -364,6 +384,7 @@
 
   var searchInput = document.getElementById('searchInput');
   var companySelect = document.getElementById('companySelect');
+  var fitSelect = document.getElementById('fitSelect');
   var ageSelect = document.getElementById('ageSelect');
   var clearBtn = document.getElementById('clearBtn');
   var rowsBody = document.getElementById('jobRows');
@@ -381,6 +402,16 @@
     return String(value == null ? '' : value)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
+  }
+
+  function fitBadge(job) {
+    var fit = job.real_fit;
+    if (!fit || fit.score == null) {
+      return '<span class="badge-fit-none">&mdash;</span>';
+    }
+    var cls = fit.verdict === 'Apply' ? 'badge-fit-apply'
+      : (fit.verdict === 'Optional' ? 'badge-fit-optional' : 'badge-fit-skip');
+    return '<span class="badge-fit ' + cls + '">' + esc(fit.score) + ' &middot; ' + esc(fit.verdict) + '</span>';
   }
 
   // --- Per-browser status tracking (localStorage) ---
@@ -428,6 +459,7 @@
   function render() {
     var q = searchInput.value.trim().toLowerCase();
     var company = companySelect.value;
+    var fitFilter = fitSelect.value;
     var maxAge = parseInt(ageSelect.value, 10);
 
     // update tab counts across the whole set
@@ -440,6 +472,10 @@
     var filtered = allJobs.filter(function (job) {
       if (statusOf(job) !== currentTab) { return false; }
       if (company && job.company !== company) { return false; }
+      if (fitFilter) {
+        var v = job.real_fit && job.real_fit.verdict;
+        if (v !== fitFilter) { return false; }
+      }
       if (maxAge > 0 && daysSince(job.first_seen) > maxAge) { return false; }
       if (q) {
         var haystack = (job.title + ' ' + job.company + ' ' + job.location).toLowerCase();
@@ -484,6 +520,7 @@
       return '<tr>' +
         '<td>' + esc(job.company) + '</td>' +
         '<td>' + esc(job.title) + (isNew ? '<span class="badge-new">New</span>' : '') + '</td>' +
+        '<td>' + fitBadge(job) + '</td>' +
         '<td>' + esc(job.location) + '</td>' +
         '<td>' + source + '</td>' +
         '<td>' + esc(job.first_seen) + '</td>' +
@@ -574,10 +611,12 @@
 
   searchInput.addEventListener('input', render);
   companySelect.addEventListener('change', render);
+  fitSelect.addEventListener('change', render);
   ageSelect.addEventListener('change', render);
   clearBtn.addEventListener('click', function () {
     searchInput.value = '';
     companySelect.value = '';
+    fitSelect.value = '';
     ageSelect.value = '0';
     render();
   });
