@@ -14,6 +14,9 @@ Local usage:
     python rippling_watch.py --no-content   # skip descriptions, faster
     python rippling_watch.py --reset        # clear the log, treat all as new
 
+GitHub Actions usage:
+    python rippling_watch.py --github
+
 Board IDs come from the careers URL:
     ats.rippling.com/arine/jobs  ->  board_id is "arine"
 """
@@ -30,12 +33,14 @@ from urllib.parse import urlparse
 
 import requests
 
+from real_fit_score import compute_real_fit, format_real_fit_section
+
 API_BASE = "https://ats.rippling.com/api/v2/board"
 GITHUB_API = "https://api.github.com"
 PAGE_SIZE = 50
 ISSUE_LABELS = ["job-lead"]
 
-# Same filter lists as the Greenhouse watcher. Keep them in sync.
+# Same filter lists as the other watchers. Keep them in sync.
 TITLE_KEYWORDS = [
     "chief people",
     "cpo",
@@ -70,7 +75,7 @@ TITLE_EXCLUDE = [
     "hrbp ii",
 ]
 
-# Location filter, exclude-based. Keep in sync with greenhouse_watch.py.
+# Location filter, exclude-based. Keep in sync with the other watchers.
 LOCATION_KEYWORDS = []
 
 LOCATION_EXCLUDE = [
@@ -87,9 +92,40 @@ LOCATION_EXCLUDE = [
     "tokyo", "japan",
     "mexico city", "mexico",
     "são paulo", "sao paulo", "brazil",
+    "china", "beijing", "shanghai", "shenzhen", "hong kong",
+    "malaysia", "kuala lumpur",
+    "thailand", "bangkok",
+    "philippines", "manila",
+    "indonesia", "jakarta",
+    "vietnam", "hanoi",
+    "korea", "seoul",
+    "taiwan", "taipei",
+    "poland", "warsaw",
+    "portugal", "lisbon",
+    "sweden", "stockholm",
+    "united arab emirates", "dubai",
     "remote - emea", "remote - apac", "remote - uk",
     "remote emea", "remote apac",
 ]
+
+# Colorado signal. Used by the onsite-outside-CO rule below.
+COLORADO_KEYWORDS = [
+    "colorado",
+    ", co",
+    "denver",
+    "boulder",
+    "colorado springs",
+    "fort collins",
+    "aurora, co",
+    "westminster, co",
+    "lakewood, co",
+]
+
+# Words that signal a role is not tied to one office. Rippling has no
+# clean workplace-type field, same situation as Greenhouse, so this is a
+# text heuristic against the location string, not a real field read.
+REMOTE_KEYWORDS = ["remote"]
+HYBRID_KEYWORDS = ["hybrid"]
 
 REQUEST_DELAY_SECONDS = 0.4
 TIMEOUT_SECONDS = 20
@@ -186,6 +222,26 @@ def location_matches(location: str) -> bool:
     return any(loc in low for loc in LOCATION_KEYWORDS)
 
 
+def infer_workplace_type(location: str) -> str:
+    """Rough guess at workplace type from the location string. Rippling
+    does not expose a clean remote/hybrid/onsite field, same situation
+    as Greenhouse. Falls back to "onsite" when neither "remote" nor
+    "hybrid" appears in the location text."""
+    low = (location or "").lower()
+    if not low.strip():
+        return "unknown"
+    if any(word in low for word in REMOTE_KEYWORDS):
+        return "remote"
+    if any(word in low for word in HYBRID_KEYWORDS):
+        return "hybrid"
+    return "onsite"
+
+
+def is_colorado(location: str) -> bool:
+    low = (location or "").lower()
+    return any(kw in low for kw in COLORADO_KEYWORDS)
+
+
 def extract_location(job: dict) -> str:
     """Rippling location shape varies. Try the common keys."""
     locs = job.get("workLocations") or job.get("locations") or []
@@ -268,20 +324,27 @@ def build_issue_body(record: dict) -> str:
     if len(desc) > 4000:
         desc = desc[:4000] + "\n\n_(truncated, see the posting for the rest)_"
 
+    real_fit = record.get("real_fit")
+    real_fit_section = format_real_fit_section(real_fit) if real_fit else "_Real-Fit Score not computed._"
+
     return "\n".join(
         [
             f"**Company:** {record['company']}",
             f"**Location:** {record['location']}",
+            f"**Workplace type (inferred):** {record.get('workplace_type', 'unknown')}",
             f"**Posted:** {record['posted'] or 'not stated'}",
             f"**Source:** Rippling",
             f"**Apply:** {record['url']}",
             "",
             "---",
             "",
+            real_fit_section,
+            "",
+            "---",
+            "",
             "### Review checklist",
             "",
             "- [ ] JDR fit score",
-            "- [ ] Competitiveness score (only if fit is 60+)",
             "- [ ] Contact type identified",
             "- [ ] Effort band assigned",
             "",
@@ -337,12 +400,14 @@ def write_step_summary(new_records: list, total: int) -> None:
     else:
         lines.append(f"**{len(new_records)} new Rippling role(s).** {total} tracked overall.")
         lines.append("")
-        lines.append("| Company | Title | Location | Link |")
-        lines.append("|---|---|---|---|")
+        lines.append("| Company | Title | Real-Fit | Location | Link |")
+        lines.append("|---|---|---|---|---|")
         for r in new_records:
             title = r["title"].replace("|", "\\|")
+            rf = r.get("real_fit") or {}
+            rf_label = f"{rf.get('score', '-')} ({rf.get('verdict', '-')})" if rf else "-"
             lines.append(
-                f"| {r['company']} | {title} | {r['location']} | [Apply]({r['url']}) |"
+                f"| {r['company']} | {title} | {rf_label} | {r['location']} | [Apply]({r['url']}) |"
             )
 
     with open(path, "a", encoding="utf-8") as f:
@@ -399,6 +464,10 @@ def main() -> None:
             if not title_matches(title) or not location_matches(location):
                 continue
 
+            workplace_type = infer_workplace_type(location)
+            if workplace_type == "onsite" and not is_colorado(location):
+                continue
+
             job_id = job.get("uuid") or job.get("id") or ""
             job_key = f"{bid}:{job_id}"
             if job_key in jobs_log:
@@ -416,6 +485,7 @@ def main() -> None:
                 "token": bid,
                 "title": title,
                 "location": location,
+                "workplace_type": workplace_type,
                 "posted": (job.get("createdOn") or "")[:10],
                 "url": url,
                 "job_id": job_id,
@@ -424,6 +494,7 @@ def main() -> None:
                 "issue_url": "",
                 "source": "rippling",
             }
+            record["real_fit"] = compute_real_fit(record)
             jobs_log[job_key] = record
             new_records.append(record)
 
