@@ -36,6 +36,8 @@ from urllib.parse import urlparse
 
 import requests
 
+from real_fit_score import compute_real_fit, format_real_fit_section
+
 # ----------------------------------------------------------------------
 # CONFIG
 # ----------------------------------------------------------------------
@@ -43,8 +45,6 @@ import requests
 API_BASE = "https://boards-api.greenhouse.io/v1/boards"
 GITHUB_API = "https://api.github.com"
 
-# Titles to keep. Case-insensitive substring match against the job title.
-# Any single hit keeps the role.
 TITLE_KEYWORDS = [
     "chief people",
     "cpo",
@@ -66,8 +66,6 @@ TITLE_KEYWORDS = [
     "head of talent",
 ]
 
-# Titles to drop even if they matched above. Kills recruiting-only roles
-# and IC postings that use senior-sounding language.
 TITLE_EXCLUDE = [
     "recruiter",
     "recruiting coordinator",
@@ -81,14 +79,8 @@ TITLE_EXCLUDE = [
     "hrbp ii",
 ]
 
-# Location filter, exclude-based.
-# LOCATION_KEYWORDS keeps only roles whose location contains one of these.
-# Leave it empty to keep all US-tagged and remote roles.
 LOCATION_KEYWORDS = []
 
-# LOCATION_EXCLUDE drops any role whose location names one of these.
-# This removes obvious international postings while keeping US-city-tagged
-# roles that may be remote-friendly (e.g. "Indianapolis, IN").
 LOCATION_EXCLUDE = [
     "amsterdam", "netherlands",
     "barcelona", "madrid", "spain",
@@ -108,7 +100,6 @@ LOCATION_EXCLUDE = [
     "remote emea", "remote apac",
 ]
 
-# Colorado signal. Used by the onsite-outside-CO rule below.
 COLORADO_KEYWORDS = [
     "colorado",
     ", co",
@@ -121,7 +112,6 @@ COLORADO_KEYWORDS = [
     "lakewood, co",
 ]
 
-# Words that signal a role is not tied to one office.
 REMOTE_KEYWORDS = ["remote"]
 HYBRID_KEYWORDS = ["hybrid"]
 
@@ -143,7 +133,6 @@ SEED_COMPANIES = [
 # ----------------------------------------------------------------------
 
 def strip_html(raw: str) -> str:
-    """Crude tag strip. Good enough for keyword scanning and JDR paste."""
     if not raw:
         return ""
     text = re.sub(r"<br\s*/?>", "\n", raw, flags=re.I)
@@ -162,7 +151,6 @@ def strip_html(raw: str) -> str:
 
 
 def token_from_url(url: str) -> str:
-    """Pull a board token out of a Greenhouse careers URL."""
     parts = [p for p in urlparse(url).path.split("/") if p]
     return parts[0] if parts else ""
 
@@ -191,7 +179,6 @@ def load_companies() -> list:
 
 
 def load_log() -> dict:
-    """Cumulative record of every role ever matched, keyed by token:job_id."""
     if not os.path.exists(DATA_FILE):
         return {}
     try:
@@ -232,16 +219,6 @@ def location_matches(location: str) -> bool:
 
 
 def infer_workplace_type(location: str) -> str:
-    """Rough guess at workplace type from the location string.
-
-    Greenhouse does not expose a clean remote/hybrid/onsite field the way
-    Ashby does. This looks for common phrasing instead. When neither
-    "remote" nor "hybrid" appears, it falls back to "onsite", since
-    Greenhouse locations without that language are almost always
-    physical office postings. This is a heuristic, not a real field, so
-    it can misclassify a remote role that a company labeled only with a
-    city name.
-    """
     low = (location or "").lower()
     if not low.strip():
         return "unknown"
@@ -289,6 +266,9 @@ def build_issue_body(record: dict) -> str:
     if len(desc) > 4000:
         desc = desc[:4000] + "\n\n_(truncated, see the posting for the rest)_"
 
+    real_fit = record.get("real_fit")
+    real_fit_section = format_real_fit_section(real_fit) if real_fit else "_Real-Fit Score not computed._"
+
     return "\n".join(
         [
             f"**Company:** {record['company']}",
@@ -299,10 +279,13 @@ def build_issue_body(record: dict) -> str:
             "",
             "---",
             "",
+            real_fit_section,
+            "",
+            "---",
+            "",
             "### Review checklist",
             "",
             "- [ ] JDR fit score",
-            "- [ ] Competitiveness score (only if fit is 60+)",
             "- [ ] Contact type identified",
             "- [ ] Effort band assigned",
             "",
@@ -319,7 +302,6 @@ def build_issue_body(record: dict) -> str:
 
 
 def create_issue(record: dict, repo: str, token: str) -> str:
-    """Returns the issue html_url on success, empty string on failure."""
     headers = {
         "Authorization": f"Bearer {token}",
         "Accept": "application/vnd.github+json",
@@ -358,12 +340,14 @@ def write_step_summary(new_records: list, total: int) -> None:
     else:
         lines.append(f"**{len(new_records)} new role(s).** {total} tracked overall.")
         lines.append("")
-        lines.append("| Company | Title | Location | Link |")
-        lines.append("|---|---|---|---|")
+        lines.append("| Company | Title | Real-Fit | Location | Link |")
+        lines.append("|---|---|---|---|---|")
         for r in new_records:
             title = r["title"].replace("|", "\\|")
+            rf = r.get("real_fit") or {}
+            rf_label = f"{rf.get('score', '-')} ({rf.get('verdict', '-')})" if rf else "-"
             lines.append(
-                f"| {r['company']} | {title} | {r['location']} | [Apply]({r['url']}) |"
+                f"| {r['company']} | {title} | {rf_label} | {r['location']} | [Apply]({r['url']}) |"
             )
 
     with open(path, "a", encoding="utf-8") as f:
@@ -452,6 +436,7 @@ def main() -> None:
                 "description": strip_html(job.get("content", "")),
                 "issue_url": "",
             }
+            record["real_fit"] = compute_real_fit(record)
             jobs_log[job_key] = record
             new_records.append(record)
 
