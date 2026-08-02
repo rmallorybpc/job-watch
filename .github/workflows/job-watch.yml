@@ -88,11 +88,22 @@ jobs:
             python ashby_watch.py --github
           fi
 
+      - name: Run Lever watcher
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          if [ "${{ inputs.reset }}" = "true" ]; then
+            python lever_watch.py --github --reset
+          else
+            python lever_watch.py --github
+          fi
+
       - name: Commit jobs logs
         run: |
           git config user.name "job-watch-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/jobs.json docs/data/jobs_rippling.json docs/data/jobs_ashby.json
+          git add docs/data/jobs.json docs/data/jobs_rippling.json docs/data/jobs_ashby.json docs/data/jobs_lever.json
           if git diff --staged --quiet; then
             echo "No data change."
           else
