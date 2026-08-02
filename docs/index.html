@@ -247,8 +247,8 @@
   <p class="tmg-eyebrow">Talent Research</p>
   <h1 class="tmg-page-title">Job Watch</h1>
   <p class="tmg-page-desc">
-    Roles matched from the public Greenhouse Job Board API across a hand-built
-    target company list. Updated on a schedule by GitHub Actions.
+    Roles matched from the public Greenhouse, Rippling, Ashby, and Lever job board
+    APIs across a hand-built target company list. Updated on a schedule by GitHub Actions.
   </p>
 
   <div class="tmg-bento-grid" id="statCards">
@@ -348,7 +348,7 @@
 </div>
 
 <footer class="tmg-footer">
-  The Mallory Group &middot; Data from the public Greenhouse, Rippling, and Ashby job board APIs &middot;
+  The Mallory Group &middot; Data from the public Greenhouse, Rippling, Ashby, and Lever job board APIs &middot;
   Built and deployed with GitHub Actions &middot;
   <a href="https://github.com/rmallorybpc/job-watch" target="_blank" rel="noopener">Repository</a>
 </footer>
@@ -412,6 +412,13 @@
     var cls = fit.verdict === 'Apply' ? 'badge-fit-apply'
       : (fit.verdict === 'Optional' ? 'badge-fit-optional' : 'badge-fit-skip');
     return '<span class="badge-fit ' + cls + '">' + esc(fit.score) + ' &middot; ' + esc(fit.verdict) + '</span>';
+  }
+
+  function sourceLabel(job) {
+    if (job.source === 'rippling') { return 'Rippling'; }
+    if (job.source === 'ashby') { return 'Ashby'; }
+    if (job.source === 'lever') { return 'Lever'; }
+    return 'Greenhouse';
   }
 
   // --- Per-browser status tracking (localStorage) ---
@@ -504,8 +511,7 @@
       if (job.issue_url) {
         links += ' &middot; <a href="' + esc(job.issue_url) + '" target="_blank" rel="noopener">Issue</a>';
       }
-      var source = job.source === 'rippling' ? 'Rippling'
-        : (job.source === 'ashby' ? 'Ashby' : 'Greenhouse');
+      var source = sourceLabel(job);
       var st = statusOf(job);
 
       var actions = '<div class="row-actions">';
@@ -578,7 +584,8 @@
   Promise.all([
     loadOne('data/jobs.json'),
     loadOne('data/jobs_rippling.json'),
-    loadOne('data/jobs_ashby.json')
+    loadOne('data/jobs_ashby.json'),
+    loadOne('data/jobs_lever.json')
   ]).then(function (payloads) {
     var merged = {};
     var latestGenerated = '';
