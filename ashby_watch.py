@@ -33,78 +33,27 @@ from urllib.parse import urlparse
 
 import requests
 
+from filters import title_matches, is_colorado, LOCATION_EXCLUDE, LOCATION_KEYWORDS
 from real_fit_score import compute_real_fit, format_real_fit_section
 
 API_BASE = "https://api.ashbyhq.com/posting-api/job-board"
 GITHUB_API = "https://api.github.com"
 ISSUE_LABELS = ["job-lead"]
 
-# Same filter lists as the other watchers. Keep them in sync.
-TITLE_KEYWORDS = [
-    "chief people",
-    "cpo",
-    "vp of people",
-    "vp, people",
-    "vice president of people",
-    "vp of hr",
-    "vp, hr",
-    "vp of human resources",
-    "vice president of human resources",
-    "head of people",
-    "head of hr",
-    "director of people",
-    "people operations",
-    "director, people",
-    "senior director of people",
-    "sr. director of people",
-    "vp of talent",
-    "head of talent",
-]
-
-TITLE_EXCLUDE = [
-    "recruiter",
-    "recruiting coordinator",
-    "sourcer",
-    "intern",
-    "coordinator",
-    "assistant",
-    "analyst",
-    "specialist",
-    "partner ii",
-    "hrbp ii",
-]
-
-# Location filter, exclude-based. Keep in sync with the other watchers.
-LOCATION_KEYWORDS = []
-
-LOCATION_EXCLUDE = [
-    "amsterdam", "netherlands",
-    "barcelona", "madrid", "spain",
-    "toronto", "ontario", "canada", ", on",
-    "london", "united kingdom", ", uk",
-    "berlin", "germany",
-    "paris", "france",
-    "dublin", "ireland",
-    "bengaluru", "bangalore", ", india",
-    "singapore",
-    "sydney", "australia",
-    "tokyo", "japan",
-    "mexico city", "mexico",
-    "são paulo", "sao paulo", "brazil",
-    "china", "beijing", "shanghai", "shenzhen", "hong kong",
-    "malaysia", "kuala lumpur",
-    "thailand", "bangkok",
-    "philippines", "manila",
-    "indonesia", "jakarta",
-    "vietnam", "hanoi",
-    "korea", "seoul",
-    "taiwan", "taipei",
-    "poland", "warsaw",
-    "portugal", "lisbon",
-    "sweden", "stockholm",
-    "united arab emirates", "dubai",
-    "remote - emea", "remote - apac", "remote - uk",
-    "remote emea", "remote apac",
+# US indicators. If any appears, the role is US-eligible and we keep it even
+# when a foreign location is also listed (e.g. "United States or Canada").
+# This is Ashby-specific: an allowlist layered on top of the shared
+# LOCATION_EXCLUDE, rather than exclude-only like the other watchers.
+US_SIGNALS = [
+    "united states", "usa", " us ", ", us", "u.s.", "remote",
+    "north america", "anywhere",
+    "california", "colorado", "new york", "texas", "washington",
+    "massachusetts", "florida", "illinois", "georgia", "michigan",
+    "nevada", "north carolina", "virginia", "oregon", "arizona",
+    "san francisco", "denver", "boulder", "broomfield", "seattle",
+    "boston", "austin", "chicago", "miami", "new jersey", "connecticut",
+    ", ca", ", co", ", ny", ", tx", ", wa", ", ma", ", fl", ", il",
+    ", ga", ", mi", ", nv", ", nc", ", va", ", or", ", az", ", nj", ", ct",
 ]
 
 REQUEST_DELAY_SECONDS = 0.4
@@ -186,35 +135,6 @@ def save_log(jobs: dict, company_count: int) -> None:
         json.dump(payload, f, indent=2, sort_keys=True)
 
 
-def title_matches(title: str) -> bool:
-    low = title.lower()
-    if any(bad in low for bad in TITLE_EXCLUDE):
-        return False
-    return any(good in low for good in TITLE_KEYWORDS)
-
-
-# US indicators. If any appears, the role is US-eligible and we keep it even
-# when a foreign location is also listed (e.g. "United States or Canada").
-US_SIGNALS = [
-    "united states", "usa", " us ", ", us", "u.s.", "remote",
-    "north america", "anywhere",
-    "california", "colorado", "new york", "texas", "washington",
-    "massachusetts", "florida", "illinois", "georgia", "michigan",
-    "nevada", "north carolina", "virginia", "oregon", "arizona",
-    "san francisco", "denver", "boulder", "broomfield", "seattle",
-    "boston", "austin", "chicago", "miami", "new jersey", "connecticut",
-    ", ca", ", co", ", ny", ", tx", ", wa", ", ma", ", fl", ", il",
-    ", ga", ", mi", ", nv", ", nc", ", va", ", or", ", az", ", nj", ", ct",
-]
-
-
-CO_SIGNALS = [
-    "colorado", "denver", "boulder", "broomfield", "golden",
-    "fort collins", "colorado springs", "aurora", "lakewood",
-    "littleton", "centennial", "arvada", "westminster", ", co",
-]
-
-
 def location_matches(location: str) -> bool:
     low = (location or "").lower()
     us_signal = any(x in low for x in US_SIGNALS)
@@ -223,11 +143,6 @@ def location_matches(location: str) -> bool:
     if not LOCATION_KEYWORDS:
         return True
     return any(loc in low for loc in LOCATION_KEYWORDS)
-
-
-def is_colorado(location: str) -> bool:
-    low = (location or "").lower()
-    return any(c in low for c in CO_SIGNALS)
 
 
 def workplace_allows(job: dict, location: str) -> bool:
