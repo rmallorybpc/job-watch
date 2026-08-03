@@ -36,6 +36,7 @@ from urllib.parse import urlparse
 
 import requests
 
+from filters import title_matches, location_matches, infer_workplace_type, is_colorado
 from real_fit_score import compute_real_fit, format_real_fit_section
 
 # ----------------------------------------------------------------------
@@ -44,76 +45,6 @@ from real_fit_score import compute_real_fit, format_real_fit_section
 
 API_BASE = "https://boards-api.greenhouse.io/v1/boards"
 GITHUB_API = "https://api.github.com"
-
-TITLE_KEYWORDS = [
-    "chief people",
-    "cpo",
-    "vp of people",
-    "vp, people",
-    "vice president of people",
-    "vp of hr",
-    "vp, hr",
-    "vp of human resources",
-    "vice president of human resources",
-    "head of people",
-    "head of hr",
-    "director of people",
-    "people operations",
-    "director, people",
-    "senior director of people",
-    "sr. director of people",
-    "vp of talent",
-    "head of talent",
-]
-
-TITLE_EXCLUDE = [
-    "recruiter",
-    "recruiting coordinator",
-    "sourcer",
-    "intern",
-    "coordinator",
-    "assistant",
-    "analyst",
-    "specialist",
-    "partner ii",
-    "hrbp ii",
-]
-
-LOCATION_KEYWORDS = []
-
-LOCATION_EXCLUDE = [
-    "amsterdam", "netherlands",
-    "barcelona", "madrid", "spain",
-    "toronto", "ontario", "canada", ", on",
-    "london", "united kingdom", ", uk",
-    "berlin", "germany",
-    "paris", "france",
-    "dublin", "ireland",
-    "bengaluru", "bangalore", ", india",
-    "singapore",
-    "sydney", "australia",
-    "tokyo", "japan",
-    "mexico city", "mexico",
-    "são paulo", "sao paulo", "brazil",
-    "kuala lumpur", "malaysia",
-    "remote - emea", "remote - apac", "remote - uk",
-    "remote emea", "remote apac",
-]
-
-COLORADO_KEYWORDS = [
-    "colorado",
-    ", co",
-    "denver",
-    "boulder",
-    "colorado springs",
-    "fort collins",
-    "aurora, co",
-    "westminster, co",
-    "lakewood, co",
-]
-
-REMOTE_KEYWORDS = ["remote"]
-HYBRID_KEYWORDS = ["hybrid"]
 
 REQUEST_DELAY_SECONDS = 0.4
 TIMEOUT_SECONDS = 20
@@ -200,38 +131,6 @@ def save_log(jobs: dict, company_count: int) -> None:
     }
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, sort_keys=True)
-
-
-def title_matches(title: str) -> bool:
-    low = title.lower()
-    if any(bad in low for bad in TITLE_EXCLUDE):
-        return False
-    return any(good in low for good in TITLE_KEYWORDS)
-
-
-def location_matches(location: str) -> bool:
-    low = (location or "").lower()
-    if any(bad in low for bad in LOCATION_EXCLUDE):
-        return False
-    if not LOCATION_KEYWORDS:
-        return True
-    return any(loc in low for loc in LOCATION_KEYWORDS)
-
-
-def infer_workplace_type(location: str) -> str:
-    low = (location or "").lower()
-    if not low.strip():
-        return "unknown"
-    if any(word in low for word in REMOTE_KEYWORDS):
-        return "remote"
-    if any(word in low for word in HYBRID_KEYWORDS):
-        return "hybrid"
-    return "onsite"
-
-
-def is_colorado(location: str) -> bool:
-    low = (location or "").lower()
-    return any(kw in low for kw in COLORADO_KEYWORDS)
 
 
 def fetch_jobs(token: str, want_content: bool) -> list:
