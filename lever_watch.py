@@ -17,8 +17,8 @@ Local usage:
 GitHub Actions usage:
     python lever_watch.py --github
 
-Board slugs come from the careers URL:
-    jobs.lever.co/lumos  ->  slug is "lumos"
+Board tokens come from the careers URL:
+    jobs.lever.co/lumos  ->  token is "lumos"
 """
 
 import argparse
@@ -33,91 +33,12 @@ from urllib.parse import urlparse
 
 import requests
 
+from filters import title_matches, location_matches, is_colorado
 from real_fit_score import compute_real_fit, format_real_fit_section
 
 API_BASE = "https://api.lever.co/v0/postings"
 GITHUB_API = "https://api.github.com"
 ISSUE_LABELS = ["job-lead"]
-
-# Same filter lists as the other watchers. Keep them in sync.
-TITLE_KEYWORDS = [
-    "chief people",
-    "cpo",
-    "vp of people",
-    "vp, people",
-    "vice president of people",
-    "vp of hr",
-    "vp, hr",
-    "vp of human resources",
-    "vice president of human resources",
-    "head of people",
-    "head of hr",
-    "director of people",
-    "people operations",
-    "director, people",
-    "senior director of people",
-    "sr. director of people",
-    "vp of talent",
-    "head of talent",
-]
-
-TITLE_EXCLUDE = [
-    "recruiter",
-    "recruiting coordinator",
-    "sourcer",
-    "intern",
-    "coordinator",
-    "assistant",
-    "analyst",
-    "specialist",
-    "partner ii",
-    "hrbp ii",
-]
-
-# Location filter, exclude-based. Keep in sync with the other watchers.
-LOCATION_KEYWORDS = []
-
-LOCATION_EXCLUDE = [
-    "amsterdam", "netherlands",
-    "barcelona", "madrid", "spain",
-    "toronto", "ontario", "canada", ", on",
-    "london", "united kingdom", ", uk",
-    "berlin", "germany",
-    "paris", "france",
-    "dublin", "ireland",
-    "bengaluru", "bangalore", ", india",
-    "singapore",
-    "sydney", "australia",
-    "tokyo", "japan",
-    "mexico city", "mexico",
-    "são paulo", "sao paulo", "brazil",
-    "china", "beijing", "shanghai", "shenzhen", "hong kong",
-    "malaysia", "kuala lumpur",
-    "thailand", "bangkok",
-    "philippines", "manila",
-    "indonesia", "jakarta",
-    "vietnam", "hanoi",
-    "korea", "seoul",
-    "taiwan", "taipei",
-    "poland", "warsaw",
-    "portugal", "lisbon",
-    "sweden", "stockholm",
-    "united arab emirates", "dubai",
-    "remote - emea", "remote - apac", "remote - uk",
-    "remote emea", "remote apac",
-]
-
-COLORADO_KEYWORDS = [
-    "colorado",
-    ", co",
-    "denver",
-    "boulder",
-    "colorado springs",
-    "fort collins",
-    "aurora, co",
-    "westminster, co",
-    "lakewood, co",
-]
 
 REQUEST_DELAY_SECONDS = 0.4
 TIMEOUT_SECONDS = 20
@@ -156,9 +77,9 @@ def load_companies() -> list:
     if not os.path.exists(COMPANIES_FILE):
         with open(COMPANIES_FILE, "w", newline="", encoding="utf-8") as f:
             w = csv.writer(f)
-            w.writerow(["company_name", "board_slug"])
-            for name, slug in SEED_COMPANIES:
-                w.writerow([name, slug])
+            w.writerow(["company_name", "board_token"])
+            for name, token in SEED_COMPANIES:
+                w.writerow([name, token])
         print(f"Created {COMPANIES_FILE}. Add your target companies and rerun.")
         sys.exit(0)
 
@@ -166,12 +87,12 @@ def load_companies() -> list:
     with open(COMPANIES_FILE, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             name = (row.get("company_name") or "").strip()
-            slug = (row.get("board_slug") or "").strip()
-            if not slug or slug.startswith("#"):
+            token = (row.get("board_token") or "").strip()
+            if not token or token.startswith("#"):
                 continue
-            if slug.startswith("http"):
-                slug = token_from_url(slug)
-            rows.append((name or slug, slug))
+            if token.startswith("http"):
+                token = token_from_url(token)
+            rows.append((name or token, token))
     return rows
 
 
@@ -198,27 +119,6 @@ def save_log(jobs: dict, company_count: int) -> None:
         json.dump(payload, f, indent=2, sort_keys=True)
 
 
-def title_matches(title: str) -> bool:
-    low = title.lower()
-    if any(bad in low for bad in TITLE_EXCLUDE):
-        return False
-    return any(good in low for good in TITLE_KEYWORDS)
-
-
-def location_matches(location: str) -> bool:
-    low = (location or "").lower()
-    if any(bad in low for bad in LOCATION_EXCLUDE):
-        return False
-    if not LOCATION_KEYWORDS:
-        return True
-    return any(loc in low for loc in LOCATION_KEYWORDS)
-
-
-def is_colorado(location: str) -> bool:
-    low = (location or "").lower()
-    return any(kw in low for kw in COLORADO_KEYWORDS)
-
-
 def workplace_allows(job: dict, location: str) -> bool:
     """
     Drop onsite roles that are not in Colorado. Remote and hybrid roles pass
@@ -232,9 +132,6 @@ def workplace_allows(job: dict, location: str) -> bool:
         return True
     if wtype == "on-site":
         return is_colorado(location)
-    # unspecified or missing: fall back to allowing it, so we do not
-    # silently drop roles that lack the field. The location filter
-    # still applies.
     return True
 
 
@@ -266,8 +163,8 @@ def extract_comp(job: dict) -> str:
     return f"{currency} {figure:,.0f}".strip()
 
 
-def fetch_jobs(slug: str) -> list:
-    url = f"{API_BASE}/{slug}"
+def fetch_jobs(token: str) -> list:
+    url = f"{API_BASE}/{token}"
     try:
         resp = requests.get(url, params={"mode": "json"}, timeout=TIMEOUT_SECONDS)
     except requests.RequestException as exc:
@@ -275,7 +172,7 @@ def fetch_jobs(slug: str) -> list:
         return []
 
     if resp.status_code == 404:
-        print("  ERROR  board slug not found (404). Check the slug.")
+        print("  ERROR  board token not found (404). Check the slug.")
         return []
     if resp.status_code != 200:
         print(f"  ERROR  HTTP {resp.status_code}")
@@ -287,7 +184,6 @@ def fetch_jobs(slug: str) -> list:
         print("  ERROR  response was not valid JSON")
         return []
 
-    # Lever returns a bare JSON array, not a wrapper object.
     return data if isinstance(data, list) else []
 
 
@@ -419,11 +315,11 @@ def main() -> None:
 
     print(f"Checking {len(companies)} companies...\n")
 
-    for name, slug in companies:
+    for name, token in companies:
         checked += 1
-        print(f"[{checked}/{len(companies)}] {name} ({slug})")
+        print(f"[{checked}/{len(companies)}] {name} ({token})")
 
-        jobs = fetch_jobs(slug)
+        jobs = fetch_jobs(token)
         if not jobs:
             time.sleep(REQUEST_DELAY_SECONDS)
             continue
@@ -439,7 +335,7 @@ def main() -> None:
                 continue
 
             job_id = job.get("id") or ""
-            job_key = f"{slug}:{job_id}"
+            job_key = f"{token}:{job_id}"
             if job_key in jobs_log:
                 continue
 
@@ -458,13 +354,13 @@ def main() -> None:
 
             record = {
                 "company": name,
-                "token": slug,
+                "token": token,
                 "title": title,
                 "location": location,
                 "workplace_type": (job.get("workplaceType") or "").lower() or None,
                 "comp": extract_comp(job),
                 "posted": posted,
-                "url": job.get("hostedUrl") or job.get("applyUrl") or f"https://jobs.lever.co/{slug}",
+                "url": job.get("hostedUrl") or job.get("applyUrl") or f"https://jobs.lever.co/{token}",
                 "job_id": job_id,
                 "first_seen": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
                 "description": description,
