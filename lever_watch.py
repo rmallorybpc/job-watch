@@ -19,6 +19,13 @@ GitHub Actions usage:
 
 Board tokens come from the careers URL:
     jobs.lever.co/lumos  ->  token is "lumos"
+
+Note: not every company using Lever exposes the public postings API. A
+valid careers page at jobs.lever.co/{token} does not guarantee the API
+returns data. For a token that is not a valid Lever board, the API
+returns HTTP 200 with a body of {"ok": false, "error": "Document not
+found"} rather than a real 404, so that case is detected explicitly
+below.
 """
 
 import argparse
@@ -176,8 +183,8 @@ def fetch_jobs(name: str, token: str) -> list:
         return []
 
     if resp.status_code == 404:
-        reason = "board token not found (404)"
-        print(f"  ERROR  {reason}. Check the slug.")
+        reason = "not a valid Lever board (404)"
+        print(f"  ERROR  {reason}. Check the token.")
         FETCH_ERRORS.append({"company": name, "token": token, "reason": reason})
         return []
     if resp.status_code != 200:
@@ -194,8 +201,24 @@ def fetch_jobs(name: str, token: str) -> list:
         FETCH_ERRORS.append({"company": name, "token": token, "reason": reason})
         return []
 
-    # Lever returns a bare JSON array, not a wrapper object.
-    return data if isinstance(data, list) else []
+    # A valid Lever board returns a bare JSON array. A bad token returns
+    # HTTP 200 with {"ok": false, "error": "Document not found"}, so an
+    # error body arrives as a dict here, not a list. Catch that as a
+    # real failure rather than silently treating it as zero postings.
+    if isinstance(data, dict):
+        err = data.get("error") or "not a valid Lever board"
+        reason = f"not a Lever board: {err}"
+        print(f"  ERROR  {reason}. Check the token.")
+        FETCH_ERRORS.append({"company": name, "token": token, "reason": reason})
+        return []
+
+    if not isinstance(data, list):
+        reason = "unexpected response shape (not a list)"
+        print(f"  ERROR  {reason}")
+        FETCH_ERRORS.append({"company": name, "token": token, "reason": reason})
+        return []
+
+    return data
 
 
 def build_issue_body(record: dict) -> str:
