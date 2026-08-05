@@ -108,7 +108,17 @@ jobs:
             echo "No data change."
           else
             git commit -m "chore: update job watch data [skip ci]"
-            git push
+            # Remote may have moved (concurrent run, or the deploy job).
+            # Rebase our single data commit on top, then push. Retry once.
+            for attempt in 1 2 3; do
+              if git push; then
+                echo "Pushed on attempt $attempt."
+                break
+              fi
+              echo "Push rejected, rebasing and retrying (attempt $attempt)..."
+              git pull --rebase --autostash origin main || true
+              sleep 3
+            done
           fi
 
       - name: Upload Pages artifact
