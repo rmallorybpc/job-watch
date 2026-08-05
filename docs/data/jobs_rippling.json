@@ -1,6 +1,7 @@
 {
   "companies_watched": 2,
-  "generated": "2026-08-05T21:30:35+00:00",
+  "fetch_errors": [],
+  "generated": "2026-08-05T22:02:03+00:00",
   "jobs": {
     "excel:bb20c0eb-69f9-4b6b-a0dd-473b98b6b38a": {
       "company": "Excel Impact",

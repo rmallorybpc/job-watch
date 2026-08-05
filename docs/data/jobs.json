@@ -1,6 +1,13 @@
 {
   "companies_watched": 29,
-  "generated": "2026-08-05T21:30:33+00:00",
+  "fetch_errors": [
+    {
+      "company": "Artefact",
+      "reason": "network failure: HTTPSConnectionPool(host='boards-api.greenhouse.io', port=443): Read timed out. (read timeout=20)",
+      "token": "artefact"
+    }
+  ],
+  "generated": "2026-08-05T22:02:00+00:00",
   "jobs": {
     "albedo:4277961009": {
       "company": "Albedo",
