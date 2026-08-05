@@ -37,7 +37,6 @@
 <link rel="stylesheet" href="tmg.css">
 
 <style>
-  /* Page-specific only. Everything else comes from tmg.css. */
   body { margin: 0; font-family: var(--tmg-font); background: var(--tmg-bg); color: var(--tmg-text); }
 
   .tmg-nav {
@@ -194,6 +193,13 @@
   .mini-btn:hover { border-color: var(--tmg-accent); color: var(--tmg-accent-dark); }
   .mini-btn.applied { background: var(--tmg-accent); color: #fff; border-color: var(--tmg-accent); }
 
+  .fetch-error-card {
+    border-color: #C0392B; margin-bottom: var(--tmg-space-md); display: none;
+  }
+  .fetch-error-card .tmg-card-title { color: #C0392B; }
+  .fetch-error-list { margin: 0; padding-left: 1.2rem; font-size: 0.85rem; color: var(--tmg-text-muted); }
+  .fetch-error-list li { margin-bottom: 0.25rem; }
+
   .tmg-footer {
     border-top: 1px solid var(--tmg-border); margin-top: var(--tmg-space-xl);
     padding: var(--tmg-space-lg); text-align: center;
@@ -250,6 +256,11 @@
     Roles matched from the public Greenhouse, Rippling, Ashby, and Lever job board
     APIs across a hand-built target company list. Updated on a schedule by GitHub Actions.
   </p>
+
+  <div class="tmg-card-wide fetch-error-card" id="fetchErrorCard">
+    <p class="tmg-card-title">Fetch failures on the last run</p>
+    <ul class="fetch-error-list" id="fetchErrorList"></ul>
+  </div>
 
   <div class="tmg-bento-grid" id="statCards">
     <div class="tmg-card">
@@ -463,6 +474,29 @@
     saveStatus(map);
   }
 
+  function renderFetchErrors(errorsBySource) {
+    var card = document.getElementById('fetchErrorCard');
+    var list = document.getElementById('fetchErrorList');
+    var items = [];
+
+    Object.keys(errorsBySource).forEach(function (source) {
+      errorsBySource[source].forEach(function (e) {
+        items.push({ source: source, company: e.company, reason: e.reason });
+      });
+    });
+
+    if (!items.length) {
+      card.style.display = 'none';
+      list.innerHTML = '';
+      return;
+    }
+
+    list.innerHTML = items.map(function (e) {
+      return '<li><strong>' + esc(e.company) + '</strong> (' + esc(e.source) + ') &mdash; ' + esc(e.reason) + '</li>';
+    }).join('');
+    card.style.display = 'block';
+  }
+
   function render() {
     var q = searchInput.value.trim().toLowerCase();
     var company = companySelect.value;
@@ -590,8 +624,10 @@
     var merged = {};
     var latestGenerated = '';
     var companyCount = 0;
+    var sourceNames = ['Greenhouse', 'Rippling', 'Ashby', 'Lever'];
+    var errorsBySource = {};
 
-    payloads.forEach(function (payload) {
+    payloads.forEach(function (payload, idx) {
       if (!payload) { return; }
       var jobsObj = payload.jobs || {};
       Object.keys(jobsObj).forEach(function (k) { merged[k] = jobsObj[k]; });
@@ -599,7 +635,12 @@
         latestGenerated = payload.generated;
       }
       companyCount += (payload.companies_watched || 0);
+      if (payload.fetch_errors && payload.fetch_errors.length) {
+        errorsBySource[sourceNames[idx]] = payload.fetch_errors;
+      }
     });
+
+    renderFetchErrors(errorsBySource);
 
     allJobs = Object.keys(merged).map(function (k) { return merged[k]; });
 
