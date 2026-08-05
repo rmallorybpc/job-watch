@@ -35,10 +35,9 @@ import requests
 
 from filters import title_matches, is_colorado, LOCATION_EXCLUDE, LOCATION_KEYWORDS
 from real_fit_score import compute_real_fit, format_real_fit_section
+from github_issues import create_issue, load_existing_issues
 
 API_BASE = "https://api.ashbyhq.com/posting-api/job-board"
-GITHUB_API = "https://api.github.com"
-ISSUE_LABELS = ["job-lead"]
 
 # US indicators. If any appears, the role is US-eligible and we keep it even
 # when a foreign location is also listed (e.g. "United States or Canada").
@@ -65,6 +64,8 @@ COMPANIES_FILE = "companies_ashby.csv"
 SEED_COMPANIES = [
     ("Lumos", "lumos"),
 ]
+
+FETCH_ERRORS = []
 
 
 def strip_html(raw: str) -> str:
@@ -123,12 +124,13 @@ def load_log() -> dict:
         return {}
 
 
-def save_log(jobs: dict, company_count: int) -> None:
+def save_log(jobs: dict, company_count: int, fetch_errors: list) -> None:
     os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     payload = {
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "companies_watched": company_count,
         "total_roles": len(jobs),
+        "fetch_errors": fetch_errors,
         "jobs": jobs,
     }
     with open(DATA_FILE, "w", encoding="utf-8") as f:
@@ -182,7 +184,7 @@ def extract_location(job: dict) -> str:
     return ", ".join(parts)
 
 
-def fetch_jobs(slug: str) -> list:
+def fetch_jobs(name: str, slug: str) -> list:
     url = f"{API_BASE}/{slug}"
     try:
         resp = requests.get(
@@ -191,20 +193,28 @@ def fetch_jobs(slug: str) -> list:
             timeout=TIMEOUT_SECONDS,
         )
     except requests.RequestException as exc:
-        print(f"  ERROR  network failure: {exc}")
+        reason = f"network failure: {exc}"
+        print(f"  ERROR  {reason}")
+        FETCH_ERRORS.append({"company": name, "token": slug, "reason": reason})
         return []
 
     if resp.status_code == 404:
-        print("  ERROR  board slug not found (404). Check the slug.")
+        reason = "board slug not found (404)"
+        print(f"  ERROR  {reason}. Check the slug.")
+        FETCH_ERRORS.append({"company": name, "token": slug, "reason": reason})
         return []
     if resp.status_code != 200:
-        print(f"  ERROR  HTTP {resp.status_code}")
+        reason = f"HTTP {resp.status_code}"
+        print(f"  ERROR  {reason}")
+        FETCH_ERRORS.append({"company": name, "token": slug, "reason": reason})
         return []
 
     try:
         return resp.json().get("jobs", [])
     except json.JSONDecodeError:
-        print("  ERROR  response was not valid JSON")
+        reason = "response was not valid JSON"
+        print(f"  ERROR  {reason}")
+        FETCH_ERRORS.append({"company": name, "token": slug, "reason": reason})
         return []
 
 
@@ -249,35 +259,7 @@ def build_issue_body(record: dict) -> str:
     )
 
 
-def create_issue(record: dict, repo: str, token: str) -> str:
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-    }
-    payload = {
-        "title": f"{record['company']}: {record['title']}",
-        "body": build_issue_body(record),
-        "labels": ISSUE_LABELS,
-    }
-    try:
-        resp = requests.post(
-            f"{GITHUB_API}/repos/{repo}/issues",
-            headers=headers,
-            json=payload,
-            timeout=TIMEOUT_SECONDS,
-        )
-    except requests.RequestException as exc:
-        print(f"  ERROR  could not create issue: {exc}")
-        return ""
-
-    if resp.status_code == 201:
-        return resp.json().get("html_url", "")
-    print(f"  ERROR  issue creation returned HTTP {resp.status_code}: {resp.text[:200]}")
-    return ""
-
-
-def write_step_summary(new_records: list, total: int) -> None:
+def write_step_summary(new_records: list, total: int, fetch_errors: list, reused_count: int) -> None:
     path = os.environ.get("GITHUB_STEP_SUMMARY")
     if not path:
         return
@@ -287,6 +269,8 @@ def write_step_summary(new_records: list, total: int) -> None:
         lines.append(f"No new Ashby matches this run. {total} tracked overall.")
     else:
         lines.append(f"**{len(new_records)} new Ashby role(s).** {total} tracked overall.")
+        if reused_count:
+            lines.append(f"{reused_count} matched an existing issue and did not open a duplicate.")
         lines.append("")
         lines.append("| Company | Title | Real-Fit | Location | Link |")
         lines.append("|---|---|---|---|---|")
@@ -297,6 +281,15 @@ def write_step_summary(new_records: list, total: int) -> None:
             lines.append(
                 f"| {r['company']} | {title} | {rf_label} | {r['location']} | [Apply]({r['url']}) |"
             )
+
+    if fetch_errors:
+        lines.append("")
+        lines.append("### Fetch failures")
+        lines.append("")
+        lines.append("| Company | Reason |")
+        lines.append("|---|---|")
+        for e in fetch_errors:
+            lines.append(f"| {e['company']} | {e['reason']} |")
 
     with open(path, "a", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
@@ -324,6 +317,12 @@ def main() -> None:
         os.remove(DATA_FILE)
         print("Cleared jobs log.\n")
 
+    existing_issues = {}
+    if args.github:
+        print("Loading existing job-lead issues...")
+        existing_issues = load_existing_issues(gh_repo, gh_token)
+        print(f"  found {len(existing_issues)} existing issue(s)\n")
+
     companies = load_companies()
     if not companies:
         print(f"No companies found in {COMPANIES_FILE}.")
@@ -339,7 +338,7 @@ def main() -> None:
         checked += 1
         print(f"[{checked}/{len(companies)}] {name} ({slug})")
 
-        jobs = fetch_jobs(slug)
+        jobs = fetch_jobs(name, slug)
         if not jobs:
             time.sleep(REQUEST_DELAY_SECONDS)
             continue
@@ -380,6 +379,15 @@ def main() -> None:
             if not args.no_content:
                 description = strip_html(job.get("descriptionHtml") or job.get("descriptionPlain") or "")
 
+            issue_title = f"{name}: {title}"
+            existing = existing_issues.get(issue_title)
+            if existing:
+                first_seen = (existing["created_at"] or "")[:10] or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+                issue_url = existing["url"]
+            else:
+                first_seen = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+                issue_url = ""
+
             record = {
                 "company": name,
                 "token": slug,
@@ -390,9 +398,9 @@ def main() -> None:
                 "posted": (job.get("publishedAt") or job.get("updatedAt") or "")[:10],
                 "url": job.get("jobUrl") or job.get("applyUrl") or f"https://jobs.ashbyhq.com/{slug}",
                 "job_id": job_id,
-                "first_seen": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                "first_seen": first_seen,
                 "description": description,
-                "issue_url": "",
+                "issue_url": issue_url,
                 "source": "ashby",
             }
             record["real_fit"] = compute_real_fit(record)
@@ -402,17 +410,27 @@ def main() -> None:
         print(f"  {len(jobs)} posted, {hits} new match{'' if hits == 1 else 'es'}")
         time.sleep(REQUEST_DELAY_SECONDS)
 
+    reused_count = 0
     if args.github:
         for record in new_records:
-            issue_url = create_issue(record, gh_repo, gh_token)
+            if record["issue_url"]:
+                reused_count += 1
+                print(f"  reused existing issue: {record['company']} - {record['title']}")
+                continue
+            issue_url = create_issue(record, gh_repo, gh_token, build_issue_body)
             if issue_url:
                 record["issue_url"] = issue_url
                 print(f"  issue opened: {record['company']} - {record['title']}")
 
-    save_log(jobs_log, len(companies))
+    save_log(jobs_log, len(companies), FETCH_ERRORS)
 
     if args.github:
-        write_step_summary(new_records, len(jobs_log))
+        write_step_summary(new_records, len(jobs_log), FETCH_ERRORS, reused_count)
+
+    if FETCH_ERRORS:
+        print(f"\n{len(FETCH_ERRORS)} compan{'y' if len(FETCH_ERRORS) == 1 else 'ies'} failed to fetch:")
+        for e in FETCH_ERRORS:
+            print(f"  {e['company']}: {e['reason']}")
 
     if not new_records:
         print(f"\nNo new matches. {len(jobs_log)} role(s) tracked overall.")
