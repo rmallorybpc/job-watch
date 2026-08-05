@@ -16,6 +16,9 @@ GitHub Actions usage:
 
     --github opens a GitHub Issue per new role and writes a run summary.
     Requires GITHUB_TOKEN and GITHUB_REPOSITORY in the environment.
+    Also loads existing job-lead issues first, to avoid opening a
+    duplicate for a role already logged and to recover its true
+    first-seen date.
 
 State and data:
     docs/data/jobs.json   cumulative log of every role ever matched.
@@ -38,13 +41,13 @@ import requests
 
 from filters import title_matches, location_matches, infer_workplace_type, is_colorado
 from real_fit_score import compute_real_fit, format_real_fit_section
+from github_issues import create_issue, load_existing_issues
 
 # ----------------------------------------------------------------------
 # CONFIG
 # ----------------------------------------------------------------------
 
 API_BASE = "https://boards-api.greenhouse.io/v1/boards"
-GITHUB_API = "https://api.github.com"
 
 REQUEST_DELAY_SECONDS = 0.4
 TIMEOUT_SECONDS = 20
@@ -52,11 +55,11 @@ TIMEOUT_SECONDS = 20
 DATA_FILE = os.path.join("docs", "data", "jobs.json")
 COMPANIES_FILE = "companies.csv"
 
-ISSUE_LABELS = ["job-lead"]
-
 SEED_COMPANIES = [
     ("Example Co", "examplecoinc"),
 ]
+
+FETCH_ERRORS = []
 
 
 # ----------------------------------------------------------------------
@@ -121,38 +124,47 @@ def load_log() -> dict:
         return {}
 
 
-def save_log(jobs: dict, company_count: int) -> None:
+def save_log(jobs: dict, company_count: int, fetch_errors: list) -> None:
     os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     payload = {
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "companies_watched": company_count,
         "total_roles": len(jobs),
+        "fetch_errors": fetch_errors,
         "jobs": jobs,
     }
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, sort_keys=True)
 
 
-def fetch_jobs(token: str, want_content: bool) -> list:
+def fetch_jobs(name: str, token: str, want_content: bool) -> list:
     url = f"{API_BASE}/{token}/jobs"
     params = {"content": "true"} if want_content else {}
     try:
         resp = requests.get(url, params=params, timeout=TIMEOUT_SECONDS)
     except requests.RequestException as exc:
-        print(f"  ERROR  network failure: {exc}")
+        reason = f"network failure: {exc}"
+        print(f"  ERROR  {reason}")
+        FETCH_ERRORS.append({"company": name, "token": token, "reason": reason})
         return []
 
     if resp.status_code == 404:
-        print("  ERROR  board token not found (404). Check the slug.")
+        reason = "board token not found (404)"
+        print(f"  ERROR  {reason}. Check the slug.")
+        FETCH_ERRORS.append({"company": name, "token": token, "reason": reason})
         return []
     if resp.status_code != 200:
-        print(f"  ERROR  HTTP {resp.status_code}")
+        reason = f"HTTP {resp.status_code}"
+        print(f"  ERROR  {reason}")
+        FETCH_ERRORS.append({"company": name, "token": token, "reason": reason})
         return []
 
     try:
         return resp.json().get("jobs", [])
     except json.JSONDecodeError:
-        print("  ERROR  response was not valid JSON")
+        reason = "response was not valid JSON"
+        print(f"  ERROR  {reason}")
+        FETCH_ERRORS.append({"company": name, "token": token, "reason": reason})
         return []
 
 
@@ -200,35 +212,7 @@ def build_issue_body(record: dict) -> str:
     )
 
 
-def create_issue(record: dict, repo: str, token: str) -> str:
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-    }
-    payload = {
-        "title": f"{record['company']}: {record['title']}",
-        "body": build_issue_body(record),
-        "labels": ISSUE_LABELS,
-    }
-    try:
-        resp = requests.post(
-            f"{GITHUB_API}/repos/{repo}/issues",
-            headers=headers,
-            json=payload,
-            timeout=TIMEOUT_SECONDS,
-        )
-    except requests.RequestException as exc:
-        print(f"  ERROR  could not create issue: {exc}")
-        return ""
-
-    if resp.status_code == 201:
-        return resp.json().get("html_url", "")
-    print(f"  ERROR  issue creation returned HTTP {resp.status_code}: {resp.text[:200]}")
-    return ""
-
-
-def write_step_summary(new_records: list, total: int) -> None:
+def write_step_summary(new_records: list, total: int, fetch_errors: list, reused_count: int) -> None:
     path = os.environ.get("GITHUB_STEP_SUMMARY")
     if not path:
         return
@@ -238,6 +222,8 @@ def write_step_summary(new_records: list, total: int) -> None:
         lines.append(f"No new matches this run. {total} role(s) tracked overall.")
     else:
         lines.append(f"**{len(new_records)} new role(s).** {total} tracked overall.")
+        if reused_count:
+            lines.append(f"{reused_count} matched an existing issue and did not open a duplicate.")
         lines.append("")
         lines.append("| Company | Title | Real-Fit | Location | Link |")
         lines.append("|---|---|---|---|---|")
@@ -248,6 +234,15 @@ def write_step_summary(new_records: list, total: int) -> None:
             lines.append(
                 f"| {r['company']} | {title} | {rf_label} | {r['location']} | [Apply]({r['url']}) |"
             )
+
+    if fetch_errors:
+        lines.append("")
+        lines.append("### Fetch failures")
+        lines.append("")
+        lines.append("| Company | Reason |")
+        lines.append("|---|---|")
+        for e in fetch_errors:
+            lines.append(f"| {e['company']} | {e['reason']} |")
 
     with open(path, "a", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
@@ -285,6 +280,12 @@ def main() -> None:
         os.remove(DATA_FILE)
         print("Cleared jobs log.\n")
 
+    existing_issues = {}
+    if args.github:
+        print("Loading existing job-lead issues...")
+        existing_issues = load_existing_issues(gh_repo, gh_token)
+        print(f"  found {len(existing_issues)} existing issue(s)\n")
+
     companies = load_companies()
     if not companies:
         print(f"No companies found in {COMPANIES_FILE}.")
@@ -300,7 +301,7 @@ def main() -> None:
         checked += 1
         print(f"[{checked}/{len(companies)}] {name} ({token})")
 
-        jobs = fetch_jobs(token, want_content)
+        jobs = fetch_jobs(name, token, want_content)
         if not jobs:
             time.sleep(REQUEST_DELAY_SECONDS)
             continue
@@ -322,6 +323,15 @@ def main() -> None:
                 continue
 
             hits += 1
+            issue_title = f"{name}: {title}"
+            existing = existing_issues.get(issue_title)
+            if existing:
+                first_seen = (existing["created_at"] or "")[:10] or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+                issue_url = existing["url"]
+            else:
+                first_seen = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+                issue_url = ""
+
             record = {
                 "company": name,
                 "token": token,
@@ -331,9 +341,9 @@ def main() -> None:
                 "posted": (job.get("updated_at") or "")[:10],
                 "url": job.get("absolute_url", ""),
                 "job_id": job.get("id", ""),
-                "first_seen": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                "first_seen": first_seen,
                 "description": strip_html(job.get("content", "")),
-                "issue_url": "",
+                "issue_url": issue_url,
             }
             record["real_fit"] = compute_real_fit(record)
             jobs_log[job_key] = record
@@ -342,17 +352,27 @@ def main() -> None:
         print(f"  {len(jobs)} posted, {hits} new match{'' if hits == 1 else 'es'}")
         time.sleep(REQUEST_DELAY_SECONDS)
 
+    reused_count = 0
     if args.github:
         for record in new_records:
-            issue_url = create_issue(record, gh_repo, gh_token)
+            if record["issue_url"]:
+                reused_count += 1
+                print(f"  reused existing issue: {record['company']} - {record['title']}")
+                continue
+            issue_url = create_issue(record, gh_repo, gh_token, build_issue_body)
             if issue_url:
                 record["issue_url"] = issue_url
                 print(f"  issue opened: {record['company']} - {record['title']}")
 
-    save_log(jobs_log, len(companies))
+    save_log(jobs_log, len(companies), FETCH_ERRORS)
 
     if args.github:
-        write_step_summary(new_records, len(jobs_log))
+        write_step_summary(new_records, len(jobs_log), FETCH_ERRORS, reused_count)
+
+    if FETCH_ERRORS:
+        print(f"\n{len(FETCH_ERRORS)} compan{'y' if len(FETCH_ERRORS) == 1 else 'ies'} failed to fetch:")
+        for e in FETCH_ERRORS:
+            print(f"  {e['company']}: {e['reason']}")
 
     if not new_records:
         print(f"\nNo new matches. {len(jobs_log)} role(s) tracked overall.")
