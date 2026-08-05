@@ -1,7 +1,30 @@
 company_name,board_token
-# Lever is set aside for now. No verified Lever board tokens yet.
-# To add a company: confirm its careers page is jobs.lever.co/{token},
-# then check the token with https://api.lever.co/v0/postings/{token}?mode=json
-# (a JSON array means valid; {"ok":false,"error":"Document not found"} means not a Lever board).
-# Add one row per confirmed company below, e.g.:
-# Example Co,exampleco
+Albedo,albedo
+Authenticx,authenticx
+Artefact,artefact
+Blackthorn,blackthorn
+CharterUP,charterup
+Domino Data Lab,dominodatalab
+Dropbox,dropbox
+GHX,globalhealthcareexchangeinc
+GitLab,gitlab
+Gusto,gusto
+Guild,guild
+Highwire,highwire
+Karbon,karbon
+Loft Federal,loftfederal
+Manychat,manychat
+Midi Health,midihealth
+Nametag,nametag
+Okta,okta
+Power to Decide,powertodecide
+RADAR,radar
+Skedda,skedda
+Skylight,skylighthq
+Soros Prism (Family Office),familyoffice
+Toast,toast
+Tomorrow,tomorrow
+Walker-Miller Energy,walkermillerenergy
+Webflow,webflow
+Whisper Aero,whisperaero
+WPP Media,wppmedia
