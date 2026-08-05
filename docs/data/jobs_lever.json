@@ -1,153 +1,23 @@
 {
-  "companies_watched": 29,
+  "companies_watched": 3,
   "fetch_errors": [
     {
-      "company": "Albedo",
-      "reason": "board token not found (404)",
-      "token": "albedo"
+      "company": "# (a JSON array means valid; {\"ok\":false",
+      "reason": "not a valid Lever board (404)",
+      "token": "error:\"Document not found\"} means not a Lever board)."
     },
     {
-      "company": "Authenticx",
-      "reason": "board token not found (404)",
-      "token": "authenticx"
+      "company": "# Add one row per confirmed company below",
+      "reason": "not a valid Lever board (404)",
+      "token": "e.g.:"
     },
     {
-      "company": "Artefact",
-      "reason": "board token not found (404)",
-      "token": "artefact"
-    },
-    {
-      "company": "Blackthorn",
-      "reason": "board token not found (404)",
-      "token": "blackthorn"
-    },
-    {
-      "company": "CharterUP",
-      "reason": "board token not found (404)",
-      "token": "charterup"
-    },
-    {
-      "company": "Domino Data Lab",
-      "reason": "board token not found (404)",
-      "token": "dominodatalab"
-    },
-    {
-      "company": "Dropbox",
-      "reason": "board token not found (404)",
-      "token": "dropbox"
-    },
-    {
-      "company": "GHX",
-      "reason": "board token not found (404)",
-      "token": "globalhealthcareexchangeinc"
-    },
-    {
-      "company": "GitLab",
-      "reason": "board token not found (404)",
-      "token": "gitlab"
-    },
-    {
-      "company": "Gusto",
-      "reason": "board token not found (404)",
-      "token": "gusto"
-    },
-    {
-      "company": "Guild",
-      "reason": "board token not found (404)",
-      "token": "guild"
-    },
-    {
-      "company": "Highwire",
-      "reason": "board token not found (404)",
-      "token": "highwire"
-    },
-    {
-      "company": "Karbon",
-      "reason": "board token not found (404)",
-      "token": "karbon"
-    },
-    {
-      "company": "Loft Federal",
-      "reason": "board token not found (404)",
-      "token": "loftfederal"
-    },
-    {
-      "company": "Manychat",
-      "reason": "board token not found (404)",
-      "token": "manychat"
-    },
-    {
-      "company": "Midi Health",
-      "reason": "board token not found (404)",
-      "token": "midihealth"
-    },
-    {
-      "company": "Nametag",
-      "reason": "board token not found (404)",
-      "token": "nametag"
-    },
-    {
-      "company": "Okta",
-      "reason": "board token not found (404)",
-      "token": "okta"
-    },
-    {
-      "company": "Power to Decide",
-      "reason": "board token not found (404)",
-      "token": "powertodecide"
-    },
-    {
-      "company": "RADAR",
-      "reason": "board token not found (404)",
-      "token": "radar"
-    },
-    {
-      "company": "Skedda",
-      "reason": "board token not found (404)",
-      "token": "skedda"
-    },
-    {
-      "company": "Skylight",
-      "reason": "board token not found (404)",
-      "token": "skylighthq"
-    },
-    {
-      "company": "Soros Prism (Family Office)",
-      "reason": "board token not found (404)",
-      "token": "familyoffice"
-    },
-    {
-      "company": "Toast",
-      "reason": "board token not found (404)",
-      "token": "toast"
-    },
-    {
-      "company": "Tomorrow",
-      "reason": "board token not found (404)",
-      "token": "tomorrow"
-    },
-    {
-      "company": "Walker-Miller Energy",
-      "reason": "board token not found (404)",
-      "token": "walkermillerenergy"
-    },
-    {
-      "company": "Webflow",
-      "reason": "board token not found (404)",
-      "token": "webflow"
-    },
-    {
-      "company": "Whisper Aero",
-      "reason": "board token not found (404)",
-      "token": "whisperaero"
-    },
-    {
-      "company": "WPP Media",
-      "reason": "board token not found (404)",
-      "token": "wppmedia"
+      "company": "# Example Co",
+      "reason": "not a valid Lever board (404)",
+      "token": "exampleco"
     }
   ],
-  "generated": "2026-08-05T22:05:24+00:00",
+  "generated": "2026-08-05T22:16:00+00:00",
   "jobs": {},
   "total_roles": 0
 }
