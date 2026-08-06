@@ -1,7 +1,483 @@
 {
-  "companies_watched": 2,
-  "fetch_errors": [],
-  "generated": "2026-08-05T22:24:50+00:00",
+  "companies_watched": 98,
+  "fetch_errors": [
+    {
+      "company": "GitLab",
+      "reason": "board id not found (404)",
+      "token": "gitlab"
+    },
+    {
+      "company": "Gusto",
+      "reason": "board id not found (404)",
+      "token": "gusto"
+    },
+    {
+      "company": "Deel",
+      "reason": "board id not found (404)",
+      "token": "deel"
+    },
+    {
+      "company": "Toast",
+      "reason": "board id not found (404)",
+      "token": "toast"
+    },
+    {
+      "company": "Restaurant365",
+      "reason": "board id not found (404)",
+      "token": "restaurant365"
+    },
+    {
+      "company": "Ibotta",
+      "reason": "board id not found (404)",
+      "token": "ibotta"
+    },
+    {
+      "company": "Guild",
+      "reason": "board id not found (404)",
+      "token": "guild"
+    },
+    {
+      "company": "Lockton",
+      "reason": "board id not found (404)",
+      "token": "lockton"
+    },
+    {
+      "company": "Hanger",
+      "reason": "board id not found (404)",
+      "token": "hanger"
+    },
+    {
+      "company": "Dropbox",
+      "reason": "board id not found (404)",
+      "token": "dropbox"
+    },
+    {
+      "company": "Webflow",
+      "reason": "board id not found (404)",
+      "token": "webflow"
+    },
+    {
+      "company": "Okta",
+      "reason": "board id not found (404)",
+      "token": "okta"
+    },
+    {
+      "company": "Domino Data Lab",
+      "reason": "board id not found (404)",
+      "token": "dominodatalab"
+    },
+    {
+      "company": "Manychat",
+      "reason": "board id not found (404)",
+      "token": "manychat"
+    },
+    {
+      "company": "Skedda",
+      "reason": "board id not found (404)",
+      "token": "skedda"
+    },
+    {
+      "company": "Tomorrow",
+      "reason": "board id not found (404)",
+      "token": "tomorrow"
+    },
+    {
+      "company": "Albedo",
+      "reason": "board id not found (404)",
+      "token": "albedo"
+    },
+    {
+      "company": "Authenticx",
+      "reason": "board id not found (404)",
+      "token": "authenticx"
+    },
+    {
+      "company": "Blackthorn",
+      "reason": "board id not found (404)",
+      "token": "blackthorn"
+    },
+    {
+      "company": "CharterUP",
+      "reason": "board id not found (404)",
+      "token": "charterup"
+    },
+    {
+      "company": "GHX",
+      "reason": "board id not found (404)",
+      "token": "ghx"
+    },
+    {
+      "company": "Power to Decide",
+      "reason": "board id not found (404)",
+      "token": "powertodecide"
+    },
+    {
+      "company": "RADAR",
+      "reason": "board id not found (404)",
+      "token": "radar"
+    },
+    {
+      "company": "Nametag",
+      "reason": "board id not found (404)",
+      "token": "nametag"
+    },
+    {
+      "company": "Whisper Aero",
+      "reason": "board id not found (404)",
+      "token": "whisperaero"
+    },
+    {
+      "company": "Artefact",
+      "reason": "board id not found (404)",
+      "token": "artefact"
+    },
+    {
+      "company": "Loft Federal",
+      "reason": "board id not found (404)",
+      "token": "loftfederal"
+    },
+    {
+      "company": "Midi Health",
+      "reason": "board id not found (404)",
+      "token": "midihealth"
+    },
+    {
+      "company": "WPP Media",
+      "reason": "board id not found (404)",
+      "token": "wppmedia"
+    },
+    {
+      "company": "Mercer",
+      "reason": "board id not found (404)",
+      "token": "mercer"
+    },
+    {
+      "company": "BambooHR",
+      "reason": "board id not found (404)",
+      "token": "bamboohr"
+    },
+    {
+      "company": "Snowflake",
+      "reason": "board id not found (404)",
+      "token": "snowflake"
+    },
+    {
+      "company": "HubSpot",
+      "reason": "board id not found (404)",
+      "token": "hubspot"
+    },
+    {
+      "company": "PagerDuty",
+      "reason": "board id not found (404)",
+      "token": "pagerduty"
+    },
+    {
+      "company": "Carta",
+      "reason": "board id not found (404)",
+      "token": "carta"
+    },
+    {
+      "company": "Brex",
+      "reason": "board id not found (404)",
+      "token": "brex"
+    },
+    {
+      "company": "Plaid",
+      "reason": "board id not found (404)",
+      "token": "plaid"
+    },
+    {
+      "company": "Stripe",
+      "reason": "board id not found (404)",
+      "token": "stripe"
+    },
+    {
+      "company": "Notion",
+      "reason": "board id not found (404)",
+      "token": "notion"
+    },
+    {
+      "company": "Asana",
+      "reason": "board id not found (404)",
+      "token": "asana"
+    },
+    {
+      "company": "Workato",
+      "reason": "board id not found (404)",
+      "token": "workato"
+    },
+    {
+      "company": "Zapier",
+      "reason": "board id not found (404)",
+      "token": "zapier"
+    },
+    {
+      "company": "Elastic",
+      "reason": "board id not found (404)",
+      "token": "elastic"
+    },
+    {
+      "company": "Confluent",
+      "reason": "board id not found (404)",
+      "token": "confluent"
+    },
+    {
+      "company": "Samsara",
+      "reason": "board id not found (404)",
+      "token": "samsara"
+    },
+    {
+      "company": "JumpCloud",
+      "reason": "board id not found (404)",
+      "token": "jumpcloud"
+    },
+    {
+      "company": "Quantum Metric",
+      "reason": "board id not found (404)",
+      "token": "quantummetric"
+    },
+    {
+      "company": "Sovrn",
+      "reason": "board id not found (404)",
+      "token": "sovrn"
+    },
+    {
+      "company": "Valimail",
+      "reason": "board id not found (404)",
+      "token": "valimail"
+    },
+    {
+      "company": "Strive Health",
+      "reason": "board id not found (404)",
+      "token": "strivehealth"
+    },
+    {
+      "company": "Homebot",
+      "reason": "board id not found (404)",
+      "token": "homebot"
+    },
+    {
+      "company": "KPA",
+      "reason": "board id not found (404)",
+      "token": "kpa"
+    },
+    {
+      "company": "Redaptive",
+      "reason": "board id not found (404)",
+      "token": "redaptive"
+    },
+    {
+      "company": "Adswerve",
+      "reason": "board id not found (404)",
+      "token": "adswerve"
+    },
+    {
+      "company": "Artifact Uprising",
+      "reason": "board id not found (404)",
+      "token": "artifactuprising"
+    },
+    {
+      "company": "Magnite",
+      "reason": "board id not found (404)",
+      "token": "magnite"
+    },
+    {
+      "company": "Envoy",
+      "reason": "board id not found (404)",
+      "token": "envoy"
+    },
+    {
+      "company": "Stream",
+      "reason": "board id not found (404)",
+      "token": "getstream"
+    },
+    {
+      "company": "Identity Digital",
+      "reason": "board id not found (404)",
+      "token": "identitydigital"
+    },
+    {
+      "company": "VideoAmp",
+      "reason": "board id not found (404)",
+      "token": "videoamp"
+    },
+    {
+      "company": "Scaled Agile",
+      "reason": "board id not found (404)",
+      "token": "scaledagile"
+    },
+    {
+      "company": "SimplePractice",
+      "reason": "board id not found (404)",
+      "token": "simplepractice"
+    },
+    {
+      "company": "Artera",
+      "reason": "board id not found (404)",
+      "token": "artera"
+    },
+    {
+      "company": "SonderMind",
+      "reason": "board id not found (404)",
+      "token": "sondermind"
+    },
+    {
+      "company": "AgentSync",
+      "reason": "board id not found (404)",
+      "token": "agentsync"
+    },
+    {
+      "company": "Contentful",
+      "reason": "board id not found (404)",
+      "token": "contentful"
+    },
+    {
+      "company": "Iterable",
+      "reason": "board id not found (404)",
+      "token": "iterable"
+    },
+    {
+      "company": "Vendavo",
+      "reason": "board id not found (404)",
+      "token": "vendavo"
+    },
+    {
+      "company": "SambaSafety",
+      "reason": "board id not found (404)",
+      "token": "sambasafety"
+    },
+    {
+      "company": "AirDNA",
+      "reason": "board id not found (404)",
+      "token": "airdna"
+    },
+    {
+      "company": "Duda",
+      "reason": "board id not found (404)",
+      "token": "duda"
+    },
+    {
+      "company": "Actabl",
+      "reason": "board id not found (404)",
+      "token": "actabl"
+    },
+    {
+      "company": "Dataiku",
+      "reason": "board id not found (404)",
+      "token": "dataiku"
+    },
+    {
+      "company": "Rightway",
+      "reason": "board id not found (404)",
+      "token": "rightway"
+    },
+    {
+      "company": "Semgrep",
+      "reason": "board id not found (404)",
+      "token": "semgrep"
+    },
+    {
+      "company": "Huntress",
+      "reason": "board id not found (404)",
+      "token": "huntress"
+    },
+    {
+      "company": "ezCater",
+      "reason": "board id not found (404)",
+      "token": "ezcater"
+    },
+    {
+      "company": "Secureframe",
+      "reason": "board id not found (404)",
+      "token": "secureframe"
+    },
+    {
+      "company": "Red Canary",
+      "reason": "board id not found (404)",
+      "token": "redcanary"
+    },
+    {
+      "company": "Prove",
+      "reason": "board id not found (404)",
+      "token": "prove"
+    },
+    {
+      "company": "Uplight",
+      "reason": "board id not found (404)",
+      "token": "uplight"
+    },
+    {
+      "company": "Apryse",
+      "reason": "board id not found (404)",
+      "token": "apryse"
+    },
+    {
+      "company": "Trustpilot",
+      "reason": "board id not found (404)",
+      "token": "trustpilot"
+    },
+    {
+      "company": "Cin7",
+      "reason": "board id not found (404)",
+      "token": "cin7"
+    },
+    {
+      "company": "Invoca",
+      "reason": "board id not found (404)",
+      "token": "invoca"
+    },
+    {
+      "company": "Signifyd",
+      "reason": "board id not found (404)",
+      "token": "signifyd"
+    },
+    {
+      "company": "Quantive",
+      "reason": "board id not found (404)",
+      "token": "quantive"
+    },
+    {
+      "company": "Propelus",
+      "reason": "board id not found (404)",
+      "token": "propelus"
+    },
+    {
+      "company": "TIFIN",
+      "reason": "board id not found (404)",
+      "token": "tifin"
+    },
+    {
+      "company": "Zone & Co",
+      "reason": "board id not found (404)",
+      "token": "zoneandco"
+    },
+    {
+      "company": "Engine",
+      "reason": "board id not found (404)",
+      "token": "engine"
+    },
+    {
+      "company": "Point B",
+      "reason": "board id not found (404)",
+      "token": "pointb"
+    },
+    {
+      "company": "BillGO",
+      "reason": "board id not found (404)",
+      "token": "billgo"
+    },
+    {
+      "company": "Wowza",
+      "reason": "board id not found (404)",
+      "token": "wowza"
+    },
+    {
+      "company": "Veritone",
+      "reason": "board id not found (404)",
+      "token": "veritone"
+    }
+  ],
+  "generated": "2026-08-06T23:23:39+00:00",
   "jobs": {
     "excel:bb20c0eb-69f9-4b6b-a0dd-473b98b6b38a": {
       "company": "Excel Impact",

@@ -1,7 +1,258 @@
 {
-  "companies_watched": 29,
-  "fetch_errors": [],
-  "generated": "2026-08-05T22:24:47+00:00",
+  "companies_watched": 98,
+  "fetch_errors": [
+    {
+      "company": "Deel",
+      "reason": "board token not found (404)",
+      "token": "deel"
+    },
+    {
+      "company": "Restaurant365",
+      "reason": "board token not found (404)",
+      "token": "restaurant365"
+    },
+    {
+      "company": "Ibotta",
+      "reason": "board token not found (404)",
+      "token": "ibotta"
+    },
+    {
+      "company": "Lockton",
+      "reason": "board token not found (404)",
+      "token": "lockton"
+    },
+    {
+      "company": "Hanger",
+      "reason": "board token not found (404)",
+      "token": "hanger"
+    },
+    {
+      "company": "GHX",
+      "reason": "board token not found (404)",
+      "token": "ghx"
+    },
+    {
+      "company": "Mercer",
+      "reason": "board token not found (404)",
+      "token": "mercer"
+    },
+    {
+      "company": "BambooHR",
+      "reason": "board token not found (404)",
+      "token": "bamboohr"
+    },
+    {
+      "company": "Snowflake",
+      "reason": "board token not found (404)",
+      "token": "snowflake"
+    },
+    {
+      "company": "Plaid",
+      "reason": "board token not found (404)",
+      "token": "plaid"
+    },
+    {
+      "company": "Notion",
+      "reason": "board token not found (404)",
+      "token": "notion"
+    },
+    {
+      "company": "Zapier",
+      "reason": "board token not found (404)",
+      "token": "zapier"
+    },
+    {
+      "company": "Confluent",
+      "reason": "board token not found (404)",
+      "token": "confluent"
+    },
+    {
+      "company": "JumpCloud",
+      "reason": "board token not found (404)",
+      "token": "jumpcloud"
+    },
+    {
+      "company": "Quantum Metric",
+      "reason": "board token not found (404)",
+      "token": "quantummetric"
+    },
+    {
+      "company": "Parsyl",
+      "reason": "board token not found (404)",
+      "token": "parsyl"
+    },
+    {
+      "company": "Homebot",
+      "reason": "board token not found (404)",
+      "token": "homebot"
+    },
+    {
+      "company": "KPA",
+      "reason": "board token not found (404)",
+      "token": "kpa"
+    },
+    {
+      "company": "Redaptive",
+      "reason": "board token not found (404)",
+      "token": "redaptive"
+    },
+    {
+      "company": "Adswerve",
+      "reason": "board token not found (404)",
+      "token": "adswerve"
+    },
+    {
+      "company": "Artifact Uprising",
+      "reason": "board token not found (404)",
+      "token": "artifactuprising"
+    },
+    {
+      "company": "Magnite",
+      "reason": "board token not found (404)",
+      "token": "magnite"
+    },
+    {
+      "company": "Envoy",
+      "reason": "board token not found (404)",
+      "token": "envoy"
+    },
+    {
+      "company": "Stream",
+      "reason": "board token not found (404)",
+      "token": "getstream"
+    },
+    {
+      "company": "Identity Digital",
+      "reason": "board token not found (404)",
+      "token": "identitydigital"
+    },
+    {
+      "company": "Scaled Agile",
+      "reason": "board token not found (404)",
+      "token": "scaledagile"
+    },
+    {
+      "company": "SimplePractice",
+      "reason": "board token not found (404)",
+      "token": "simplepractice"
+    },
+    {
+      "company": "Artera",
+      "reason": "board token not found (404)",
+      "token": "artera"
+    },
+    {
+      "company": "SonderMind",
+      "reason": "board token not found (404)",
+      "token": "sondermind"
+    },
+    {
+      "company": "AgentSync",
+      "reason": "board token not found (404)",
+      "token": "agentsync"
+    },
+    {
+      "company": "Vendavo",
+      "reason": "board token not found (404)",
+      "token": "vendavo"
+    },
+    {
+      "company": "SambaSafety",
+      "reason": "board token not found (404)",
+      "token": "sambasafety"
+    },
+    {
+      "company": "AirDNA",
+      "reason": "board token not found (404)",
+      "token": "airdna"
+    },
+    {
+      "company": "Actabl",
+      "reason": "board token not found (404)",
+      "token": "actabl"
+    },
+    {
+      "company": "Semgrep",
+      "reason": "board token not found (404)",
+      "token": "semgrep"
+    },
+    {
+      "company": "ezCater",
+      "reason": "board token not found (404)",
+      "token": "ezcater"
+    },
+    {
+      "company": "Secureframe",
+      "reason": "board token not found (404)",
+      "token": "secureframe"
+    },
+    {
+      "company": "Findhelp",
+      "reason": "board token not found (404)",
+      "token": "findhelp"
+    },
+    {
+      "company": "Red Canary",
+      "reason": "board token not found (404)",
+      "token": "redcanary"
+    },
+    {
+      "company": "Uplight",
+      "reason": "board token not found (404)",
+      "token": "uplight"
+    },
+    {
+      "company": "Apryse",
+      "reason": "board token not found (404)",
+      "token": "apryse"
+    },
+    {
+      "company": "Cin7",
+      "reason": "board token not found (404)",
+      "token": "cin7"
+    },
+    {
+      "company": "Signifyd",
+      "reason": "board token not found (404)",
+      "token": "signifyd"
+    },
+    {
+      "company": "Quantive",
+      "reason": "board token not found (404)",
+      "token": "quantive"
+    },
+    {
+      "company": "Propelus",
+      "reason": "board token not found (404)",
+      "token": "propelus"
+    },
+    {
+      "company": "Zone & Co",
+      "reason": "board token not found (404)",
+      "token": "zoneandco"
+    },
+    {
+      "company": "Point B",
+      "reason": "board token not found (404)",
+      "token": "pointb"
+    },
+    {
+      "company": "BillGO",
+      "reason": "board token not found (404)",
+      "token": "billgo"
+    },
+    {
+      "company": "Wowza",
+      "reason": "board token not found (404)",
+      "token": "wowza"
+    },
+    {
+      "company": "Veritone",
+      "reason": "board token not found (404)",
+      "token": "veritone"
+    }
+  ],
+  "generated": "2026-08-06T23:22:24+00:00",
   "jobs": {
     "albedo:4277961009": {
       "company": "Albedo",

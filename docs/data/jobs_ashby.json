@@ -1,7 +1,413 @@
 {
-  "companies_watched": 15,
-  "fetch_errors": [],
-  "generated": "2026-08-05T22:25:01+00:00",
+  "companies_watched": 98,
+  "fetch_errors": [
+    {
+      "company": "GitLab",
+      "reason": "board slug not found (404)",
+      "token": "gitlab"
+    },
+    {
+      "company": "Gusto",
+      "reason": "board slug not found (404)",
+      "token": "gusto"
+    },
+    {
+      "company": "Toast",
+      "reason": "board slug not found (404)",
+      "token": "toast"
+    },
+    {
+      "company": "Restaurant365",
+      "reason": "board slug not found (404)",
+      "token": "restaurant365"
+    },
+    {
+      "company": "Lockton",
+      "reason": "board slug not found (404)",
+      "token": "lockton"
+    },
+    {
+      "company": "Hanger",
+      "reason": "board slug not found (404)",
+      "token": "hanger"
+    },
+    {
+      "company": "Dropbox",
+      "reason": "board slug not found (404)",
+      "token": "dropbox"
+    },
+    {
+      "company": "Webflow",
+      "reason": "board slug not found (404)",
+      "token": "webflow"
+    },
+    {
+      "company": "Okta",
+      "reason": "board slug not found (404)",
+      "token": "okta"
+    },
+    {
+      "company": "Domino Data Lab",
+      "reason": "board slug not found (404)",
+      "token": "dominodatalab"
+    },
+    {
+      "company": "Highwire",
+      "reason": "board slug not found (404)",
+      "token": "highwire"
+    },
+    {
+      "company": "Skedda",
+      "reason": "board slug not found (404)",
+      "token": "skedda"
+    },
+    {
+      "company": "Tomorrow",
+      "reason": "board slug not found (404)",
+      "token": "tomorrow"
+    },
+    {
+      "company": "Albedo",
+      "reason": "board slug not found (404)",
+      "token": "albedo"
+    },
+    {
+      "company": "Authenticx",
+      "reason": "board slug not found (404)",
+      "token": "authenticx"
+    },
+    {
+      "company": "Blackthorn",
+      "reason": "board slug not found (404)",
+      "token": "blackthorn"
+    },
+    {
+      "company": "CharterUP",
+      "reason": "board slug not found (404)",
+      "token": "charterup"
+    },
+    {
+      "company": "GHX",
+      "reason": "board slug not found (404)",
+      "token": "ghx"
+    },
+    {
+      "company": "Power to Decide",
+      "reason": "board slug not found (404)",
+      "token": "powertodecide"
+    },
+    {
+      "company": "Nametag",
+      "reason": "board slug not found (404)",
+      "token": "nametag"
+    },
+    {
+      "company": "Whisper Aero",
+      "reason": "board slug not found (404)",
+      "token": "whisperaero"
+    },
+    {
+      "company": "Artefact",
+      "reason": "board slug not found (404)",
+      "token": "artefact"
+    },
+    {
+      "company": "Loft Federal",
+      "reason": "board slug not found (404)",
+      "token": "loftfederal"
+    },
+    {
+      "company": "Midi Health",
+      "reason": "board slug not found (404)",
+      "token": "midihealth"
+    },
+    {
+      "company": "WPP Media",
+      "reason": "board slug not found (404)",
+      "token": "wppmedia"
+    },
+    {
+      "company": "Mercer",
+      "reason": "board slug not found (404)",
+      "token": "mercer"
+    },
+    {
+      "company": "BambooHR",
+      "reason": "board slug not found (404)",
+      "token": "bamboohr"
+    },
+    {
+      "company": "HubSpot",
+      "reason": "board slug not found (404)",
+      "token": "hubspot"
+    },
+    {
+      "company": "PagerDuty",
+      "reason": "board slug not found (404)",
+      "token": "pagerduty"
+    },
+    {
+      "company": "Carta",
+      "reason": "board slug not found (404)",
+      "token": "carta"
+    },
+    {
+      "company": "Brex",
+      "reason": "board slug not found (404)",
+      "token": "brex"
+    },
+    {
+      "company": "Stripe",
+      "reason": "board slug not found (404)",
+      "token": "stripe"
+    },
+    {
+      "company": "Asana",
+      "reason": "board slug not found (404)",
+      "token": "asana"
+    },
+    {
+      "company": "Workato",
+      "reason": "board slug not found (404)",
+      "token": "workato"
+    },
+    {
+      "company": "Elastic",
+      "reason": "board slug not found (404)",
+      "token": "elastic"
+    },
+    {
+      "company": "Samsara",
+      "reason": "board slug not found (404)",
+      "token": "samsara"
+    },
+    {
+      "company": "JumpCloud",
+      "reason": "board slug not found (404)",
+      "token": "jumpcloud"
+    },
+    {
+      "company": "Quantum Metric",
+      "reason": "board slug not found (404)",
+      "token": "quantummetric"
+    },
+    {
+      "company": "Sovrn",
+      "reason": "board slug not found (404)",
+      "token": "sovrn"
+    },
+    {
+      "company": "Valimail",
+      "reason": "board slug not found (404)",
+      "token": "valimail"
+    },
+    {
+      "company": "Strive Health",
+      "reason": "board slug not found (404)",
+      "token": "strivehealth"
+    },
+    {
+      "company": "Parsyl",
+      "reason": "board slug not found (404)",
+      "token": "parsyl"
+    },
+    {
+      "company": "KPA",
+      "reason": "board slug not found (404)",
+      "token": "kpa"
+    },
+    {
+      "company": "Redaptive",
+      "reason": "board slug not found (404)",
+      "token": "redaptive"
+    },
+    {
+      "company": "Adswerve",
+      "reason": "board slug not found (404)",
+      "token": "adswerve"
+    },
+    {
+      "company": "Artifact Uprising",
+      "reason": "board slug not found (404)",
+      "token": "artifactuprising"
+    },
+    {
+      "company": "Magnite",
+      "reason": "board slug not found (404)",
+      "token": "magnite"
+    },
+    {
+      "company": "Stream",
+      "reason": "board slug not found (404)",
+      "token": "getstream"
+    },
+    {
+      "company": "Identity Digital",
+      "reason": "board slug not found (404)",
+      "token": "identitydigital"
+    },
+    {
+      "company": "VideoAmp",
+      "reason": "board slug not found (404)",
+      "token": "videoamp"
+    },
+    {
+      "company": "Scaled Agile",
+      "reason": "board slug not found (404)",
+      "token": "scaledagile"
+    },
+    {
+      "company": "SimplePractice",
+      "reason": "board slug not found (404)",
+      "token": "simplepractice"
+    },
+    {
+      "company": "Artera",
+      "reason": "board slug not found (404)",
+      "token": "artera"
+    },
+    {
+      "company": "AgentSync",
+      "reason": "board slug not found (404)",
+      "token": "agentsync"
+    },
+    {
+      "company": "Contentful",
+      "reason": "board slug not found (404)",
+      "token": "contentful"
+    },
+    {
+      "company": "Vendavo",
+      "reason": "board slug not found (404)",
+      "token": "vendavo"
+    },
+    {
+      "company": "SambaSafety",
+      "reason": "board slug not found (404)",
+      "token": "sambasafety"
+    },
+    {
+      "company": "AirDNA",
+      "reason": "board slug not found (404)",
+      "token": "airdna"
+    },
+    {
+      "company": "Duda",
+      "reason": "board slug not found (404)",
+      "token": "duda"
+    },
+    {
+      "company": "Actabl",
+      "reason": "board slug not found (404)",
+      "token": "actabl"
+    },
+    {
+      "company": "Dataiku",
+      "reason": "board slug not found (404)",
+      "token": "dataiku"
+    },
+    {
+      "company": "Rightway",
+      "reason": "board slug not found (404)",
+      "token": "rightway"
+    },
+    {
+      "company": "Huntress",
+      "reason": "board slug not found (404)",
+      "token": "huntress"
+    },
+    {
+      "company": "ezCater",
+      "reason": "board slug not found (404)",
+      "token": "ezcater"
+    },
+    {
+      "company": "Findhelp",
+      "reason": "board slug not found (404)",
+      "token": "findhelp"
+    },
+    {
+      "company": "Red Canary",
+      "reason": "board slug not found (404)",
+      "token": "redcanary"
+    },
+    {
+      "company": "Prove",
+      "reason": "board slug not found (404)",
+      "token": "prove"
+    },
+    {
+      "company": "Uplight",
+      "reason": "board slug not found (404)",
+      "token": "uplight"
+    },
+    {
+      "company": "Apryse",
+      "reason": "board slug not found (404)",
+      "token": "apryse"
+    },
+    {
+      "company": "Trustpilot",
+      "reason": "board slug not found (404)",
+      "token": "trustpilot"
+    },
+    {
+      "company": "Cin7",
+      "reason": "board slug not found (404)",
+      "token": "cin7"
+    },
+    {
+      "company": "Invoca",
+      "reason": "board slug not found (404)",
+      "token": "invoca"
+    },
+    {
+      "company": "Signifyd",
+      "reason": "board slug not found (404)",
+      "token": "signifyd"
+    },
+    {
+      "company": "Quantive",
+      "reason": "board slug not found (404)",
+      "token": "quantive"
+    },
+    {
+      "company": "TIFIN",
+      "reason": "board slug not found (404)",
+      "token": "tifin"
+    },
+    {
+      "company": "Zone & Co",
+      "reason": "board slug not found (404)",
+      "token": "zoneandco"
+    },
+    {
+      "company": "Engine",
+      "reason": "board slug not found (404)",
+      "token": "engine"
+    },
+    {
+      "company": "Point B",
+      "reason": "board slug not found (404)",
+      "token": "pointb"
+    },
+    {
+      "company": "BillGO",
+      "reason": "board slug not found (404)",
+      "token": "billgo"
+    },
+    {
+      "company": "Wowza",
+      "reason": "board slug not found (404)",
+      "token": "wowza"
+    },
+    {
+      "company": "Veritone",
+      "reason": "board slug not found (404)",
+      "token": "veritone"
+    }
+  ],
+  "generated": "2026-08-06T23:24:31+00:00",
   "jobs": {
     "astro-mechanica:b1613597-eef8-445a-a7cc-d48fd0b57ac4": {
       "comp": "$250K - $340K",
