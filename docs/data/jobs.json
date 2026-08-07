@@ -2,16 +2,6 @@
   "companies_watched": 88,
   "fetch_errors": [
     {
-      "company": "PagerDuty",
-      "reason": "network failure: HTTPSConnectionPool(host='boards-api.greenhouse.io', port=443): Read timed out. (read timeout=20)",
-      "token": "pagerduty"
-    },
-    {
-      "company": "Prove",
-      "reason": "network failure: HTTPSConnectionPool(host='boards-api.greenhouse.io', port=443): Read timed out. (read timeout=20)",
-      "token": "prove"
-    },
-    {
       "company": "Automattic",
       "reason": "board token not found (404)",
       "token": "automattic"
@@ -167,7 +157,7 @@
       "token": "metabase"
     }
   ],
-  "generated": "2026-08-07T14:02:06+00:00",
+  "generated": "2026-08-07T14:05:11+00:00",
   "jobs": {
     "albedo:4277961009": {
       "company": "Albedo",
