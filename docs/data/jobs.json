@@ -1,7 +1,13 @@
 {
   "companies_watched": 57,
-  "fetch_errors": [],
-  "generated": "2026-08-07T14:28:07+00:00",
+  "fetch_errors": [
+    {
+      "company": "Trustpilot",
+      "reason": "network failure: HTTPSConnectionPool(host='boards-api.greenhouse.io', port=443): Read timed out. (read timeout=20)",
+      "token": "trustpilot"
+    }
+  ],
+  "generated": "2026-08-07T21:18:35+00:00",
   "jobs": {
     "albedo:4277961009": {
       "company": "Albedo",
