@@ -1,7 +1,173 @@
 {
-  "companies_watched": 48,
-  "fetch_errors": [],
-  "generated": "2026-08-07T13:32:15+00:00",
+  "companies_watched": 88,
+  "fetch_errors": [
+    {
+      "company": "PagerDuty",
+      "reason": "network failure: HTTPSConnectionPool(host='boards-api.greenhouse.io', port=443): Read timed out. (read timeout=20)",
+      "token": "pagerduty"
+    },
+    {
+      "company": "Prove",
+      "reason": "network failure: HTTPSConnectionPool(host='boards-api.greenhouse.io', port=443): Read timed out. (read timeout=20)",
+      "token": "prove"
+    },
+    {
+      "company": "Automattic",
+      "reason": "board token not found (404)",
+      "token": "automattic"
+    },
+    {
+      "company": "Buffer",
+      "reason": "board token not found (404)",
+      "token": "buffer"
+    },
+    {
+      "company": "Hotjar",
+      "reason": "board token not found (404)",
+      "token": "hotjar"
+    },
+    {
+      "company": "Doist",
+      "reason": "board token not found (404)",
+      "token": "doist"
+    },
+    {
+      "company": "Basecamp",
+      "reason": "board token not found (404)",
+      "token": "basecamp"
+    },
+    {
+      "company": "Help Scout",
+      "reason": "board token not found (404)",
+      "token": "helpscout"
+    },
+    {
+      "company": "Close",
+      "reason": "board token not found (404)",
+      "token": "close"
+    },
+    {
+      "company": "Toggl",
+      "reason": "board token not found (404)",
+      "token": "toggl"
+    },
+    {
+      "company": "Hubstaff",
+      "reason": "board token not found (404)",
+      "token": "hubstaff"
+    },
+    {
+      "company": "15Five",
+      "reason": "board token not found (404)",
+      "token": "15five"
+    },
+    {
+      "company": "DuckDuckGo",
+      "reason": "board token not found (404)",
+      "token": "duckduckgo"
+    },
+    {
+      "company": "DataStax",
+      "reason": "board token not found (404)",
+      "token": "datastax"
+    },
+    {
+      "company": "Loom",
+      "reason": "board token not found (404)",
+      "token": "loom"
+    },
+    {
+      "company": "Circle",
+      "reason": "board token not found (404)",
+      "token": "circle"
+    },
+    {
+      "company": "Quora",
+      "reason": "board token not found (404)",
+      "token": "quora"
+    },
+    {
+      "company": "Apollo GraphQL",
+      "reason": "board token not found (404)",
+      "token": "apollographql"
+    },
+    {
+      "company": "Supabase",
+      "reason": "board token not found (404)",
+      "token": "supabase"
+    },
+    {
+      "company": "PostHog",
+      "reason": "board token not found (404)",
+      "token": "posthog"
+    },
+    {
+      "company": "Stedi",
+      "reason": "board token not found (404)",
+      "token": "stedi"
+    },
+    {
+      "company": "ReCharge",
+      "reason": "board token not found (404)",
+      "token": "recharge"
+    },
+    {
+      "company": "Podia",
+      "reason": "board token not found (404)",
+      "token": "podia"
+    },
+    {
+      "company": "Wildbit",
+      "reason": "board token not found (404)",
+      "token": "wildbit"
+    },
+    {
+      "company": "ConvertKit",
+      "reason": "board token not found (404)",
+      "token": "convertkit"
+    },
+    {
+      "company": "Float",
+      "reason": "board token not found (404)",
+      "token": "float"
+    },
+    {
+      "company": "Oyster",
+      "reason": "board token not found (404)",
+      "token": "oyster"
+    },
+    {
+      "company": "Deel",
+      "reason": "board token not found (404)",
+      "token": "deelhr"
+    },
+    {
+      "company": "Maze",
+      "reason": "board token not found (404)",
+      "token": "maze"
+    },
+    {
+      "company": "Dovetail",
+      "reason": "board token not found (404)",
+      "token": "dovetail"
+    },
+    {
+      "company": "Airbyte",
+      "reason": "board token not found (404)",
+      "token": "airbyte"
+    },
+    {
+      "company": "Census",
+      "reason": "board token not found (404)",
+      "token": "census"
+    },
+    {
+      "company": "Metabase",
+      "reason": "board token not found (404)",
+      "token": "metabase"
+    }
+  ],
+  "generated": "2026-08-07T14:02:06+00:00",
   "jobs": {
     "albedo:4277961009": {
       "company": "Albedo",
