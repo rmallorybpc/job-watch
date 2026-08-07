@@ -1,13 +1,8 @@
 company_name,board_token
 GitLab,gitlab
 Gusto,gusto
-Deel,deel
 Toast,toast
-Restaurant365,restaurant365
-Ibotta,ibotta
 Guild,guild
-Lockton,lockton
-Hanger,hanger
 Dropbox,dropbox
 Webflow,webflow
 Okta,okta
@@ -20,7 +15,6 @@ Albedo,albedo
 Authenticx,authenticx
 Blackthorn,blackthorn
 CharterUP,charterup
-GHX,ghx
 Power to Decide,powertodecide
 RADAR,radar
 Nametag,nametag
@@ -29,71 +23,27 @@ Artefact,artefact
 Loft Federal,loftfederal
 Midi Health,midihealth
 WPP Media,wppmedia
-Mercer,mercer
-BambooHR,bamboohr
-Snowflake,snowflake
 HubSpot,hubspot
 PagerDuty,pagerduty
 Carta,carta
 Brex,brex
-Plaid,plaid
 Stripe,stripe
-Notion,notion
 Asana,asana
 Workato,workato
-Zapier,zapier
 Elastic,elastic
-Confluent,confluent
 Samsara,samsara
-JumpCloud,jumpcloud
-Quantum Metric,quantummetric
 Sovrn,sovrn
 Valimail,valimail
 Strive Health,strivehealth
-Parsyl,parsyl
-Homebot,homebot
-KPA,kpa
-Redaptive,redaptive
-Adswerve,adswerve
-Artifact Uprising,artifactuprising
-Magnite,magnite
-Envoy,envoy
-Stream,getstream
-Identity Digital,identitydigital
 VideoAmp,videoamp
-Scaled Agile,scaledagile
-SimplePractice,simplepractice
-Artera,artera
-SonderMind,sondermind
-AgentSync,agentsync
 Contentful,contentful
 Iterable,iterable
-Vendavo,vendavo
-SambaSafety,sambasafety
-AirDNA,airdna
 Duda,duda
-Actabl,actabl
 Dataiku,dataiku
 Rightway,rightway
-Semgrep,semgrep
 Huntress,huntress
-ezCater,ezcater
-Secureframe,secureframe
-Findhelp,findhelp
-Red Canary,redcanary
 Prove,prove
-Uplight,uplight
-Apryse,apryse
 Trustpilot,trustpilot
-Cin7,cin7
 Invoca,invoca
-Signifyd,signifyd
-Quantive,quantive
-Propelus,propelus
 TIFIN,tifin
-Zone & Co,zoneandco
 Engine,engine
-Point B,pointb
-BillGO,billgo
-Wowza,wowza
-Veritone,veritone
