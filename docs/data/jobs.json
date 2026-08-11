@@ -1,7 +1,13 @@
 {
   "companies_watched": 57,
-  "fetch_errors": [],
-  "generated": "2026-08-10T21:19:46+00:00",
+  "fetch_errors": [
+    {
+      "company": "Blackthorn",
+      "reason": "network failure: HTTPSConnectionPool(host='boards-api.greenhouse.io', port=443): Read timed out. (read timeout=20)",
+      "token": "blackthorn"
+    }
+  ],
+  "generated": "2026-08-11T13:34:08+00:00",
   "jobs": {
     "albedo:4277961009": {
       "company": "Albedo",
