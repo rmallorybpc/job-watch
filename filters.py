@@ -17,40 +17,98 @@ imports it.
 
 # Titles to keep. Case-insensitive substring match against the job title.
 # Any single hit keeps the role.
+#
+# Kept deliberately broad on senior People-leadership phrasings, since
+# companies vary the wording heavily (comma forms, "&" forms, CHRO,
+# SVP, etc.). The TITLE_EXCLUDE list below removes junior and IC roles
+# that would otherwise slip through on a broad keyword.
 TITLE_KEYWORDS = [
+    # Chief / C-suite
     "chief people",
+    "chief human resources",
+    "chief hr",
+    "chief talent",
     "cpo",
+    "chro",
+    # VP forms, both "of" and comma phrasings
     "vp of people",
     "vp, people",
+    "vp people",
     "vice president of people",
+    "vice president, people",
     "vp of hr",
     "vp, hr",
+    "vp hr",
     "vp of human resources",
+    "vp, human resources",
     "vice president of human resources",
+    "vice president, human resources",
+    "vp of talent",
+    "vp, talent",
+    "vp of total rewards",
+    "svp people",
+    "svp, people",
+    "svp of people",
+    "svp human resources",
+    "svp, human resources",
+    # Head of
     "head of people",
     "head of hr",
-    "director of people",
-    "people operations",
-    "director, people",
-    "senior director of people",
-    "sr. director of people",
-    "vp of talent",
+    "head of human resources",
     "head of talent",
+    "head of total rewards",
+    # Director forms
+    "director of people",
+    "director, people",
+    "people operations director",
+    "senior director of people",
+    "senior director, people",
+    "sr. director of people",
+    "sr director of people",
+    "director of human resources",
+    "director, human resources",
+    "director of talent management",
+    # Function phrasings that read senior in context; TITLE_EXCLUDE
+    # strips the junior variants (analyst, coordinator, etc.).
+    "people operations",
+    "people & culture",
+    "people and culture",
+    "human resources director",
+    "people business partner",
 ]
 
-# Titles to drop even if they matched above. Kills recruiting-only roles
-# and IC postings that use senior-sounding language.
+# Titles to drop even if they matched above. Kills recruiting-only
+# roles and clearly junior or IC postings that use senior-sounding
+# language.
+#
+# NOTE: entries here are matched as substrings, so keep them specific
+# enough not to kill a senior role. "analyst"/"specialist" are junior
+# signals for THIS search (Tracey wants leadership, not IC), so they
+# stay, but they are the aggressive ones to revisit if a real senior
+# role is ever dropped for containing one of these words.
 TITLE_EXCLUDE = [
     "recruiter",
     "recruiting coordinator",
+    "talent acquisition coordinator",
     "sourcer",
     "intern",
+    "internship",
     "coordinator",
     "assistant",
+    "administrator",
+    "junior",
+    "associate",
     "analyst",
     "specialist",
+    "generalist",
     "partner ii",
     "hrbp ii",
+    "part-time",
+    "part time",
+    "contract",
+    "contractor",
+    "temporary",
+    "fixed-term",
 ]
 
 # Location filter, exclude-based. Leave LOCATION_KEYWORDS empty to keep
