@@ -326,6 +326,14 @@ def main() -> None:
 
         listings = fetch_listings(name, bid)
         if not listings:
+            # Distinguish a genuinely empty/unreadable board from a real
+            # fetch error. A fetch error already logged to FETCH_ERRORS
+            # and printed an ERROR line above; this prints a line so a
+            # board that returned zero postings is visible rather than
+            # silently skipped.
+            already_errored = any(e["token"] == bid for e in FETCH_ERRORS)
+            if not already_errored:
+                print("  0 posted (board returned no jobs)")
             time.sleep(REQUEST_DELAY_SECONDS)
             continue
 
