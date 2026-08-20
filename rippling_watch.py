@@ -317,6 +317,10 @@ def main() -> None:
     jobs_log = load_log()
     new_records = []
     checked = 0
+    # For closed-role reconciliation: board_ids that fetched successfully
+    # with a non-empty result, and job_keys seen live in those fetches.
+    scanned_ok = set()
+    seen_keys = set()
 
     print(f"Checking {len(companies)} companies...\n")
 
@@ -336,6 +340,12 @@ def main() -> None:
                 print("  0 posted (board returned no jobs)")
             time.sleep(REQUEST_DELAY_SECONDS)
             continue
+
+        # Fetched successfully with real postings, so its log entries can
+        # be safely reconciled against what is live now.
+        scanned_ok.add(bid)
+        for job in listings:
+            seen_keys.add(f"{bid}:{job.get('uuid') or job.get('id') or ''}")
 
         hits = 0
         for job in listings:
@@ -382,6 +392,7 @@ def main() -> None:
                 "first_seen": first_seen,
                 "description": description,
                 "issue_url": issue_url,
+                "closed_date": "",
                 "source": "rippling",
             }
             record["real_fit"] = compute_real_fit(record)
@@ -390,6 +401,26 @@ def main() -> None:
 
         print(f"  {len(listings)} posted, {hits} new match{'' if hits == 1 else 'es'}")
         time.sleep(REQUEST_DELAY_SECONDS)
+
+    # Closed-role reconciliation. A logged role is marked closed only if
+    # its company fetched successfully this run (bid in scanned_ok) and
+    # its job_key was not among the live postings. Never fires for a
+    # company that errored or returned empty. Already-closed roles keep
+    # their original date.
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    newly_closed = 0
+    for job_key, record in jobs_log.items():
+        if record.get("token") not in scanned_ok:
+            continue
+        if job_key in seen_keys:
+            if record.get("closed_date"):
+                record["closed_date"] = ""
+            continue
+        if not record.get("closed_date"):
+            record["closed_date"] = today
+            newly_closed += 1
+    if newly_closed:
+        print(f"\n{newly_closed} role(s) no longer posted; marked closed as of {today}.")
 
     reused_count = 0
     if args.github:
