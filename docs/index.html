@@ -159,6 +159,14 @@
     background: var(--tmg-accent); color: #fff;
     padding: 0.15rem 0.4rem; border-radius: 3px; margin-left: 0.4rem;
   }
+  .badge-closed {
+    display: inline-block; font-size: 0.65rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    background: #B0392B; color: #fff;
+    padding: 0.15rem 0.4rem; border-radius: 3px; margin-left: 0.4rem;
+  }
+  tr.row-closed { opacity: 0.55; }
+  tr.row-closed td { text-decoration: none; }
 
   .badge-fit {
     display: inline-block; font-size: 0.75rem; font-weight: 700;
@@ -322,6 +330,14 @@
         </select>
       </div>
       <div>
+        <label class="tmg-field-label" for="openSelect">Posting</label>
+        <select class="tmg-select" id="openSelect">
+          <option value="open">Open only</option>
+          <option value="all">Open + closed</option>
+          <option value="closed">Closed only</option>
+        </select>
+      </div>
+      <div>
         <button class="tmg-btn-ghost" id="clearBtn" type="button">Clear</button>
       </div>
     </div>
@@ -397,6 +413,7 @@
   var companySelect = document.getElementById('companySelect');
   var fitSelect = document.getElementById('fitSelect');
   var ageSelect = document.getElementById('ageSelect');
+  var openSelect = document.getElementById('openSelect');
   var clearBtn = document.getElementById('clearBtn');
   var rowsBody = document.getElementById('jobRows');
   var emptyState = document.getElementById('emptyState');
@@ -502,6 +519,7 @@
     var company = companySelect.value;
     var fitFilter = fitSelect.value;
     var maxAge = parseInt(ageSelect.value, 10);
+    var openFilter = openSelect.value;
 
     // update tab counts across the whole set
     var counts = { active: 0, applied: 0, dismissed: 0 };
@@ -512,6 +530,9 @@
 
     var filtered = allJobs.filter(function (job) {
       if (statusOf(job) !== currentTab) { return false; }
+      var isClosed = !!job.closed_date;
+      if (openFilter === 'open' && isClosed) { return false; }
+      if (openFilter === 'closed' && !isClosed) { return false; }
       if (company && job.company !== company) { return false; }
       if (fitFilter) {
         var v = job.real_fit && job.real_fit.verdict;
@@ -541,6 +562,13 @@
 
     rowsBody.innerHTML = filtered.map(function (job, i) {
       var isNew = daysSince(job.first_seen) <= 7;
+      var isClosed = !!job.closed_date;
+      var titleBadges = '';
+      if (isClosed) {
+        titleBadges = '<span class="badge-closed">Closed ' + esc(job.closed_date) + '</span>';
+      } else if (isNew) {
+        titleBadges = '<span class="badge-new">New</span>';
+      }
       var links = '<a href="' + esc(job.url) + '" target="_blank" rel="noopener">Posting</a>';
       if (job.issue_url) {
         links += ' &middot; <a href="' + esc(job.issue_url) + '" target="_blank" rel="noopener">Issue</a>';
@@ -557,9 +585,9 @@
       }
       actions += '</div>';
 
-      return '<tr>' +
+      return '<tr' + (isClosed ? ' class="row-closed"' : '') + '>' +
         '<td>' + esc(job.company) + '</td>' +
-        '<td>' + esc(job.title) + (isNew ? '<span class="badge-new">New</span>' : '') + '</td>' +
+        '<td>' + esc(job.title) + titleBadges + '</td>' +
         '<td>' + fitBadge(job) + '</td>' +
         '<td>' + esc(job.location) + '</td>' +
         '<td>' + source + '</td>' +
@@ -661,11 +689,13 @@
   companySelect.addEventListener('change', render);
   fitSelect.addEventListener('change', render);
   ageSelect.addEventListener('change', render);
+  openSelect.addEventListener('change', render);
   clearBtn.addEventListener('click', function () {
     searchInput.value = '';
     companySelect.value = '';
     fitSelect.value = '';
     ageSelect.value = '0';
+    openSelect.value = 'open';
     render();
   });
 
