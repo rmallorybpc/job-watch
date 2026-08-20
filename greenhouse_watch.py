@@ -294,6 +294,13 @@ def main() -> None:
     jobs_log = load_log()
     new_records = []
     checked = 0
+    # For closed-role reconciliation: the set of company tokens that
+    # fetched successfully with a non-empty result this run, and the set
+    # of job_keys actually seen live in those fetches. A logged role is
+    # marked closed only if its company is in scanned_ok AND its job_key
+    # is not in seen_keys — never on a failed or empty fetch.
+    scanned_ok = set()
+    seen_keys = set()
 
     print(f"Checking {len(companies)} companies...\n")
 
@@ -313,6 +320,12 @@ def main() -> None:
                 print("  0 posted (board returned no jobs)")
             time.sleep(REQUEST_DELAY_SECONDS)
             continue
+
+        # This company fetched successfully with real postings, so its
+        # log entries can be safely reconciled against what is live now.
+        scanned_ok.add(token)
+        for job in jobs:
+            seen_keys.add(f"{token}:{job.get('id')}")
 
         hits = 0
         for job in jobs:
@@ -352,6 +365,7 @@ def main() -> None:
                 "first_seen": first_seen,
                 "description": strip_html(job.get("content", "")),
                 "issue_url": issue_url,
+                "closed_date": "",
             }
             record["real_fit"] = compute_real_fit(record)
             jobs_log[job_key] = record
@@ -359,6 +373,33 @@ def main() -> None:
 
         print(f"  {len(jobs)} posted, {hits} new match{'' if hits == 1 else 'es'}")
         time.sleep(REQUEST_DELAY_SECONDS)
+
+    # ------------------------------------------------------------------
+    # Closed-role reconciliation.
+    # A role in the log is marked closed when its company fetched
+    # successfully this run (token in scanned_ok) but the role's job_key
+    # was not among the live postings (not in seen_keys). This never
+    # fires for a company that 404'd, errored, or returned an empty
+    # board, since those tokens are absent from scanned_ok — a failed
+    # fetch must not be read as "every role closed". A role already
+    # marked closed keeps its original closed_date and is not re-stamped.
+    # ------------------------------------------------------------------
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    newly_closed = 0
+    for job_key, record in jobs_log.items():
+        rec_token = record.get("token")
+        if rec_token not in scanned_ok:
+            continue
+        if job_key in seen_keys:
+            # Role is live again; clear any stale closed stamp.
+            if record.get("closed_date"):
+                record["closed_date"] = ""
+            continue
+        if not record.get("closed_date"):
+            record["closed_date"] = today
+            newly_closed += 1
+    if newly_closed:
+        print(f"\n{newly_closed} role(s) no longer posted; marked closed as of {today}.")
 
     reused_count = 0
     if args.github:
