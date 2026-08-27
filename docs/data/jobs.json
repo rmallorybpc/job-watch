@@ -1,7 +1,13 @@
 {
   "companies_watched": 57,
-  "fetch_errors": [],
-  "generated": "2026-08-26T22:03:54+00:00",
+  "fetch_errors": [
+    {
+      "company": "Gusto",
+      "reason": "network failure: HTTPSConnectionPool(host='boards-api.greenhouse.io', port=443): Read timed out. (read timeout=20)",
+      "token": "gusto"
+    }
+  ],
+  "generated": "2026-08-27T16:46:44+00:00",
   "jobs": {
     "albedo:4277961009": {
       "closed_date": "2026-08-24",
