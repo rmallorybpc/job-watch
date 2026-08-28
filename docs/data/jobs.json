@@ -2,12 +2,12 @@
   "companies_watched": 57,
   "fetch_errors": [
     {
-      "company": "Gusto",
+      "company": "WPP Media",
       "reason": "network failure: HTTPSConnectionPool(host='boards-api.greenhouse.io', port=443): Read timed out. (read timeout=20)",
-      "token": "gusto"
+      "token": "wppmedia"
     }
   ],
-  "generated": "2026-08-27T16:46:44+00:00",
+  "generated": "2026-08-28T00:07:21+00:00",
   "jobs": {
     "albedo:4277961009": {
       "closed_date": "2026-08-24",
