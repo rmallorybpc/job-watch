@@ -1,8 +1,68 @@
 {
   "companies_watched": 34,
   "fetch_errors": [],
-  "generated": "2026-09-11T13:17:59+00:00",
+  "generated": "2026-09-11T21:15:29+00:00",
   "jobs": {
+    "ibotta:b79bb1b7-d902-4fcb-b563-fd84e43edc2a": {
+      "closed_date": "",
+      "comp": "",
+      "company": "Ibotta",
+      "description": "Ibotta is seeking a Head of HR Enablement & Operations to join our innovative team and contribute to our mission to Make Every Purchase Rewarding.This individual is a proven people leader who excels at automating business processes, driving operational efficiency, managing data, administering systems, making strategic decisions, and collaborating and communicating across departments. This role will lead our human resources technology strategy, including our workday instance and integrations, and our benefits and payroll operations teams.\n\nThis position is located in Denver, Colorado as a hybrid position requiring 3 days in office (Tuesday, Wednesday, and Thursday). Candidates must live in the United States.\n\nWhat you will be doing:\n\nLead People Operations team, inclusive of Workday Administration, Benefits Operations, and Payroll Operations\n\nLead and manage the HR automation strategy, inclusive of our Workday system,  HR tech stack, and other integrations and automations across enterprise systems\n\nManage our vendor relationships with HR technology tools, and other HR operations partners, optimizing for competitive offerings, efficiency and service\n\nPartner with Talent Acquisition to support Ashby ATS and recruiting analytics\n\nPartner with HR Business Partners to provide technology based solutions to improve the efficiency of the business, increase self service, and improve the integrity of HR processes\n\nEmbrace and uphold Ibotta\u2019s Core Values: Integrity, Boldness, Ownership, Teamwork, Transparency & A good idea can come from anywhere\n\nWhat we are looking for:10+ years experience in core people operations functions such as HRIS administration, payroll, benefits administration, with 4+ years of people leadership experience\n\nBachelor degree in Human Resources or related field preferred\n\nExperience creating and executing an HR technology strategy required\n\nExperience creating and deploying AI agents across enterprise systems\n\nAbility to manage multiple, competing priorities concurrently\n\nProven communication and presentations skills\n\nProven operational excellence and systems improvements\n\nStrategic thinker and intellectually curious\n\nAbout Ibotta (\"I bought a...\")\n\nIbotta (NYSE: IBTA) is a leading performance marketing platform allowing brands to deliver digital promotions to over 200 million consumers through a network of publishers called the Ibotta Performance Network (IPN). The IPN allows marketers to influence what people buy, and where and how often they shop \u2013 all while paying only when their campaigns directly result in a sale. American shoppers have earned over $1.8 billion through the IPN since 2012. The largest tech IPO in history to come out of Colorado, Ibotta is headquartered in Denver, and is continually listed as a top place to work by The Denver Post and Inc. Magazine.\n\nAdditional Details:\n\nThis position is located in Denver, CO and includes competitive pay, flexible time off, benefits package (including medical, dental, vision), Employee Stock Purchase Program, and 401k match. Denver office perks include paid parking, snacks, and occasional meals.\n\nBase compensation range: $190,000 - $235,000. Equity is included in overall compensation package. This compensation range is specific to the United States labor market and may be adjusted based on actual experience. Total compensation for this role also includes a variable component in addition to base salary.\n\nIbotta is an Equal Opportunity Employer. Ibotta\u2019s employment decisions are made without regard of race, color, religion, national origin, age, sex, marital status, ancestry, physical or mental disability, veteran status, gender identity, sexual orientation, or any other legally protected status.\n\nApplicants must be currently authorized to work in the United States on a full-time basis.\n\nApplicants are accepted until the position is filled.\n\nFor the security of our employees and the business, all employees are responsible for the secure handling of data in accordance with our security policies, identifying and reporting phishing attempts, as well as reporting security incidents to the proper channels.\n\nRecruiting Agency Notice\nIbotta does not accept agency resumes and is not responsible for any fees related to unsolicited resumes. Please do not forward resumes to any Ibotta employees.",
+      "first_seen": "2026-09-11",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/186",
+      "job_id": "b79bb1b7-d902-4fcb-b563-fd84e43edc2a",
+      "location": "Hybrid - Denver",
+      "posted": "2026-09-11",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "domain language: people operations, human resources",
+            "of": 30,
+            "points": 24.0
+          },
+          "leadership_signals": {
+            "note": "no explicit leadership or coaching language",
+            "of": 10,
+            "points": 3.0
+          },
+          "remote_eligibility": {
+            "note": "workplace type: Remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "strategic language: strategic, business partner",
+            "of": 15,
+            "points": 15
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 78.5,
+        "verdict": "Apply",
+        "workplace_data_available": true
+      },
+      "source": "ashby",
+      "title": "Head of HR Enablement & Operations",
+      "token": "ibotta",
+      "url": "https://jobs.ashbyhq.com/ibotta/b79bb1b7-d902-4fcb-b563-fd84e43edc2a",
+      "workplace": "Remote"
+    },
     "sondermind:dcbf78f5-9082-4ea2-8a22-7df71a19af99": {
       "closed_date": "2026-08-27",
       "comp": "",
@@ -64,5 +124,5 @@
       "workplace": "Remote"
     }
   },
-  "total_roles": 1
+  "total_roles": 2
 }
