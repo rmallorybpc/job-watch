@@ -1,7 +1,13 @@
 {
   "companies_watched": 4,
-  "fetch_errors": [],
-  "generated": "2026-09-29T21:17:54+00:00",
+  "fetch_errors": [
+    {
+      "company": "Highwire",
+      "reason": "board id not found (404)",
+      "token": "highwire"
+    }
+  ],
+  "generated": "2026-09-30T13:21:39+00:00",
   "jobs": {},
   "total_roles": 0
 }
