@@ -5,9 +5,14 @@
       "company": "Invoca",
       "reason": "board token not found (404)",
       "token": "invoca"
+    },
+    {
+      "company": "Hightouch",
+      "reason": "board token not found (404)",
+      "token": "hightouch"
     }
   ],
-  "generated": "2026-10-02T13:19:30+00:00",
+  "generated": "2026-10-02T21:17:09+00:00",
   "jobs": {
     "albedo:4277961009": {
       "closed_date": "2026-08-24",
