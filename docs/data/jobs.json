@@ -17,7 +17,7 @@
       "token": "hightouch"
     }
   ],
-  "generated": "2026-10-15T13:18:42+00:00",
+  "generated": "2026-10-15T21:17:24+00:00",
   "jobs": {
     "albedo:4277961009": {
       "closed_date": "2026-08-24",
@@ -483,6 +483,122 @@
       "url": "https://job-boards.greenhouse.io/midihealth/jobs/4700581005",
       "workplace_type": "remote"
     },
+    "mozilla:8055489": {
+      "closed_date": "",
+      "company": "Mozilla",
+      "description": "<div class=\"gmail_default\" style=\"font-size: small;\">\n<div>\n<div>To learn the Hiring Ranges for this position, please select your location from the <strong>Apply Now</strong> dropdown menu.</div>\n<p style=\"text-align: justify; line-height: 1;\">To learn more about our Hiring Range System, please click this <a href=\"https://docs.google.com/document/d/1ylUe7Ou0EbsOtGRBtUv1sSld3lbZ4mrYzo59tEkSjY8/edit?usp=sharing\" target=\"_blank\"><span style=\"text-decoration: underline;\"><strong>link.</strong></span></a></p>\n</div>\n<div>\n<p><strong>Why Mozilla?</strong></p>\n<p><span style=\"font-weight: 400;\">Mozilla Corporation is the non-profit-backed technology company that has shaped the internet for the better over the last 25 years. We make pioneering brands like Firefox, the privacy-minded web browser. Now, with more than 225 million people around the world using our products each month, we\u2019re shaping the next 25 years of technology and helping to reclaim an internet built for people, not companies. Our work focuses on diverse areas including AI, social media, security and more. And we\u2019re doing this while never losing our focus on our core mission \u2013 to make the internet better for people. </span></p>\n<p><span style=\"font-weight: 400;\">The Mozilla Corporation is wholly owned by the non-profit 501(c) Mozilla Foundation. This means we aren\u2019t beholden to any shareholders \u2014 only to our mission. Along with thousands of volunteer contributors and collaborators all over the world, Mozillians design, build and distribute </span><strong>open-source</strong><span style=\"font-weight: 400;\"> software that enables people to enjoy the internet on their terms. </span></p>\n<p><strong>About this team and role:</strong></p>\n<p><span style=\"font-weight: 400;\">The Firefox Platform Layout/APZ team is a global community of engineers who care deeply about how the Web looks and feels. We are the team responsible for Pan, Scrolling, Zoom, Page Layout, CSS, images, text, printing, and animations in Gecko, the engine behind Firefox. You will be able to design and develop standards-compliant CSS and page layout features that all of our users see, with a current particular focus on Asynchronous Pan and Zoom (APZ), our technology for making user interaction snappy and delightful. Our team is geographically-distributed, and working virtually and in the open is the norm. You can expect to work on the code driving the Firefox browser on a number of platforms - Android, Windows, Linux, and macOS. Our focus is on writing fast, lightweight and maintainable code to make Firefox phenomenal for users.</span></p>\n<p><strong>What you\u2019ll do: </strong></p>\n<ul>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Work cooperatively with other Mozillians to identify and correct issues, and ask for help as needed</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Write high-quality, performant, open source, and standards compliant code</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Develop innovative layout, graphics, and user interaction techniques, algorithms and tools to maximize the rendering quality and performance of Firefox</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Participate in regular code reviews, team meetings and long-term planning</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Help triage and test bugs, taking the initiative to drill down to root causes and explore potential solutions</span></li>\n</ul>\n<p><strong>What you\u2019ll bring: </strong></p>\n<ul>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Bachelor\u2019s degree or equivalent experience in Computer Science or similar field</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Experience developing C/C++ and/or Rust applications</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Strong debugging and optimization skills in a multi-threaded environment</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Experience with memory and performance optimization tools</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Proven record of finishing projects where the work spans several months</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Experience participating in and contributing to open source projects and/or web browser development would be beneficial.</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Excellent written and verbal communication skills</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Ability to quickly learn and be effective with a large code base</span></li>\n</ul>\n<p><strong>What you\u2019ll get:</strong></p>\n<ul>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Generous performance-based bonus plans to all eligible employees - we share in our success as one team</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Rich medical, dental, and vision coverage</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Generous retirement contributions with 100% immediate vesting (regardless of whether you contribute)</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Quarterly all-company wellness days where everyone takes a pause together</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Country specific holidays plus a day off for your birthday</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">One-time home office stipend</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Annual professional development budget</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Quarterly well-being stipend</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Considerable paid parental leave</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Employee referral bonus program</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Other benefits (life/AD&amp;D, disability, EAP, etc. - varies by country)</span></li>\n</ul>\n<p><strong>About Mozilla </strong></p>\n<p>Mozilla exists to build the Internet as a public resource accessible to all because we believe that open and free is better than closed and controlled. When you work at Mozilla, you give yourself a chance to make a difference in the lives of Web users everywhere. And you give us a chance to make a difference in your life every single day. Join us to work on the Web as the platform and help create more opportunity and innovation for everyone online.</p>\n<p><strong>Commitment to diversity, equity, inclusion, and belonging</strong></p>\n<p>Mozilla understands that valuing diverse creative practices and forms of knowledge are crucial to and enrich the company\u2019s core mission.  We encourage applications from everyone, including members of all equity-seeking communities, such as (but certainly not limited to) women, racialized and Indigenous persons, persons with disabilities, persons of all sexual orientation<span style=\"color: #003366;\">s, </span>gender identities, and expressions.</p>\n<p>We will ensure that qualified individuals with disabilities are provided reasonable accommodations to participate in the job application or interview process, to perform essential job functions, and to receive other benefits and privileges of employment, as appropriate. Please contact us at <a class=\"external-link\" href=\"mailto:hiringaccommodation@mozilla.com\">hiringaccommodation@mozilla.com</a> to request accommodation.</p>\n<p>We are an equal opportunity employer. We do not discriminate on the basis of race (including hairstyle and texture), religion (including religious grooming and dress practices), gender, gender identity, gender expression, color, national origin, pregnancy, ancestry, domestic partner status, disability, sexual orientation, age, genetic predisposition, medical condition, marital status, citizenship status, military or veteran status, or any other basis covered by applicable laws.  Mozilla will not tolerate discrimination or harassment based on any of these characteristics or any other unlawful behavior, conduct, or purpose.</p>\n<p>Group: D</p>\n<p>#LI-DNI</p>\n<p>Req ID: R3181</p>\n</div>\n</div>",
+      "first_seen": "2026-10-15",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/191",
+      "job_id": 8055489,
+      "location": "Remote",
+      "posted": "2026-10-15",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "no explicit domain language found; scored low on title match alone",
+            "of": 30,
+            "points": 9.0
+          },
+          "leadership_signals": {
+            "note": "no explicit leadership or coaching language",
+            "of": 10,
+            "points": 3.0
+          },
+          "remote_eligibility": {
+            "note": "workplace type: remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "no strong role-type signal either way",
+            "of": 15,
+            "points": 7.5
+          },
+          "seniority_alignment": {
+            "note": "title passed the filter but is not a top-tier seniority keyword",
+            "of": 20,
+            "points": 12.0
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 48.0,
+        "verdict": "Skip",
+        "workplace_data_available": true
+      },
+      "title": "Senior Software Engineer, APZ (Asynchronous Pan & Zoom)",
+      "token": "mozilla",
+      "url": "https://job-boards.greenhouse.io/mozilla/jobs/8055489",
+      "workplace_type": "remote"
+    },
+    "mozilla:8060216": {
+      "closed_date": "",
+      "company": "Mozilla",
+      "description": "<div class=\"gmail_default\" style=\"font-size: small;\">\n<div>\n<p><strong>Why Mozilla?</strong></p>\n<p><span style=\"font-weight: 400;\">Mozilla Corporation is the non-profit-backed technology company that has shaped the internet for the better over the last 25 years. We make pioneering brands like Firefox, the privacy-minded web browser. Now, with more than 225 million people around the world using our products each month, we\u2019re shaping the next 25 years of technology and helping to reclaim an internet built for people, not companies. Our work focuses on diverse areas including AI, social media, security and more. And we\u2019re doing this while never losing our focus on our core mission \u2013 to make the internet better for people. </span></p>\n<p><span style=\"font-weight: 400;\">The Mozilla Corporation is wholly owned by the non-profit 501(c) Mozilla Foundation. This means we aren\u2019t beholden to any shareholders \u2014 only to our mission. Along with thousands of volunteer contributors and collaborators all over the world, Mozillians design, build and distribute </span><strong>open-source</strong><span style=\"font-weight: 400;\"> software that enables people to enjoy the internet on their terms. </span></p>\n<p><strong>About this team and role:</strong></p>\n<p><span style=\"font-weight: 400;\">The Firefox Platform Layout/APZ team is a global community of engineers who care deeply about how the Web looks and feels. We are the team responsible for Pan, Scrolling, Zoom, Page Layout, CSS, images, text, printing, and animations in Gecko, the engine behind Firefox. You will be able to design and develop standards-compliant CSS and page layout features that all of our users see, with a current particular focus on Asynchronous Pan and Zoom (APZ), our technology for making user interaction snappy and delightful. Our team is geographically-distributed, and working virtually and in the open is the norm. You can expect to work on the code driving the Firefox browser on a number of platforms - Android, Windows, Linux, and macOS. Our focus is on writing fast, lightweight and maintainable code to make Firefox phenomenal for users.</span></p>\n<p><strong>What you\u2019ll do: </strong></p>\n<ul>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Work cooperatively with other Mozillians to identify and correct issues, and ask for help as needed</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Write high-quality, performant, open source, and standards compliant code</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Develop innovative layout, graphics, and user interaction techniques, algorithms and tools to maximize the rendering quality and performance of Firefox</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Participate in regular code reviews, team meetings and long-term planning</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Help triage and test bugs, taking the initiative to drill down to root causes and explore potential solutions</span></li>\n</ul>\n<p><strong>What you\u2019ll bring: </strong></p>\n<ul>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Bachelor\u2019s degree or equivalent experience in Computer Science or similar field</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Experience developing C/C++ and/or Rust applications</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Strong debugging and optimization skills in a multi-threaded environment</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Experience with memory and performance optimization tools</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Proven record of finishing projects where the work spans several months</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Experience participating in and contributing to open source projects and/or web browser development would be beneficial.</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Excellent written and verbal communication skills</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Ability to quickly learn and be effective with a large code base</span></li>\n</ul>\n<p><strong>What you\u2019ll get:</strong></p>\n<ul>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Generous performance-based bonus plans to all eligible employees - we share in our success as one team</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Rich medical, dental, and vision coverage</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Generous retirement contributions with 100% immediate vesting (regardless of whether you contribute)</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Quarterly all-company wellness days where everyone takes a pause together</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Country specific holidays plus a day off for your birthday</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">One-time home office stipend</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Annual professional development budget</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Quarterly well-being stipend</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Considerable paid parental leave</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Employee referral bonus program</span></li>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Other benefits (life/AD&amp;D, disability, EAP, etc. - varies by country)</span></li>\n</ul>\n<p><strong>About Mozilla </strong></p>\n<p>Mozilla exists to build the Internet as a public resource accessible to all because we believe that open and free is better than closed and controlled. When you work at Mozilla, you give yourself a chance to make a difference in the lives of Web users everywhere. And you give us a chance to make a difference in your life every single day. Join us to work on the Web as the platform and help create more opportunity and innovation for everyone online.</p>\n<p><strong>Commitment to diversity, equity, inclusion, and belonging</strong></p>\n<p>Mozilla understands that valuing diverse creative practices and forms of knowledge are crucial to and enrich the company\u2019s core mission.  We encourage applications from everyone, including members of all equity-seeking communities, such as (but certainly not limited to) women, racialized and Indigenous persons, persons with disabilities, persons of all sexual orientation<span style=\"color: #003366;\">s, </span>gender identities, and expressions.</p>\n<p>We will ensure that qualified individuals with disabilities are provided reasonable accommodations to participate in the job application or interview process, to perform essential job functions, and to receive other benefits and privileges of employment, as appropriate. Please contact us at <a class=\"external-link\" href=\"mailto:hiringaccommodation@mozilla.com\">hiringaccommodation@mozilla.com</a> to request accommodation.</p>\n<p>We are an equal opportunity employer. We do not discriminate on the basis of race (including hairstyle and texture), religion (including religious grooming and dress practices), gender, gender identity, gender expression, color, national origin, pregnancy, ancestry, domestic partner status, disability, sexual orientation, age, genetic predisposition, medical condition, marital status, citizenship status, military or veteran status, or any other basis covered by applicable laws.  Mozilla will not tolerate discrimination or harassment based on any of these characteristics or any other unlawful behavior, conduct, or purpose.</p>\n<p>Group: D</p>\n<p>#LI-REMOTE</p>\n<p>Req ID: R3181</p>\n</div>\n</div><div class=\"content-pay-transparency\"><div class=\"pay-input\"><div class=\"description\"><p><strong>Hiring Ranges:</strong></p></div><div class=\"title\">US Tier 1 Locations</div><div class=\"pay-range\"><span>$137,000</span><span class=\"divider\">&mdash;</span><span>$183,000 USD</span></div></div><div class=\"pay-input\"><div class=\"title\">US Tier 2 Locations</div><div class=\"pay-range\"><span>$126,000</span><span class=\"divider\">&mdash;</span><span>$168,000 USD</span></div></div><div class=\"pay-input\"><div class=\"title\">US Tier 3 Locations</div><div class=\"pay-range\"><span>$116,000</span><span class=\"divider\">&mdash;</span><span>$155,000 USD</span></div></div></div>",
+      "first_seen": "2026-10-15",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/190",
+      "job_id": 8060216,
+      "location": "Remote US",
+      "posted": "2026-10-15",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "no explicit domain language found; scored low on title match alone",
+            "of": 30,
+            "points": 9.0
+          },
+          "leadership_signals": {
+            "note": "no explicit leadership or coaching language",
+            "of": 10,
+            "points": 3.0
+          },
+          "remote_eligibility": {
+            "note": "workplace type: remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "no strong role-type signal either way",
+            "of": 15,
+            "points": 7.5
+          },
+          "seniority_alignment": {
+            "note": "title passed the filter but is not a top-tier seniority keyword",
+            "of": 20,
+            "points": 12.0
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 48.0,
+        "verdict": "Skip",
+        "workplace_data_available": true
+      },
+      "title": "Senior Software Engineer, APZ (Asynchronous Pan & Zoom)",
+      "token": "mozilla",
+      "url": "https://job-boards.greenhouse.io/mozilla/jobs/8060216",
+      "workplace_type": "remote"
+    },
     "nametag:4331571009": {
       "company": "Nametag",
       "description": "<p><strong>About Nametag</strong></p>\n<p>Nametag is building the future of secure digital identity. Our mission is to <strong>protect every human identity </strong>to restore trust in the AI era. We bring workforce-grade identity verification integrated to the enterprise to verify the human behind accounts and critical actions. Today, many of the world\u2019s leading brands have a Nametag for every global employee, preventing social engineering and deepfake impersonation attacks. </p>\n<p><strong>The role</strong></p>\n<p>We\u2019re hiring a Head of People to own the full employee lifecycle and build our People function for scale. You'll be the human face of People at Nametag \u2014 the person employees call, trust, and turn to \u2014 while building the systems and automations that mean you're rarely doing the same thing twice. You\u2019ll lead a TA hire who executes day-to-day recruiting while you architect the strategy, systems, frameworks, and operational infrastructure that let Nametag hire and retain great people as we grow. This is a builder-leader role: equal parts strategic design and hands-on execution, with a clear path to expand the People team.</p>\n<p><strong>What you\u2019ll do</strong></p>\n<p><strong>People Operations &amp; Infrastructure (60%)</strong></p>\n<ul>\n<li>Own and optimize the People tech stack: HRIS, ATS, onboarding tools, and benefits platforms\u2014selecting, implementing, and maintaining systems that scale with the company.</li>\n<li>Build the policy and documentation framework: employee handbook, job architecture, comp bands, performance review cadence, and PIP process\u2014designed once, scalable forever.</li>\n<li>Design a remote-first onboarding experience that embeds culture and accelerates ramp; ensure multi-state compliance for a distributed U.S. workforce.</li>\n<li>Lead engagement, internal communications, and culture programming\u2014including quarterly off-sites\u2014grounded in data (eNPS, pulse surveys) not intuition.</li>\n<li>Default to automation: build self-service workflows, eliminate manual repetition, and document systems so the team never depends on tribal knowledge.</li>\n</ul>\n<p> </p>\n<p><strong>Talent Acquisition (20%)</strong></p>\n<ul>\n<li>Manage and develop a TA hire who runs day-to-day sourcing, interviewing, and coordination across Engineering, Product, and GTM.</li>\n<li>Own recruiting infrastructure: ATS configuration, interview loop design, scorecards, offer frameworks, and employer brand positioning.</li>\n<li>Set and maintain the hiring bar: calibrate interviewers, close executive-level candidates, and ensure quality and consistency across all pipelines.</li>\n<li>Partner with leadership on workforce planning: role definition, headcount prioritization, level stratification, and comp band strategy.</li>\n</ul>\n<p> </p>\n<p><strong>Employee Experience &amp; Relations (20%)</strong></p>\n<ul>\n<li>Serve as the primary point of contact for employee questions, concerns, and sensitive situations \u2014 handling them directly, not routing them to an FAQ.</li>\n<li>Partner with managers on performance conversations, coaching, and team dynamics before they escalate.</li>\n<li>Run the feedback loops \u2014 1:1s, exit interviews, pulse data \u2014 that keep leadership informed without surprises.</li>\n<li>Be the person employees trust to listen first and act with discretion.</li>\n</ul>\n<p><strong>Ideal qualifications</strong></p>\n<ul>\n<li>6\u201310 years in People/HR at fast-moving startups; prior experience managing or mentoring TA or HR coordinators preferred.</li>\n<li>Proven systems builder\u2014you\u2019ve selected and implemented HRIS, ATS, and People tooling from scratch, not just administered inherited stacks.</li>\n<li>Automation-first mindset \u2014 your default question is \"how do we not do this manually next time,\" and you have examples of workflows or self-service systems you've built to prove it.</li>\n<li>Strong operational and program management discipline\u2014you design frameworks that hold up under growth and document decisions so the team doesn\u2019t depend on tribal knowledge.</li>\n<li>Deep enough TA fluency to set the hiring bar, close executive candidates, and coach your recruiter\u2014without being the one running every search.</li>\n<li>Experienced with remote-first distributed teams; excellent communicator comfortable writing policy, presenting to leadership, and representing Nametag externally.</li>\n<li>High EQ and genuine care for people \u2014 you handle sensitive situations with discretion, and employees feel it.</li>\n</ul>\n<p> </p>\n<p><strong>What we value</strong></p>\n<ul>\n<li>Fast technical learning and curiosity about identity security.</li>\n<li>Kindness, integrity, and high trust\u2014our core operating principles.</li>\n<li>Bias for action: iterate quickly and ship pragmatic solutions.</li>\n</ul>\n<p> </p>\n<p><strong>Compensation &amp; perks</strong></p>\n<ul>\n<li>Competitive salary + meaningful equity.</li>\n<li>Comprehensive medical, dental, and vision.</li>\n<li>Remote-first with flexible PTO.</li>\n<li>Annual team off-sites.</li>\n<li>New MacBook and home-office equipment.</li>\n</ul>\n<p><br><br></p>",
@@ -599,5 +715,5 @@
       "workplace_type": "onsite"
     }
   },
-  "total_roles": 10
+  "total_roles": 12
 }
