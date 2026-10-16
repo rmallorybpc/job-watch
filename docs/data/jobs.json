@@ -2,6 +2,11 @@
   "companies_watched": 57,
   "fetch_errors": [
     {
+      "company": "Webflow",
+      "reason": "board token not found (404)",
+      "token": "webflow"
+    },
+    {
       "company": "HubSpot",
       "reason": "board token not found (404)",
       "token": "hubspot"
@@ -17,7 +22,7 @@
       "token": "hightouch"
     }
   ],
-  "generated": "2026-10-16T13:17:32+00:00",
+  "generated": "2026-10-16T21:14:43+00:00",
   "jobs": {
     "albedo:4277961009": {
       "closed_date": "2026-08-24",
