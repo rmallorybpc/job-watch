@@ -1,7 +1,13 @@
 {
   "companies_watched": 34,
-  "fetch_errors": [],
-  "generated": "2026-11-02T21:11:04+00:00",
+  "fetch_errors": [
+    {
+      "company": "Secureframe",
+      "reason": "network failure: HTTPSConnectionPool(host='api.ashbyhq.com', port=443): Read timed out. (read timeout=20)",
+      "token": "secureframe"
+    }
+  ],
+  "generated": "2026-11-03T13:13:00+00:00",
   "jobs": {
     "helpscout:320931c6-e9c5-4b28-91f1-c6b0c1811fb8": {
       "closed_date": "",
