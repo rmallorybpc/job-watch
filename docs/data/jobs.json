@@ -7,6 +7,11 @@
       "token": "hubspot"
     },
     {
+      "company": "Iterable",
+      "reason": "board token not found (404)",
+      "token": "iterable"
+    },
+    {
       "company": "Invoca",
       "reason": "board token not found (404)",
       "token": "invoca"
@@ -17,7 +22,7 @@
       "token": "hightouch"
     }
   ],
-  "generated": "2026-11-11T13:11:47+00:00",
+  "generated": "2026-11-11T21:14:36+00:00",
   "jobs": {
     "albedo:4277961009": {
       "closed_date": "2026-08-24",
