@@ -1,7 +1,7 @@
 {
-  "companies_watched": 34,
+  "companies_watched": 40,
   "fetch_errors": [],
-  "generated": "2026-11-18T21:10:52+00:00",
+  "generated": "2026-11-19T13:12:27+00:00",
   "jobs": {
     "helpscout:320931c6-e9c5-4b28-91f1-c6b0c1811fb8": {
       "closed_date": "",
@@ -182,6 +182,66 @@
       "token": "notion",
       "url": "https://jobs.ashbyhq.com/notion/c413d063-add4-4c55-aebd-704d49fb54c1",
       "workplace": "Remote"
+    },
+    "picogrid:7af1dce2-b19a-4329-9774-d84d504e2d46": {
+      "closed_date": "",
+      "comp": "$180K - $220K",
+      "company": "Picogrid",
+      "description": "Who we are\n\nPicogrid is a leading venture-backed defense technology company founded to bridge the decades-long gap between modern technology and the critical demands of national security. Today, we're building the essential infrastructure to unify sensors, autonomy, and operators with our technology deployed in active operations around the world. Our mission is to deliver an operational advantage to secure the United States and its allies.\n\nAbout the rolePicogrid is seeking a Head of People to build and own our people function as we scale. As our first dedicated People hire, you'll establish the systems, processes, and operating cadence that support the entire employee lifecycle while partnering closely with leadership on performance management, organizational design, and workforce planning.\n\nWe're looking for a self-driven builder who enjoys solving problems, improving processes, and taking ownership. You'll lead everything from onboarding and employee relations to HR operations, compliance, and employee experience, creating the foundation that allows the company to scale without adding unnecessary complexity.\n\nResponsibilitiesOwn the end-to-end employee lifecycle, including onboarding, performance management, compensation, benefits administration, employee relations, and offboarding.\n\nOwn recruiting operations, partnering with hiring managers and recruiters to scale hiring while maintaining a high hiring bar.\n\nBuild and scale the company's people infrastructure, including policies, processes, documentation, and operating procedures.\n\nEnsure compliance with federal, state, and local employment laws while maintaining HR best practices.\n\nOwn the company's HRIS, employee records, people reporting, and HR operations, ensuring accuracy and operational excellence.\n\nOwn performance management, employee development, and manager coaching across the organization.\n\nOwn employee experience initiatives that reinforce a high-performance culture while preserving what makes Picogrid unique.\n\nRequired Qualifications7+ years of progressive experience in People Operations, Human Resources, or HR Business Partner roles, including experience in high-growth startup environments.\n\nDemonstrated success building and scaling highly effective people programs with strong retention across compensation, performance management, onboarding, employee relations, and benefits.\n\nStrong working knowledge of federal, state, and local employment laws with the judgment to navigate complex employee situations while balancing business and employee needs.\n\nExperience building scalable people processes, maintaining HR systems, and using data to improve decision-making and operational efficiency.\n\nExceptional organizational and communication skills with the ability to manage multiple priorities and execute in a fast-paced environment.\n\nComfortable operating with ambiguity, taking ownership of new initiatives, and building processes where none previously existed.\n\nPreferred QualificationsExperience as one of the first People hires or helping build the People function at an early-stage or growth-stage startup.\n\nTrack record of improving operational efficiency through thoughtful systems, automation, and process design rather than adding unnecessary complexity.\n\nExperience supporting technical organizations with aggressive hiring goals while maintaining a high hiring bar and strong employee experience.\n\nFamiliarity with defense technology, aerospace, hardware, manufacturing, or another highly technical industry is a plus.\n\nCompensation & BenefitsBase salary range: $180,000 - $220,000 per year plus performance incentive. Base salary is just one part of your total compensation package.\n\nSignificant stock options with a high potential upside as an early-stage company\n\n401(k) with employer matching\n\nMedical, dental, and vision coverage for you and your family\n\nRelocation assistance provided (if applicable)\n\nUnlimited PTO (two-week minimum) and 11 paid holidays per year\n\nPaid parental leave for both parents\n\nLunch provided when working in-office and a fully stocked kitchenette\n\nFree EV charging at the HQ\n\nUnique office in El Segundo, CA stocked with quality coffee, snacks, and craft beer\n\n#LI-DNP\n\nExport Control RequirementsTo conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent resident (aka green card holder), (iii) Refugee under 8 U.S.C. \u00a7 1157, or (iv) Asylee under 8 U.S.C. \u00a7 1158, or be eligible to obtain the required authorizations from the U.S. Department of State.\n\nEqual Employment Opportunity (EEO) Policy\n\nPicogrid is committed to providing a professional work environment free from discrimination, harassment, and retaliation. We are an equal opportunity employer and make all employment decisions based on merit, qualifications, and business needs.\n\nEqual Employment Opportunity (EEO) Policy\n\nPicogrid is committed to providing a professional work environment free from discrimination, harassment, and retaliation. We are an equal opportunity employer and make all employment decisions based on merit, qualifications, and business needs.",
+      "first_seen": "2026-07-28",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/53",
+      "job_id": "7af1dce2-b19a-4329-9774-d84d504e2d46",
+      "location": "El Segundo, CA",
+      "posted": "2026-07-17",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "comp floor ~$180,000 meets the $130,000 target",
+            "of": 10,
+            "points": 10
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "domain language: people operations, human resources",
+            "of": 30,
+            "points": 24.0
+          },
+          "leadership_signals": {
+            "note": "leadership language: coaching",
+            "of": 10,
+            "points": 10
+          },
+          "remote_eligibility": {
+            "note": "workplace type: FullTime (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "strategic language: organizational design, culture, business partner",
+            "of": 15,
+            "points": 15
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": true,
+        "red_flags": [],
+        "score": 90.5,
+        "verdict": "Apply",
+        "workplace_data_available": true
+      },
+      "source": "ashby",
+      "title": "Head of People",
+      "token": "picogrid",
+      "url": "https://jobs.ashbyhq.com/picogrid/7af1dce2-b19a-4329-9774-d84d504e2d46",
+      "workplace": "FullTime"
     },
     "plaid:c38d85e9-4608-4615-a65b-baac1b80f871": {
       "closed_date": "",
@@ -424,5 +484,5 @@
       "workplace": "Remote"
     }
   },
-  "total_roles": 7
+  "total_roles": 8
 }

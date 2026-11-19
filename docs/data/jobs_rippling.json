@@ -1,5 +1,5 @@
 {
-  "companies_watched": 4,
+  "companies_watched": 6,
   "fetch_errors": [
     {
       "company": "Highwire",
@@ -7,7 +7,67 @@
       "token": "highwire"
     }
   ],
-  "generated": "2026-11-18T21:10:33+00:00",
-  "jobs": {},
-  "total_roles": 0
+  "generated": "2026-11-19T13:12:06+00:00",
+  "jobs": {
+    "community-phone-careers:c3e5df97-eb70-4840-9cc8-35b880eec172": {
+      "closed_date": "",
+      "company": "Community Phone",
+      "description": "",
+      "first_seen": "2026-11-19",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/201",
+      "job_id": "c3e5df97-eb70-4840-9cc8-35b880eec172",
+      "location": "Remote",
+      "posted": "",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "no explicit domain language found; scored low on title match alone",
+            "of": 30,
+            "points": 9.0
+          },
+          "leadership_signals": {
+            "note": "no explicit leadership or coaching language",
+            "of": 10,
+            "points": 3.0
+          },
+          "remote_eligibility": {
+            "note": "workplace type: remote (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "no strong role-type signal either way",
+            "of": 15,
+            "points": 7.5
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 56.0,
+        "verdict": "Optional",
+        "workplace_data_available": true
+      },
+      "source": "rippling",
+      "title": "Head of People",
+      "token": "community-phone-careers",
+      "url": "https://ats.rippling.com/community-phone-careers/jobs/c3e5df97-eb70-4840-9cc8-35b880eec172",
+      "workplace_type": "remote"
+    }
+  },
+  "total_roles": 1
 }
