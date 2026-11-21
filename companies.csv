@@ -23,7 +23,6 @@ Artefact,artefact
 Loft Federal,loftfederal
 Midi Health,midihealth
 WPP Media,wppmedia
-HubSpot,hubspot
 PagerDuty,pagerduty
 Carta,carta
 Brex,brex
@@ -37,14 +36,12 @@ Valimail,valimail
 Strive Health,strivehealth
 VideoAmp,videoamp
 Contentful,contentful
-Iterable,iterable
 Duda,duda
 Dataiku,dataiku
 Rightway,rightway
 Huntress,huntress
 Prove,prove
 Trustpilot,trustpilot
-Invoca,invoca
 TIFIN,tifin
 Engine,engine
 Ghost,ghost
@@ -55,4 +52,5 @@ Bitwarden,bitwarden
 Mercury,mercury
 Alpaca,alpaca
 Remote,remote
-Hightouch,hightouch
+Boulder Care,bouldercare
+Campminder,campminder
