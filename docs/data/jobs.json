@@ -1,7 +1,13 @@
 {
-  "companies_watched": 55,
-  "fetch_errors": [],
-  "generated": "2026-11-23T21:10:04+00:00",
+  "companies_watched": 57,
+  "fetch_errors": [
+    {
+      "company": "Pindrop",
+      "reason": "board token not found (404)",
+      "token": "pindrop"
+    }
+  ],
+  "generated": "2026-11-23T21:25:53+00:00",
   "jobs": {
     "albedo:4277961009": {
       "closed_date": "2026-08-24",

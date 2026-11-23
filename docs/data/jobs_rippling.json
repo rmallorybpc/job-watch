@@ -1,7 +1,13 @@
 {
-  "companies_watched": 5,
-  "fetch_errors": [],
-  "generated": "2026-11-23T21:10:09+00:00",
+  "companies_watched": 6,
+  "fetch_errors": [
+    {
+      "company": "FreeWorld",
+      "reason": "board id not found (404)",
+      "token": "freeworld"
+    }
+  ],
+  "generated": "2026-11-23T21:25:58+00:00",
   "jobs": {
     "community-phone-careers:c3e5df97-eb70-4840-9cc8-35b880eec172": {
       "closed_date": "",
