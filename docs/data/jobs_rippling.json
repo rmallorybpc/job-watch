@@ -7,7 +7,7 @@
       "token": "freeworld"
     }
   ],
-  "generated": "2026-11-25T13:12:40+00:00",
+  "generated": "2026-11-25T21:11:36+00:00",
   "jobs": {
     "community-phone-careers:c3e5df97-eb70-4840-9cc8-35b880eec172": {
       "closed_date": "",
@@ -67,7 +67,66 @@
       "token": "community-phone-careers",
       "url": "https://ats.rippling.com/community-phone-careers/jobs/c3e5df97-eb70-4840-9cc8-35b880eec172",
       "workplace_type": "remote"
+    },
+    "excel:bb20c0eb-69f9-4b6b-a0dd-473b98b6b38a": {
+      "closed_date": "",
+      "company": "Excel Impact",
+      "description": "",
+      "first_seen": "2026-07-28",
+      "issue_url": "https://github.com/rmallorybpc/job-watch/issues/35",
+      "job_id": "bb20c0eb-69f9-4b6b-a0dd-473b98b6b38a",
+      "location": "Hybrid (Miami, FL, US)",
+      "posted": "",
+      "real_fit": {
+        "breakdown": {
+          "compensation_alignment": {
+            "note": "no compensation data captured for this source; scored neutral",
+            "of": 10,
+            "points": 5.0
+          },
+          "complexity": {
+            "note": "no explicit complexity signal",
+            "of": 5,
+            "points": 1.5
+          },
+          "domain_alignment": {
+            "note": "no explicit domain language found; scored low on title match alone",
+            "of": 30,
+            "points": 9.0
+          },
+          "leadership_signals": {
+            "note": "no explicit leadership or coaching language",
+            "of": 10,
+            "points": 3.0
+          },
+          "remote_eligibility": {
+            "note": "workplace type: hybrid (already passed the onsite-outside-CO filter upstream)",
+            "of": 10,
+            "points": 10
+          },
+          "role_type_fit": {
+            "note": "no strong role-type signal either way",
+            "of": 15,
+            "points": 7.5
+          },
+          "seniority_alignment": {
+            "note": "title matches a top-tier seniority keyword",
+            "of": 20,
+            "points": 20
+          }
+        },
+        "compensation_data_available": false,
+        "red_flags": [],
+        "score": 56.0,
+        "verdict": "Optional",
+        "workplace_data_available": true
+      },
+      "source": "rippling",
+      "title": "VP,  Head of People ",
+      "token": "excel",
+      "url": "https://ats.rippling.com/excel/jobs/bb20c0eb-69f9-4b6b-a0dd-473b98b6b38a",
+      "workplace_type": "hybrid"
     }
   },
-  "total_roles": 1
+  "total_roles": 2
 }
